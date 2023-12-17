@@ -1,0 +1,15 @@
+C:\Users\mario\Desktop\CryptoApp\Data\bin\Debug\net6.0\CryptoApp.Data.deps.json
+C:\Users\mario\Desktop\CryptoApp\Data\bin\Debug\net6.0\CryptoApp.Data.dll
+C:\Users\mario\Desktop\CryptoApp\Data\bin\Debug\net6.0\CryptoApp.Data.pdb
+C:\Users\mario\Desktop\CryptoApp\Data\bin\Debug\net6.0\CryptoApp.Models.dll
+C:\Users\mario\Desktop\CryptoApp\Data\bin\Debug\net6.0\CryptoApp.Models.pdb
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\CryptoApp.Data.csproj.AssemblyReference.cache
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\CryptoApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\CryptoApp.Data.AssemblyInfoInputs.cache
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\CryptoApp.Data.AssemblyInfo.cs
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\CryptoApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\CryptoApp.Data.csproj.CopyComplete
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\CryptoApp.Data.dll
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\refint\CryptoApp.Data.dll
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\CryptoApp.Data.pdb
+C:\Users\mario\Desktop\CryptoApp\Data\obj\Debug\net6.0\ref\CryptoApp.Data.dll

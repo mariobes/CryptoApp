@@ -1,0 +1,12 @@
+C:\Users\mario\Desktop\CryptoApp\Models\bin\Debug\net6.0\CryptoApp.Models.deps.json
+C:\Users\mario\Desktop\CryptoApp\Models\bin\Debug\net6.0\CryptoApp.Models.dll
+C:\Users\mario\Desktop\CryptoApp\Models\bin\Debug\net6.0\CryptoApp.Models.pdb
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\CryptoApp.Models.csproj.AssemblyReference.cache
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\CryptoApp.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\CryptoApp.Models.AssemblyInfoInputs.cache
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\CryptoApp.Models.AssemblyInfo.cs
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\CryptoApp.Models.csproj.CoreCompileInputs.cache
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\CryptoApp.Models.dll
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\refint\CryptoApp.Models.dll
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\CryptoApp.Models.pdb
+C:\Users\mario\Desktop\CryptoApp\Models\obj\Debug\net6.0\ref\CryptoApp.Models.dll
