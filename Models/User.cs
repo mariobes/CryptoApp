@@ -2,7 +2,7 @@
 
 public class User
 {
-    public static int Id { get; set; } = 1;
+    public int Id { get; set; }
     public string? Name { get; set; }
     public DateTime Birthdate { get; set; }
     public string? Email { get; set; }
@@ -13,10 +13,15 @@ public class User
     public double Wallet { get; set; }
     public List<Transaction> transactions { get; set; }
 
+    public static int userIdSeed { get; set; }
+
+    //public static int userIdSeedPublic => userIdSeed;
+
     public User() {}
 
     public User(string name, DateTime birthdate, string email, string password, string phone, string dni, string country) 
     {
+        Id = userIdSeed++;
         Name = name;
         Birthdate = birthdate;
         Email = email;

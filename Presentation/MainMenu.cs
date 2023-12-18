@@ -36,7 +36,8 @@ public class MainMenu
             Console.Write("¡Hasta pronto!");
         break;
         default:
-            Console.WriteLine("Opción no válida");
+            Console.WriteLine("Introduce una opción válida");
+            RegistrationMenu();
         break;
         }
     }
@@ -64,8 +65,15 @@ public class MainMenu
             string country = Console.ReadLine();
 
             //Comprobar que el dni y el gmail no coinciden
-            Console.WriteLine("¡Registro completado!");
-            RegistrationMenu();
+            /*if (userService.checkUserExist(dni, gmail))
+            {
+                Console.WriteLine("Ya existe un usuario asociado a esa dirección de email.");
+            }
+            else{*/
+                _userService.RegisterUser(name, birthday, email, password, phone, dni, country);
+                Console.WriteLine("¡Registro completado!");
+                RegistrationMenu();
+            /*}*/
         } 
         else
         {
