@@ -45,51 +45,94 @@ public class MainMenu
     private void SignUp() 
     {
         Console.Write("Nombre: ");
-        string name = Console.ReadLine();
+        string name = InputEmpty();
+
         Console.Write("Introduce tu fecha de nacimiento (yyyy-mm-dd): ");
-        if (DateTime.TryParse(Console.ReadLine(), out DateTime birthday))
+        DateTime birthday = CheckDate();
+      
+        Console.Write("Dirección de email: ");
+        string email = InputEmpty();
+
+        Console.Write("Contraseña: ");
+        string password = InputEmpty();
+
+        Console.Write("Número de teléfono: ");
+        string phone = InputEmpty();
+
+        Console.Write("DNI: ");
+        string dni = InputEmpty();
+
+        Console.Write("País donde resides: ");
+        string country = InputEmpty();
+
+        //Comprobar que el dni y el gmail no coinciden
+        if (_userService.checkUserExist(dni, email, phone))
         {
-            Console.Write("Dirección de email: ");
-            string email = Console.ReadLine();
-
-            Console.Write("Contraseña: ");
-            string password = Console.ReadLine();
-
-            Console.Write("Número de teléfono: ");
-            string phone = Console.ReadLine();
-
-            Console.Write("DNI: ");
-            string dni = Console.ReadLine();
-
-            Console.Write("País donde resides: ");
-            string country = Console.ReadLine();
-
-            //Comprobar que el dni y el gmail no coinciden
-            /*if (userService.checkUserExist(dni, gmail))
-            {
-                Console.WriteLine("Ya existe un usuario asociado a esa dirección de email.");
-            }
-            else{*/
-                _userService.RegisterUser(name, birthday, email, password, phone, dni, country);
-                Console.WriteLine("¡Registro completado!");
-                RegistrationMenu();
-            /*}*/
-        } 
-        else
-        {
-            Console.WriteLine("La fecha introducida es incorrecta");
+            Console.WriteLine("Error, ya existe una cuenta asociada al correo, DNI o teléfono introducido.");
             RegistrationMenu();
-        } 
+        }
+        else{
+            _userService.RegisterUser(name, birthday, email, password, phone, dni, country);
+            Console.WriteLine("¡Registro completado!");
+            RegistrationMenu();
+        }
+        
+       
     }
 
     private void SignIn() {
         Console.Write("Dirección de email: ");
-        string email = Console.ReadLine();
+        string email = InputEmpty();
         Console.Write("Contraseña: ");
-        string password = Console.ReadLine();
-        //Comprobar que el correo y la contraseña coinciden
-        Console.WriteLine("¡Hola, ${name}!");
-        RegistrationMenu();
+        string password = InputEmpty();
+
+        if (_userService.checkLogin(email, password))
+        {
+            Console.WriteLine("¡Hola, ${name}!");
+            //Ir a la pantalla de usuario
+            RegistrationMenu();
+        } 
+        else 
+        {
+            Console.WriteLine("El correo o la contraseña introducida es incorrecta.");
+            RegistrationMenu();
+        }
+    }
+    private string InputEmpty()
+    {
+        string input;
+        do
+        {
+            input = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                Console.WriteLine("El campo está vacío.");
+            }
+        } while (string.IsNullOrWhiteSpace(input));
+
+        return input;
+    }
+
+    private DateTime CheckDate()
+    {
+        string input;
+        DateTime birthday;
+        bool validDate = false;
+        do
+        {
+            input = Console.ReadLine();
+            if (DateTime.TryParse(input, out birthday))
+            {
+                validDate = true;
+            } 
+            else 
+            {
+                Console.WriteLine("La fecha introducida es incorrecta.");
+            }
+
+        } while (!validDate);
+
+        return birthday;
     }
 
 

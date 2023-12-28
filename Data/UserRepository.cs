@@ -33,6 +33,10 @@ public class UserRepository : IUserRepository
         _users[user.Id.ToString()] = user;
     }
 
+    public Dictionary<string, User> GetAllUsers()
+    {
+        return new Dictionary<string, User>(_users);
+    }
 
     public void UpdateAccount(User user)
     {
