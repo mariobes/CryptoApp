@@ -38,7 +38,12 @@ public class UserRepository : IUserRepository
         return new Dictionary<string, User>(_users);
     }
 
-    public void UpdateAccount(User user)
+    public void DeleteUser(User user)
+    {
+        _users.Remove(user.Id.ToString());
+    }
+
+    public void UpdateUser(User user)
     {
         _users[user.Id.ToString()] = user;
     }

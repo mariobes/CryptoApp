@@ -57,20 +57,5 @@ public class PublicUserMenu
 
 
 
-    private string InputEmpty()
-    {
-        string input;
-        do
-        {
-            input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                Console.WriteLine("El campo está vacío.");
-            }
-        } while (string.IsNullOrWhiteSpace(input));
-
-        return input;
-    }
-
 
 }

@@ -50,6 +50,38 @@ public class UserService : IUserService
         }
     }
 
+    public bool CheckUpdateUser(string fieldName, string newField)
+    {
+        try
+        {
+            Dictionary<string, User> allUsers = _repository.GetAllUsers();
+            foreach (var user in allUsers.Values)
+            {
+                if (fieldName == "phone")
+                {
+                    if (user.Phone.Equals(newField))
+                    {
+                        return true;
+                    }
+                }
+
+                if (fieldName == "email")
+                {
+                  if (user.Email.Equals(newField))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al comprobar el usuario", e);
+        }
+    }
+
     public bool CheckLogin(string email, string pasword)
     {
         try
@@ -93,6 +125,21 @@ public class UserService : IUserService
             throw new Exception("Ha ocurrido un error al obtener el usuario", e);
         }
     }
+
+    public void DeleteUser(string userEmail)
+    {
+        try
+        {
+            User userToDelete = GetUser(userEmail);
+            _repository.DeleteUser(userToDelete);
+            _repository.SaveChanges();
+            Console.WriteLine("Has eliminado tu cuenta");
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al borrar el usuario", e);
+        }
+    }
     
     public void UpdateUser(string userEmail, string newPhone = null, string newEmail = null, string newPassword = null)
     {
@@ -117,12 +164,9 @@ public class UserService : IUserService
                     userToUpdate.Password = newPassword;
                 }
 
+                _repository.UpdateUser(userToUpdate);
                 _repository.SaveChanges();
                 Console.WriteLine("Has actualizado tu cuenta correctamente");
-            }
-            else
-            {
-                Console.WriteLine("Usuario no encontrado");
             }
         }
         catch (Exception e)
@@ -131,7 +175,6 @@ public class UserService : IUserService
         }
 
     }
-
 
 
 }

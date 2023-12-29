@@ -31,12 +31,14 @@ public class PrivateUserMenu
         Console.WriteLine("1. Modificar teléfono");
         Console.WriteLine("2. Modificar correo");
         Console.WriteLine("3. Modificar contraseña");
-        Console.WriteLine("4. Volver");
+        Console.WriteLine("4. Borrar mi cuenta");
+        Console.WriteLine("5. Volver");
         SelectPrivateUserMenuOption(Console.ReadLine());
     }
 
     public void SelectPrivateUserMenuOption(string option)
     {
+        MainMenu mainMenu = new(_userService, _cryptoService);
         PublicUserMenu publicUserMenu = new(_userService, _cryptoService);
 
         switch (option)
@@ -44,22 +46,23 @@ public class PrivateUserMenu
         case "1":
             Console.Write("Nuevo número de teléfono: ");
             string phone = InputEmpty();
-            _userService.UpdateUser(currentUser.Email, newPhone: phone);
-            MainPrivateUserMenu(currentUser.Email);
+            UpdateUserField("phone", phone);
         break;
         case "2":
             Console.Write("Nueva dirección de correo: ");
             string email = InputEmpty();
-            _userService.UpdateUser(currentUser.Email, newEmail: email);
-            MainPrivateUserMenu(currentUser.Email);
+            UpdateUserField("email", email);
         break;
         case "3":
             Console.Write("Nueva contraseña: ");
             string password = InputEmpty();
-            _userService.UpdateUser(currentUser.Email, NewPassword: password);
-            MainPrivateUserMenu(currentUser.Email);
+            UpdateUserField("password", password);
         break;
         case "4":
+            _userService.DeleteUser(currentUser.Email);
+            mainMenu.RegistrationMenu();
+        break;
+        case "5":
             publicUserMenu.MainPublicUserMenu(currentUser.Email);
         break;
         default:
@@ -70,10 +73,32 @@ public class PrivateUserMenu
     }
 
 
+    private void UpdateUserField(string fieldName, string newField)
+    {
+        if (!_userService.CheckUpdateUser(fieldName, newField))
+        {
+            if (fieldName == "phone")
+            {
+                _userService.UpdateUser(currentUser.Email, newPhone: newField);
+            }
 
+            if (fieldName == "email")
+            {
+                _userService.UpdateUser(currentUser.Email, newEmail: newField);
+            }
+        }
+        else
+        {
+            Console.WriteLine("El campo introducido ya se encuentra registrado.");
+        }
 
+        if (fieldName == "password")
+        {
+            _userService.UpdateUser(currentUser.Email, NewPassword: newField);
+        }
 
-
+        MainPrivateUserMenu(currentUser.Email);
+    }
 
     private string InputEmpty()
     {

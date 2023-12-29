@@ -50,18 +50,5 @@
     "Cash": 0,
     "Wallet": 0,
     "Transactions": []
-  },
-  {
-    "Id": 5,
-    "Name": "paco",
-    "Birthdate": "2001-01-01T00:00:00",
-    "Email": "paco@",
-    "Password": "Paco",
-    "Phone": "d",
-    "DNI": "wefw",
-    "Nationality": "Espana",
-    "Cash": 0,
-    "Wallet": 0,
-    "Transactions": []
   }
 ]
