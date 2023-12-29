@@ -7,9 +7,10 @@
     "Password": "123",
     "Phone": "123",
     "DNI": "123D",
-    "Country": "Espana",
+    "Nationality": "Espana",
+    "Cash": 0,
     "Wallet": 0,
-    "transactions": []
+    "Transactions": []
   },
   {
     "Id": 2,
@@ -19,9 +20,10 @@
     "Password": "456",
     "Phone": "456",
     "DNI": "456D",
-    "Country": "Espana",
+    "Nationality": "Espana",
+    "Cash": 0,
     "Wallet": 0,
-    "transactions": []
+    "Transactions": []
   },
   {
     "Id": 3,
@@ -31,9 +33,10 @@
     "Password": "789",
     "Phone": "789",
     "DNI": "789D",
-    "Country": "Espana",
+    "Nationality": "Espana",
+    "Cash": 0,
     "Wallet": 0,
-    "transactions": []
+    "Transactions": []
   },
   {
     "Id": 4,
@@ -43,9 +46,10 @@
     "Password": "123456789",
     "Phone": "123456789",
     "DNI": "123456789D",
-    "Country": "Espana",
+    "Nationality": "Espana",
+    "Cash": 0,
     "Wallet": 0,
-    "transactions": []
+    "Transactions": []
   },
   {
     "Id": 5,
@@ -55,8 +59,9 @@
     "Password": "Paco",
     "Phone": "d",
     "DNI": "wefw",
-    "Country": "ewf",
+    "Nationality": "Espana",
+    "Cash": 0,
     "Wallet": 0,
-    "transactions": []
+    "Transactions": []
   }
 ]

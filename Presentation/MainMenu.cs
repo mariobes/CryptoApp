@@ -18,7 +18,7 @@ public class MainMenu
     Console.WriteLine("\n~~~~~~~~~~~~ CRYPTOAPP ~~~~~~~~~~~~\n");
     Console.WriteLine("1. Nuevo registro");
     Console.WriteLine("2. Iniciar sesión");
-    Console.WriteLine("3. Cerrar");
+    Console.WriteLine("3. Salir");
     SelectRegistrationOption(Console.ReadLine());
     }
 
@@ -50,7 +50,7 @@ public class MainMenu
         Console.Write("Introduce tu fecha de nacimiento (yyyy-mm-dd): ");
         DateTime birthday = CheckDate();
       
-        Console.Write("Dirección de email: ");
+        Console.Write("Dirección de correo: ");
         string email = InputEmpty();
 
         Console.Write("Contraseña: ");
@@ -63,16 +63,15 @@ public class MainMenu
         string dni = InputEmpty();
 
         Console.Write("País donde resides: ");
-        string country = InputEmpty();
+        string nationality = InputEmpty();
 
-        //Comprobar que el dni y el gmail no coinciden
-        if (_userService.checkUserExist(dni, email, phone))
+        if (_userService.CheckUserExist(dni, email, phone))
         {
-            Console.WriteLine("Error, ya existe una cuenta asociada al correo, DNI o teléfono introducido.");
+            Console.WriteLine("Error, ya existe una cuenta asociada al teléfono, correo o DNI introducido.");
             RegistrationMenu();
         }
         else{
-            _userService.RegisterUser(name, birthday, email, password, phone, dni, country);
+            _userService.RegisterUser(name, birthday, email, password, phone, dni, nationality);
             Console.WriteLine("¡Registro completado!");
             RegistrationMenu();
         }
@@ -86,11 +85,10 @@ public class MainMenu
         Console.Write("Contraseña: ");
         string password = InputEmpty();
 
-        if (_userService.checkLogin(email, password))
+        if (_userService.CheckLogin(email, password))
         {
-            Console.WriteLine("¡Hola, ${name}!");
-            //Ir a la pantalla de usuario
-            RegistrationMenu();
+            PublicUserMenu publicUserMenu = new(_userService, _cryptoService);
+            publicUserMenu.MainPublicUserMenu(email);
         } 
         else 
         {

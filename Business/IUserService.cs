@@ -1,8 +1,12 @@
-﻿namespace CryptoApp.Business;
+﻿using CryptoApp.Models;
+
+namespace CryptoApp.Business;
 
 public interface IUserService
 {
-    void RegisterUser(string name, DateTime birthday, string email, string password, string phone, string dni, string country);
-    bool checkUserExist(string dni, string email, string phone);
-    bool checkLogin(string email, string password);
+    void RegisterUser(string name, DateTime birthday, string email, string password, string phone, string dni, string nationality);
+    bool CheckUserExist(string dni, string email, string phone);
+    bool CheckLogin(string email, string password);
+    User GetUser(string email);
+    void UpdateUser(string email, string newPhone = null, string newEmail = null, string NewPassword = null);
 }

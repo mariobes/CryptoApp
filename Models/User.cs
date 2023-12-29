@@ -9,27 +9,30 @@ public class User
     public string? Password { get; set; }
     public string? Phone { get; set; }
     public string? DNI { get; set; }
-    public string? Country { get; set; }
-    public double Wallet { get; set; }
-    public List<Transaction> transactions { get; set; }
+    public string? Nationality { get; set; }
 
-    public static int userIdSeed { get; set; }
+    public double Cash { get; set; }
+    public double Wallet { get; set; }
+    public List<Transaction> Transactions { get; set; }
+
+    public static int UserIdSeed { get; set; }
 
     //public static int userIdSeedPublic => userIdSeed;
 
     public User() {}
 
-    public User(string name, DateTime birthdate, string email, string password, string phone, string dni, string country) 
+    public User(string name, DateTime birthdate, string email, string password, string phone, string dni, string nationality) 
     {
-        Id = userIdSeed++;
+        Id = UserIdSeed++;
         Name = name;
         Birthdate = birthdate;
         Email = email;
         Password = password;
         Phone = phone;
         DNI = dni;
-        Country = country;
+        Nationality = nationality;
+        Cash = 0.0;
         Wallet = 0.0;
-        transactions = new List<Transaction>();
+        Transactions = new List<Transaction>();
     }
 }

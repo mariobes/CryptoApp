@@ -18,11 +18,11 @@ public class UserRepository : IUserRepository
         }
         if (_users.Count == 0)
         {
-            User.userIdSeed = 1;
+            User.UserIdSeed = 1;
         }
         else
         {
-            User.userIdSeed = _users.Count + 1;
+            User.UserIdSeed = _users.Count + 1;
         }
             //int totalUserId = _users.Count;
             //int userIdSeed = User.userIdSeedPublic;
