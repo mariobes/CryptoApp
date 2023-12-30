@@ -31,8 +31,9 @@ public class PrivateUserMenu
         Console.WriteLine("1. Modificar teléfono");
         Console.WriteLine("2. Modificar correo");
         Console.WriteLine("3. Modificar contraseña");
-        Console.WriteLine("4. Borrar mi cuenta");
-        Console.WriteLine("5. Volver");
+        Console.WriteLine("4. Ver mis transacciones");
+        Console.WriteLine("5. Borrar mi cuenta");
+        Console.WriteLine("6. Volver");
         SelectPrivateUserMenuOption(Console.ReadLine());
     }
 
@@ -59,10 +60,14 @@ public class PrivateUserMenu
             UpdateUserField("password", password);
         break;
         case "4":
-            _userService.DeleteUser(currentUser.Email);
-            mainMenu.RegistrationMenu();
+            //Ver todas las transacciones
         break;
         case "5":
+            _userService.DeleteUser(currentUser.Email);
+            Console.WriteLine("Has eliminado tu cuenta");
+            mainMenu.RegistrationMenu();
+        break;
+        case "6":
             publicUserMenu.MainPublicUserMenu(currentUser.Email);
         break;
         default:

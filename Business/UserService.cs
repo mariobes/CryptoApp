@@ -133,7 +133,6 @@ public class UserService : IUserService
             User userToDelete = GetUser(userEmail);
             _repository.DeleteUser(userToDelete);
             _repository.SaveChanges();
-            Console.WriteLine("Has eliminado tu cuenta");
         }
         catch (Exception e)
         {

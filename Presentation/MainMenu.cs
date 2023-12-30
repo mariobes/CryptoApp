@@ -47,7 +47,7 @@ public class MainMenu
         Console.Write("Nombre: ");
         string name = InputEmpty();
 
-        Console.Write("Introduce tu fecha de nacimiento (yyyy-mm-dd): ");
+        Console.Write("Fecha de nacimiento (yyyy-mm-dd): ");
         DateTime birthday = CheckDate();
       
         Console.Write("Dirección de correo: ");
@@ -75,8 +75,6 @@ public class MainMenu
             Console.WriteLine("¡Registro completado!");
             RegistrationMenu();
         }
-        
-       
     }
 
     private void SignIn() {
@@ -90,7 +88,13 @@ public class MainMenu
             PublicUserMenu publicUserMenu = new(_userService, _cryptoService);
             publicUserMenu.MainPublicUserMenu(email);
         } 
-        else 
+        else if (email == "admin" && password == "admin")
+        {
+            Console.WriteLine("Has iniciado sesión como Administrador");
+            AdminMenu adminMenu = new(_userService, _cryptoService);
+            adminMenu.MainAdminMenu();
+        }
+        else
         {
             Console.WriteLine("El correo o la contraseña introducida es incorrecta.");
             RegistrationMenu();

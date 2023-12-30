@@ -2,22 +2,28 @@ namespace CryptoApp.Models;
 
 public class Crypto
 {
-    public static int Id { get; set; } = 1;
+    public int Id { get; set; }
     public string? Name { get; set; }
+    public string? Symbol { get; set; }
     public string? Description { get; set; }
     public DateTime RegisterDate { get; set; }
-    public decimal Value { get; set; }
-    public bool Profit { get; set; }
-
+    public double Value { get; set; }
+    public string? Developer { get; set; }
+    public bool Descentralized { get; set; }
+    
+    public static int CryptoIdSeed { get; set; }
 
     public Crypto() {}
 
-    public Crypto(string name, string description, decimal value, bool profit) 
+    public Crypto(string name, string symbol, string description, double value, string developer, bool descentralized) 
     {
+        Id = CryptoIdSeed++;
         Name = name;
+        Symbol = symbol;
         Description = description;
         RegisterDate = DateTime.Now;
         Value = value;
-        Profit = profit;
+        Developer = developer;
+        Descentralized = descentralized;
     }
 }

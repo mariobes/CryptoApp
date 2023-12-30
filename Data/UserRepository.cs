@@ -24,8 +24,6 @@ public class UserRepository : IUserRepository
         {
             User.UserIdSeed = _users.Count + 1;
         }
-            //int totalUserId = _users.Count;
-            //int userIdSeed = User.userIdSeedPublic;
     }
 
     public void AddUser(User user)
@@ -54,6 +52,5 @@ public class UserRepository : IUserRepository
         string jsonString = JsonSerializer.Serialize(_users.Values, options);
         File.WriteAllText(_filePath, jsonString);
     }
-
 
 }

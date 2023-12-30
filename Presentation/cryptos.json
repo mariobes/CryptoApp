@@ -1,0 +1,62 @@
+[
+  {
+    "Id": 1,
+    "Name": "Bitcoin",
+    "Symbol": "BTC",
+    "Description": "Bitcoin",
+    "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+    "Value": 40000,
+    "Developer": "Bitcoin",
+    "Descentralized": true
+  },
+  {
+    "Id": 2,
+    "Name": "Solana",
+    "Symbol": "SOL",
+    "Description": "Solana",
+    "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+    "Value": 90,
+    "Developer": "Solana",
+    "Descentralized": true
+  },
+  {
+    "Id": 3,
+    "Name": "Etherium",
+    "Symbol": "ETH",
+    "Description": "Etherium",
+    "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+    "Value": 2000,
+    "Developer": "Etherium",
+    "Descentralized": true
+  },
+  {
+    "Id": 4,
+    "Name": "Ripple",
+    "Symbol": "XRP",
+    "Description": "Ripple",
+    "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+    "Value": 0.449,
+    "Developer": "Ripple",
+    "Descentralized": false
+},
+{
+  "Id": 5,
+  "Name": "Cardano",
+  "Symbol": "ADA",
+  "Description": "Cardano",
+  "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+  "Value": 0.528,
+  "Developer": "Cardano",
+  "Descentralized": true
+},
+{
+  "Id": 6,
+  "Name": "Hedera",
+  "Symbol": "HBAR",
+  "Description": "Hedera",
+  "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+  "Value": 0.082,
+  "Developer": "Hedera",
+  "Descentralized": true
+}
+]

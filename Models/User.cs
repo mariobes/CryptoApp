@@ -10,14 +10,11 @@ public class User
     public string? Phone { get; set; }
     public string? DNI { get; set; }
     public string? Nationality { get; set; }
-
     public double Cash { get; set; }
     public double Wallet { get; set; }
     public List<Transaction> Transactions { get; set; }
 
     public static int UserIdSeed { get; set; }
-
-    //public static int userIdSeedPublic => userIdSeed;
 
     public User() {}
 

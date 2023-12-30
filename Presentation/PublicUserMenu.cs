@@ -23,7 +23,7 @@ public class PublicUserMenu
         Console.WriteLine($"¡Hola, {currentUser.Name}!\n");
         Console.WriteLine($"Cartera: {currentUser.Wallet} | Efectivo: {currentUser.Cash}\n");
         Console.WriteLine("1. Mi cuenta");
-        Console.WriteLine("2. Criptomonedas");
+        Console.WriteLine("2. Lista de criptomonedas");
         Console.WriteLine("3. Cerrar sesión");
         SelectPublicUserMenuOption(Console.ReadLine());
     }
