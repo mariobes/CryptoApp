@@ -16,7 +16,7 @@ public class CryptoService : ICryptoService
     {
         try 
         {
-            Crypto crypto = new Crypto(name, symbol, description, value, developer, descentralized);
+            Crypto crypto = new(name, symbol, description, value, developer, descentralized);
             _repository.AddCrypto(crypto);
             _repository.SaveChanges();
         }
@@ -48,7 +48,7 @@ public class CryptoService : ICryptoService
             Console.WriteLine("Lista de criptomonedas:\n");
             foreach (var crypto in allCryptos.Values)
             {
-                Console.WriteLine($"Nombre: {crypto.Name}, Abreviatura: {crypto.Symbol}, Descripción: {crypto.Description}, Valor: {crypto.Value}, Desarrollador: {crypto.Developer}, Descentralizada: {crypto.Descentralized}");
+                Console.WriteLine($"ID: {crypto.Id}, Nombre: {crypto.Name}, Abreviatura: {crypto.Symbol}, Descripción: {crypto.Description}, Fecha de Registro: {crypto.RegisterDate}, Valor: {crypto.Value}, Desarrollador: {crypto.Developer}, Descentralizada: {crypto.Descentralized}\n");
             }
         }
         catch (Exception e)
@@ -75,6 +75,41 @@ public class CryptoService : ICryptoService
         catch (Exception e)
         {
             throw new Exception("Ha ocurrido un error al comprobar la criptomoneda", e);
+        }
+    }
+
+    public Crypto GetCrypto(string name)
+    {
+        try
+        {
+            var allCryptos = _repository.GetAllCryptos();
+            foreach (var crypto in allCryptos.Values)
+            {
+                if (crypto.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return crypto;
+                }
+            }
+
+            return null;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al obtener la criptomoneda", e);
+        }
+    }
+
+    public void DeleteCrypto(string cryptoName)
+    {
+        try
+        {
+            Crypto cryptoToDelete = GetCrypto(cryptoName);
+            _repository.DeleteCrypto(cryptoToDelete);
+            _repository.SaveChanges();
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al borrar la criptomoneda", e);
         }
     }
         

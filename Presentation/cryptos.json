@@ -38,25 +38,25 @@
     "Value": 0.449,
     "Developer": "Ripple",
     "Descentralized": false
-},
-{
-  "Id": 5,
-  "Name": "Cardano",
-  "Symbol": "ADA",
-  "Description": "Cardano",
-  "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
-  "Value": 0.528,
-  "Developer": "Cardano",
-  "Descentralized": true
-},
-{
-  "Id": 6,
-  "Name": "Hedera",
-  "Symbol": "HBAR",
-  "Description": "Hedera",
-  "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
-  "Value": 0.082,
-  "Developer": "Hedera",
-  "Descentralized": true
-}
+  },
+  {
+    "Id": 5,
+    "Name": "Cardano",
+    "Symbol": "ADA",
+    "Description": "Cardano",
+    "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+    "Value": 0.528,
+    "Developer": "Cardano",
+    "Descentralized": true
+  },
+  {
+    "Id": 6,
+    "Name": "Hedera",
+    "Symbol": "HBAR",
+    "Description": "Hedera",
+    "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+    "Value": 0.082,
+    "Developer": "Hedera",
+    "Descentralized": true
+  }
 ]

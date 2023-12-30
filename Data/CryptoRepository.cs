@@ -36,6 +36,11 @@ public class CryptoRepository : ICryptoRepository
         return new Dictionary<string, Crypto>(_cryptos);
     }
 
+    public void DeleteCrypto(Crypto crypto)
+    {
+        _cryptos.Remove(crypto.Id.ToString());
+    }
+
     public void SaveChanges()
     {
         var options = new JsonSerializerOptions { WriteIndented = true };

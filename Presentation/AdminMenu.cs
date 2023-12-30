@@ -27,7 +27,7 @@ public class AdminMenu
     public void SelectAdminMenuOption(string option)
     {
         MainMenu mainMenu = new(_userService, _cryptoService);
-        Crypto crypto = new();
+        ListCryptosMenu listCryptosMenu = new(_userService, _cryptoService);
 
         switch (option)
         {
@@ -35,7 +35,7 @@ public class AdminMenu
             RegisterCrypto();
         break;
         case "2":
-            _cryptoService.PrintAllCryptos();
+            listCryptosMenu.MainListCryptosMenu();
         break;
         case "3":
             _userService.PrintAllUsers();
@@ -103,10 +103,6 @@ public class AdminMenu
 
         MainAdminMenu();
     }
-
-
-
-
 
     private string InputEmpty()
     {

@@ -16,7 +16,7 @@ public class UserService : IUserService
     {
         try 
         {
-            User user = new User(name, birthday, email, password, phone, dni, nationality);
+            User user = new(name, birthday, email, password, phone, dni, nationality);
             _repository.AddUser(user);
             _repository.SaveChanges();
         }
@@ -48,7 +48,7 @@ public class UserService : IUserService
             Console.WriteLine("Lista de usuarios:\n");
             foreach (var user in allUsers.Values)
             {
-                Console.WriteLine($"ID: {user.Id}, Nombre: {user.Name}, Email: {user.Email}, Teléfono: {user.Phone}, DNI: {user.DNI}, Nacionalidad: {user.Nationality}, Efectivo: {user.Cash}, Billetera: {user.Wallet}");
+                Console.WriteLine($"ID: {user.Id}, Nombre: {user.Name}, Email: {user.Email}, Teléfono: {user.Phone}, DNI: {user.DNI}, Nacionalidad: {user.Nationality}, Efectivo: {user.Cash}, Billetera: {user.Wallet}\n");
             }
         }
         catch (Exception e)
