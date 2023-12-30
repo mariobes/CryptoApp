@@ -5,6 +5,7 @@ namespace CryptoApp.Business;
 public interface ICryptoService
 {
     void RegisterCrypto(string name, string symbol, string description, double value, string developer, bool descentralized);
+    void PrintAllCryptos();
     bool CheckCryptoExist(string name);
     //Crypto GetCrypto(string name);
     //void DeleteCrypto(string name);

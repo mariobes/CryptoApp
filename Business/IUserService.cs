@@ -5,6 +5,7 @@ namespace CryptoApp.Business;
 public interface IUserService
 {
     void RegisterUser(string name, DateTime birthday, string email, string password, string phone, string dni, string nationality);
+    void PrintAllUsers();
     bool CheckUserExist(string dni, string email, string phone);
     bool CheckUpdateUser(string fieldName, string newField);
     bool CheckLogin(string email, string password);

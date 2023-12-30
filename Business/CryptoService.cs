@@ -27,11 +27,41 @@ public class CryptoService : ICryptoService
 
     }
 
-    public bool CheckCryptoExist(string name)
+    private Dictionary<string, Crypto> GetAllCryptos()
     {
         try
         {
             Dictionary<string, Crypto> allCryptos = _repository.GetAllCryptos();
+            return allCryptos;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al obtener las criptomonedas", e);
+        }
+    }
+
+    public void PrintAllCryptos()
+    {
+        try
+        {
+            Dictionary<string, Crypto> allCryptos = _repository.GetAllCryptos();
+            Console.WriteLine("Lista de criptomonedas:\n");
+            foreach (var crypto in allCryptos.Values)
+            {
+                Console.WriteLine($"Nombre: {crypto.Name}, Abreviatura: {crypto.Symbol}, Descripción: {crypto.Description}, Valor: {crypto.Value}, Desarrollador: {crypto.Developer}, Descentralizada: {crypto.Descentralized}");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al obtener las criptomonedas", e);
+        }
+    }
+
+    public bool CheckCryptoExist(string name)
+    {
+        try
+        {
+            var allCryptos = GetAllCryptos();
             foreach (var crypto in allCryptos.Values)
             {
                 if (crypto.Name.Equals(name, StringComparison.OrdinalIgnoreCase))

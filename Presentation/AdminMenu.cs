@@ -1,4 +1,5 @@
 using CryptoApp.Business;
+using CryptoApp.Models;
 
 namespace CryptoApp.Presentation;
 
@@ -26,6 +27,7 @@ public class AdminMenu
     public void SelectAdminMenuOption(string option)
     {
         MainMenu mainMenu = new(_userService, _cryptoService);
+        Crypto crypto = new();
 
         switch (option)
         {
@@ -33,10 +35,10 @@ public class AdminMenu
             RegisterCrypto();
         break;
         case "2":
-            
+            _cryptoService.PrintAllCryptos();
         break;
         case "3":
-            
+            _userService.PrintAllUsers();
         break;
         case "4":
             mainMenu.RegistrationMenu();

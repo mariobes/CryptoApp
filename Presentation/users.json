@@ -7,7 +7,7 @@
     "Password": "123",
     "Phone": "123",
     "DNI": "123D",
-    "Nationality": "Espana",
+    "Nationality": "Espa\u00F1a",
     "Cash": 0,
     "Wallet": 0,
     "Transactions": []
@@ -20,7 +20,7 @@
     "Password": "456",
     "Phone": "456",
     "DNI": "456D",
-    "Nationality": "Espana",
+    "Nationality": "Espa\u00F1a",
     "Cash": 0,
     "Wallet": 0,
     "Transactions": []
@@ -33,7 +33,7 @@
     "Password": "789",
     "Phone": "789",
     "DNI": "789D",
-    "Nationality": "Espana",
+    "Nationality": "Espa\u00F1a",
     "Cash": 0,
     "Wallet": 0,
     "Transactions": []
@@ -46,7 +46,7 @@
     "Password": "123456789",
     "Phone": "123456789",
     "DNI": "123456789D",
-    "Nationality": "Espana",
+    "Nationality": "Espa\u00F1a",
     "Cash": 0,
     "Wallet": 0,
     "Transactions": []

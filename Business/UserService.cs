@@ -27,11 +27,41 @@ public class UserService : IUserService
 
     }
 
-    public bool CheckUserExist(string dni, string email, string phone)
+    private Dictionary<string, User> GetAllUsers()
     {
         try
         {
             Dictionary<string, User> allUsers = _repository.GetAllUsers();
+            return allUsers;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al obtener los usuarios", e);
+        }
+    }
+
+    public void PrintAllUsers()
+    {
+        try
+        {
+            Dictionary<string, User> allUsers = _repository.GetAllUsers();
+            Console.WriteLine("Lista de usuarios:\n");
+            foreach (var user in allUsers.Values)
+            {
+                Console.WriteLine($"ID: {user.Id}, Nombre: {user.Name}, Email: {user.Email}, Teléfono: {user.Phone}, DNI: {user.DNI}, Nacionalidad: {user.Nationality}, Efectivo: {user.Cash}, Billetera: {user.Wallet}");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al obtener los usuarios", e);
+        }
+    }
+
+    public bool CheckUserExist(string dni, string email, string phone)
+    {
+        try
+        {
+            var allUsers = _repository.GetAllUsers();
             foreach (var user in allUsers.Values)
             {
                 if (user.DNI.Equals(dni, StringComparison.OrdinalIgnoreCase) || 
@@ -54,7 +84,7 @@ public class UserService : IUserService
     {
         try
         {
-            Dictionary<string, User> allUsers = _repository.GetAllUsers();
+            var allUsers = _repository.GetAllUsers();
             foreach (var user in allUsers.Values)
             {
                 if (fieldName == "phone")
@@ -86,7 +116,7 @@ public class UserService : IUserService
     {
         try
         {
-            Dictionary<string, User> allUsers = _repository.GetAllUsers();
+            var allUsers = _repository.GetAllUsers();
             foreach (var user in allUsers.Values)
             {
                 if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
@@ -108,8 +138,7 @@ public class UserService : IUserService
     {
         try
         {
-            Dictionary<string, User> allUsers = _repository.GetAllUsers();
-            //return allUsers.Values.FirstOrDefault(user => user.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
+            var allUsers = _repository.GetAllUsers();
             foreach (var user in allUsers.Values)
             {
                 if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
