@@ -12,4 +12,5 @@ public interface IUserService
     User GetUser(string email);
     void DeleteUser(string email);
     void UpdateUser(string email, string newPhone = null, string newEmail = null, string NewPassword = null);
+    string InputEmpty();
 }

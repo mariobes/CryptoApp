@@ -41,6 +41,11 @@ public class CryptoRepository : ICryptoRepository
         _cryptos.Remove(crypto.Id.ToString());
     }
 
+    public void UpdateCrypto(Crypto crypto)
+    {
+        _cryptos[crypto.Id.ToString()] = crypto;
+    }
+
     public void SaveChanges()
     {
         var options = new JsonSerializerOptions { WriteIndented = true };

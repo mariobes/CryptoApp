@@ -28,12 +28,12 @@ public class PrivateUserMenu
         Console.WriteLine($"Nacionalidad: {currentUser.Nationality}\n");
         Console.WriteLine($"DNI: {currentUser.DNI}\n");
 
-        Console.WriteLine("1. Modificar teléfono");
-        Console.WriteLine("2. Modificar correo");
-        Console.WriteLine("3. Modificar contraseña");
-        Console.WriteLine("4. Ver mis transacciones");
-        Console.WriteLine("5. Borrar mi cuenta");
-        Console.WriteLine("6. Volver");
+        Console.WriteLine("1. Modificar teléfono | 2. Modificar correo | 3. Modificar contraseña");
+        Console.WriteLine("4. Ingresar dinero | 5. Retirar dinero");
+        Console.WriteLine("6. Comprar criptomoneda | 7. Vender criptomoneda");
+        Console.WriteLine("8. Ver mis transacciones");
+        Console.WriteLine("9. Eliminar cuenta");
+        Console.WriteLine("10. Volver");
         SelectPrivateUserMenuOption(Console.ReadLine());
     }
 
@@ -46,28 +46,40 @@ public class PrivateUserMenu
         {
         case "1":
             Console.Write("Nuevo número de teléfono: ");
-            string phone = InputEmpty();
+            string phone = _userService.InputEmpty();
             UpdateUserField("phone", phone);
         break;
         case "2":
             Console.Write("Nueva dirección de correo: ");
-            string email = InputEmpty();
+            string email = _userService.InputEmpty();
             UpdateUserField("email", email);
         break;
         case "3":
             Console.Write("Nueva contraseña: ");
-            string password = InputEmpty();
+            string password = _userService.InputEmpty();
             UpdateUserField("password", password);
         break;
         case "4":
-            //Ver todas las transacciones
+            //Ingresar dinero
         break;
         case "5":
+            //Retirar dinero
+        break;
+        case "6":
+            //Comprar criptomoneda
+        break;
+        case "7":
+            //Vender criptomoneda
+        break;
+        case "8":
+            //Ver todas las transacciones
+        break;
+        case "9":
             _userService.DeleteUser(currentUser.Email);
             Console.WriteLine("Has eliminado tu cuenta");
             mainMenu.RegistrationMenu();
         break;
-        case "6":
+        case "10":
             publicUserMenu.MainPublicUserMenu(currentUser.Email);
         break;
         default:
@@ -85,11 +97,13 @@ public class PrivateUserMenu
             if (fieldName == "phone")
             {
                 _userService.UpdateUser(currentUser.Email, newPhone: newField);
+                Console.WriteLine("Has actualizado tu teléfono correctamente");
             }
 
             if (fieldName == "email")
             {
                 _userService.UpdateUser(currentUser.Email, newEmail: newField);
+                Console.WriteLine("Has actualizado tu correo correctamente");
             }
         }
         else
@@ -100,25 +114,10 @@ public class PrivateUserMenu
         if (fieldName == "password")
         {
             _userService.UpdateUser(currentUser.Email, NewPassword: newField);
+            Console.WriteLine("Has actualizado tu contraseña correctamente");
         }
 
         MainPrivateUserMenu(currentUser.Email);
     }
-
-    private string InputEmpty()
-    {
-        string input;
-        do
-        {
-            input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                Console.WriteLine("El campo está vacío.");
-            }
-        } while (string.IsNullOrWhiteSpace(input));
-
-        return input;
-    }
-
 
 }

@@ -112,11 +112,77 @@ public class CryptoService : ICryptoService
             throw new Exception("Ha ocurrido un error al borrar la criptomoneda", e);
         }
     }
-        
 
+    public void UpdateCrypto(string cryptoName, string newName, string newSymbol, string newDescription, double newValue, string newDeveloper, bool newDescentralized)
+    {
+        try 
+        {
+            Crypto cryptoToUpdate = GetCrypto(cryptoName);
 
+            cryptoToUpdate.Name = newName;
+            cryptoToUpdate.Symbol = newSymbol;
+            cryptoToUpdate.Description = newDescription;
+            cryptoToUpdate.Value = newValue;
+            cryptoToUpdate.Developer = newDeveloper;
+            cryptoToUpdate.Descentralized = newDescentralized;
 
+            _repository.UpdateCrypto(cryptoToUpdate);
+            _repository.SaveChanges();
+            
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al actualizar el usuario", e);
+        }
 
+    }
 
+    public void SearchCrypto()
+    {
+        string cryptoName;
+        do
+        {
+            Console.WriteLine("Escribe S para salir.");
+            Console.WriteLine("Buscar criptomoneda por su nombre: ");
+            cryptoName = InputEmpty();
+            Crypto crypto = GetCrypto(cryptoName);
 
+            if (cryptoName.ToLower() == "s")
+            {
+                break;
+            }
+
+            if (crypto == null)
+            {
+                Console.WriteLine("No se ha encontrado ninguna criptomoneda por ese nombre\n");
+            }
+            else
+            {
+                Console.WriteLine($"ID: {crypto.Id}, Nombre: {crypto.Name}, Abreviatura: {crypto.Symbol}, Descripción: {crypto.Description}, Fecha de Registro: {crypto.RegisterDate}, Valor: {crypto.Value}, Desarrollador: {crypto.Developer}, Descentralizada: {crypto.Descentralized}\n");
+            }
+        } while (cryptoName.ToLower() != "s");
+    }
+
+    public string InputEmpty()
+    {
+        try
+        {
+            string input;
+            do
+            {
+                input = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("El campo está vacío.");
+                }
+            } while (string.IsNullOrWhiteSpace(input));
+
+            return input;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al comprobar el campo", e);
+        }
+    }
+    
 }

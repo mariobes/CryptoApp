@@ -9,5 +9,7 @@ public interface ICryptoService
     bool CheckCryptoExist(string name);
     Crypto GetCrypto(string name);
     void DeleteCrypto(string name);
-    //void UpdateCrypto(string name, string newName = null, string newSymbol = null, string newDescription = null, double? newValue = null, string newDeveloper = null, bool? newDescentralized = null);
+    void SearchCrypto();
+    string InputEmpty();
+    void UpdateCrypto(string name, string newName, string newSymbol, string newDescription, double newValue, string newDevelope, bool newDescentralized);
 }

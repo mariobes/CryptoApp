@@ -39,7 +39,9 @@ public class PublicUserMenu
             privateUserMenu.MainPrivateUserMenu(currentUser.Email);
         break;
         case "2":
-            
+            _cryptoService.PrintAllCryptos();
+            _cryptoService.SearchCrypto();
+            MainPublicUserMenu(currentUser.Email);
         break;
         case "3":
             Console.WriteLine("Se ha cerrado la sesión");
@@ -51,11 +53,5 @@ public class PublicUserMenu
         break;
         }
     }
-
-
-
-
-
-
 
 }

@@ -45,25 +45,25 @@ public class MainMenu
     private void SignUp() 
     {
         Console.Write("Nombre: ");
-        string name = InputEmpty();
+        string name = _userService.InputEmpty();
 
         Console.Write("Fecha de nacimiento (yyyy-mm-dd): ");
         DateTime birthday = CheckDate();
       
         Console.Write("Dirección de correo: ");
-        string email = InputEmpty();
+        string email = _userService.InputEmpty();
 
         Console.Write("Contraseña: ");
-        string password = InputEmpty();
+        string password = _userService.InputEmpty();
 
         Console.Write("Número de teléfono: ");
-        string phone = InputEmpty();
+        string phone = _userService.InputEmpty();
 
         Console.Write("DNI: ");
-        string dni = InputEmpty();
+        string dni = _userService.InputEmpty();
 
         Console.Write("País donde resides: ");
-        string nationality = InputEmpty();
+        string nationality = _userService.InputEmpty();
 
         if (_userService.CheckUserExist(dni, email, phone))
         {
@@ -79,9 +79,9 @@ public class MainMenu
 
     private void SignIn() {
         Console.Write("Dirección de email: ");
-        string email = InputEmpty();
+        string email = _userService.InputEmpty();
         Console.Write("Contraseña: ");
-        string password = InputEmpty();
+        string password = _userService.InputEmpty();
 
         if (_userService.CheckLogin(email, password))
         {
@@ -99,20 +99,6 @@ public class MainMenu
             Console.WriteLine("El correo o la contraseña introducida es incorrecta.");
             RegistrationMenu();
         }
-    }
-    private string InputEmpty()
-    {
-        string input;
-        do
-        {
-            input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                Console.WriteLine("El campo está vacío.");
-            }
-        } while (string.IsNullOrWhiteSpace(input));
-
-        return input;
     }
 
     private DateTime CheckDate()

@@ -175,27 +175,23 @@ public class UserService : IUserService
         {
             User userToUpdate = GetUser(userEmail);
 
-            if (userToUpdate != null)
+            if (!string.IsNullOrEmpty(newPhone))
             {
-                if (!string.IsNullOrEmpty(newPhone))
-                {
-                    userToUpdate.Phone = newPhone;
-                }
-
-                if (!string.IsNullOrEmpty(newEmail))
-                {
-                    userToUpdate.Email = newEmail;
-                }
-
-                if (!string.IsNullOrEmpty(newPassword))
-                {
-                    userToUpdate.Password = newPassword;
-                }
-
-                _repository.UpdateUser(userToUpdate);
-                _repository.SaveChanges();
-                Console.WriteLine("Has actualizado tu cuenta correctamente");
+                userToUpdate.Phone = newPhone;
             }
+
+            if (!string.IsNullOrEmpty(newEmail))
+            {
+                userToUpdate.Email = newEmail;
+            }
+
+            if (!string.IsNullOrEmpty(newPassword))
+            {
+                userToUpdate.Password = newPassword;
+            }
+
+            _repository.UpdateUser(userToUpdate);
+            _repository.SaveChanges();
         }
         catch (Exception e)
         {
@@ -204,5 +200,26 @@ public class UserService : IUserService
 
     }
 
+    public string InputEmpty()
+    {
+        try
+        {
+            string input;
+            do
+            {
+                input = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(input))
+                {
+                    Console.WriteLine("El campo está vacío.");
+                }
+            } while (string.IsNullOrWhiteSpace(input));
+
+            return input;
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al comprobar el campo", e);
+        }
+    }
 
 }

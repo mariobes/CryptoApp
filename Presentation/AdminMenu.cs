@@ -27,7 +27,7 @@ public class AdminMenu
     public void SelectAdminMenuOption(string option)
     {
         MainMenu mainMenu = new(_userService, _cryptoService);
-        ListCryptosMenu listCryptosMenu = new(_userService, _cryptoService);
+        ListCryptosAdminMenu listCryptosAdminMenu = new(_userService, _cryptoService);
 
         switch (option)
         {
@@ -35,10 +35,11 @@ public class AdminMenu
             RegisterCrypto();
         break;
         case "2":
-            listCryptosMenu.MainListCryptosMenu();
+            listCryptosAdminMenu.MainListCryptosAdminMenu();
         break;
         case "3":
             _userService.PrintAllUsers();
+            MainAdminMenu();
         break;
         case "4":
             mainMenu.RegistrationMenu();
@@ -53,13 +54,13 @@ public class AdminMenu
     private void RegisterCrypto()
     {
         Console.Write("Nombre: ");
-        string name = InputEmpty();
+        string name = _cryptoService.InputEmpty();
 
         Console.Write("Abreviatura: ");
-        string symbol = InputEmpty();
+        string symbol = _cryptoService.InputEmpty();
       
         Console.Write("Descripción: ");
-        string description = InputEmpty();
+        string description = _cryptoService.InputEmpty();
 
         Console.Write("Valor: ");
         double value;
@@ -69,14 +70,14 @@ public class AdminMenu
         }
 
         Console.Write("Desarrollador: ");
-        string developer = InputEmpty();
+        string developer = _cryptoService.InputEmpty();
 
         Console.Write("Descentralizada (Si: Y | No: N): ");
         bool descentralized = false;
         string descentralizedInput;
         do
         {
-            descentralizedInput = InputEmpty().ToLower();
+            descentralizedInput = _cryptoService.InputEmpty().ToLower();
             if (descentralizedInput == "y")
             {
                 descentralized = true;
@@ -102,21 +103,6 @@ public class AdminMenu
         }
 
         MainAdminMenu();
-    }
-
-    private string InputEmpty()
-    {
-        string input;
-        do
-        {
-            input = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(input))
-            {
-                Console.WriteLine("El campo está vacío.");
-            }
-        } while (string.IsNullOrWhiteSpace(input));
-
-        return input;
     }
             
 }
