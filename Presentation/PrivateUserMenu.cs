@@ -20,6 +20,7 @@ public class PrivateUserMenu
         currentUser = _userService.GetUser(userEmail);
 
         Console.WriteLine("\n~~~~~~~~~~~~ CRYPTOAPP ~~~~~~~~~~~~\n");
+        Console.WriteLine($"Cartera: {currentUser.Wallet} | Efectivo: {currentUser.Cash}\n");
         Console.WriteLine($"Teléfono: {currentUser.Phone}\n");
         Console.WriteLine($"Correo: {currentUser.Email}\n");
         Console.WriteLine($"Contraseña: {currentUser.Password}\n");
@@ -60,19 +61,20 @@ public class PrivateUserMenu
             UpdateUserField("password", password);
         break;
         case "4":
-            //Ingresar dinero
+            MakeOperation("deposit");
         break;
         case "5":
-            //Retirar dinero
+            MakeOperation("drawal");
         break;
         case "6":
-            //Comprar criptomoneda
+            BuyCrypto();
         break;
         case "7":
-            //Vender criptomoneda
+            SellCrypto();
         break;
         case "8":
-            //Ver todas las transacciones
+            _userService.PrintAllTransactions(currentUser);
+            MainPrivateUserMenu(currentUser.Email);
         break;
         case "9":
             _userService.DeleteUser(currentUser.Email);
@@ -88,7 +90,6 @@ public class PrivateUserMenu
         break;
         }
     }
-
 
     private void UpdateUserField(string fieldName, string newField)
     {
@@ -118,6 +119,65 @@ public class PrivateUserMenu
         }
 
         MainPrivateUserMenu(currentUser.Email);
+    }
+
+    private void MakeOperation(string kind)
+    {
+        Console.WriteLine("Se le cobrará una comisión de 1€.");
+
+        if (kind == "deposit") Console.Write("Añadir dinero (Mínimo 10€): ");
+        else Console.Write("Retirar dinero: ");
+        string amountInput = _userService.InputEmpty();
+
+        string paymentMethod = "";
+        string paymentMethodOption;
+
+        if (kind == "drawal")
+        {
+            paymentMethod = "Cuenta bancaria";
+        }
+        else
+        {
+            Console.Write("1. Tarjeta de crédito | 2. Google Pay | 3. Cuenta bancaria\n");
+            Console.Write("Introduce tu método de pago: ");
+            do
+            {
+                paymentMethodOption = _userService.InputEmpty();
+
+                switch (paymentMethodOption)
+                {
+                    case "1":
+                        paymentMethod = "Tarjeta de crédito";
+                    break;
+                    case "2":
+                        paymentMethod = "Google Pay";
+                    break;
+                    case "3":
+                        paymentMethod = "Cuenta bancaria";
+                    break;
+                    default:
+                        Console.WriteLine("Introduce una opción válida");
+                    break;
+                }
+            } while (paymentMethodOption != "1" && 
+                     paymentMethodOption != "2" &&
+                     paymentMethodOption != "3");
+        }
+
+        if (kind == "deposit") _userService.MakeDeposit(currentUser, "Ingreso", amountInput, paymentMethod);
+        else _userService.MakeWithdrawal(currentUser, "Retiro", amountInput, paymentMethod);
+
+        MainPrivateUserMenu(currentUser.Email);
+    }
+
+    private void BuyCrypto()
+    {
+
+    }
+
+    private void SellCrypto()
+    {
+
     }
 
 }

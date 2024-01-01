@@ -5,8 +5,9 @@ namespace CryptoApp.Data;
 public interface ICryptoRepository
 {
     void AddCrypto(Crypto crypto);
+    Crypto GetCrypto(string name);
     Dictionary<string, Crypto> GetAllCryptos();
-    void DeleteCrypto(Crypto crypto);
+    void RemoveCrypto(Crypto crypto);
     void UpdateCrypto(Crypto crypto);
     void SaveChanges();
 }

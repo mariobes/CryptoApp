@@ -27,19 +27,6 @@ public class UserService : IUserService
 
     }
 
-    private Dictionary<string, User> GetAllUsers()
-    {
-        try
-        {
-            Dictionary<string, User> allUsers = _repository.GetAllUsers();
-            return allUsers;
-        }
-        catch (Exception e)
-        {
-            throw new Exception("Ha ocurrido un error al obtener los usuarios", e);
-        }
-    }
-
     public void PrintAllUsers()
     {
         try
@@ -138,16 +125,7 @@ public class UserService : IUserService
     {
         try
         {
-            var allUsers = _repository.GetAllUsers();
-            foreach (var user in allUsers.Values)
-            {
-                if (user.Email.Equals(email, StringComparison.OrdinalIgnoreCase))
-                {
-                    return user;
-                }
-            }
-
-            return null;
+            return _repository.GetUser(email);
         }
         catch (Exception e)
         {
@@ -159,8 +137,8 @@ public class UserService : IUserService
     {
         try
         {
-            User userToDelete = GetUser(userEmail);
-            _repository.DeleteUser(userToDelete);
+            User userToDelete = _repository.GetUser(userEmail);
+            _repository.RemoveUser(userToDelete);
             _repository.SaveChanges();
         }
         catch (Exception e)
@@ -173,7 +151,7 @@ public class UserService : IUserService
     {
         try 
         {
-            User userToUpdate = GetUser(userEmail);
+            User userToUpdate = _repository.GetUser(userEmail);
 
             if (!string.IsNullOrEmpty(newPhone))
             {
@@ -198,6 +176,103 @@ public class UserService : IUserService
             throw new Exception("Ha ocurrido un error al actualizar el usuario", e);
         }
 
+    }
+
+    public void MakeDeposit(User user, string concept, string amountInput, string paymentMethod)
+    {
+        try
+        {
+            if (double.TryParse(amountInput, out double amount))
+            {
+                if (amount < 10)
+                {
+                    Console.WriteLine("Debe depositar una cantidad mínima de 10€");
+                    return;
+                }
+
+                if (user.Transactions.Count == 0)
+                {
+                    Transaction.IdTransactionSeed = 1;
+                }
+                else
+                {
+                    Transaction.IdTransactionSeed = user.Transactions.Count + 1;
+                }
+
+                user.Cash += amount;
+                Transaction transaction = new(concept, amount, paymentMethod);
+                user.Transactions.Add(transaction);
+                _repository.UpdateUser(user);
+                _repository.SaveChanges();
+
+                Console.WriteLine($"Depósito de {transaction.Amount + transaction.Charge}€ realizado con éxito");
+            }
+            else
+            {
+                Console.WriteLine("Introduce un valor numérico válido.");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al realizar el depósito", e);
+        }
+    }
+
+    public void MakeWithdrawal(User user, string concept, string amountInput, string paymentMethod)
+    {
+        try
+        {
+            if (double.TryParse(amountInput, out double amount))
+            {
+                if (user.Cash < amount)
+                {
+                    Console.WriteLine("No tienes suficiente saldo para realizar el retiro");
+                    return;
+                }
+
+                if (user.Transactions.Count == 0)
+                {
+                    Transaction.IdTransactionSeed = 1;
+                }
+                else
+                {
+                    Transaction.IdTransactionSeed = user.Transactions.Count + 1;
+                }
+
+                Transaction transaction = new(concept, amount, paymentMethod);
+                user.Transactions.Add(transaction);
+                user.Cash -= transaction.Amount + transaction.Charge;
+                _repository.UpdateUser(user);
+                _repository.SaveChanges();
+
+                Console.WriteLine($"Retiro de {transaction.Amount + transaction.Charge}€ realizado con éxito");
+            }
+            else
+            {
+                Console.WriteLine("Introduce un valor numérico válido.");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al realizar el retiro", e);
+        }
+    }
+
+    public void PrintAllTransactions(User user)
+    {
+        try
+        {
+            List<Transaction> allTransactions = user.Transactions;
+            Console.WriteLine("Lista de transacciones:\n");
+            foreach (var transaction in allTransactions)
+            {
+                Console.WriteLine($"ID: {transaction.Id}, Criptomoneda: {transaction.Crypto}, Concepto: {transaction.Concept}, Fecha: {transaction.Date}, Comisión: {transaction.Charge}, Cantidad: {transaction.Amount}, Método de pago: {transaction.Payment_Method}\n");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al obtener las transacciones", e);
+        }
     }
 
     public string InputEmpty()

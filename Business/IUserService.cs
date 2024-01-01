@@ -12,5 +12,8 @@ public interface IUserService
     User GetUser(string email);
     void DeleteUser(string email);
     void UpdateUser(string email, string newPhone = null, string newEmail = null, string NewPassword = null);
+    void MakeDeposit(User user, string kind, string amount, string paymentMethod);
+    void MakeWithdrawal(User user, string kind, string amount, string paymentMethod);
+    void PrintAllTransactions(User user);
     string InputEmpty();
 }

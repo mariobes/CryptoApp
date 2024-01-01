@@ -37,14 +37,10 @@ public class ListCryptosAdminMenu
             adminMenu.MainAdminMenu();
         break;
         case "2":
-            Console.WriteLine("Borrar criptomoneda por su nombre: ");
-            string deleteCryptoName = _cryptoService.InputEmpty();
-            DeleteCrypto(deleteCryptoName);
+            DeleteCrypto();
         break;
-        case "3":       
-            Console.WriteLine("Editar criptomoneda por su nombre: ");
-            string updateCryptoName = _cryptoService.InputEmpty();     
-            UpdateCrypto(updateCryptoName);
+        case "3":           
+            UpdateCrypto();
         break;
         case "4":            
             adminMenu.MainAdminMenu();
@@ -56,9 +52,11 @@ public class ListCryptosAdminMenu
         }
     }
 
-    private void DeleteCrypto(string cryptoName)
+    private void DeleteCrypto()
     {
-        Crypto crypto = _cryptoService.GetCrypto(cryptoName);
+        Console.WriteLine("Borrar criptomoneda por su nombre: ");
+        string CryptoName = _cryptoService.InputEmpty();
+        Crypto crypto = _cryptoService.GetCrypto(CryptoName);
 
         if (crypto == null)
         {
@@ -66,15 +64,17 @@ public class ListCryptosAdminMenu
         }
         else
         {
-            _cryptoService.DeleteCrypto(cryptoName);
+            _cryptoService.DeleteCrypto(CryptoName);
             Console.WriteLine("Criptomoneda eliminada correctamente");
         }
 
         MainListCryptosAdminMenu();
     }
 
-    private void UpdateCrypto(string cryptoName)
+    private void UpdateCrypto()
     {
+        Console.WriteLine("Editar criptomoneda por su nombre: ");
+        string cryptoName = _cryptoService.InputEmpty(); 
         Crypto crypto = _cryptoService.GetCrypto(cryptoName);
 
         if (crypto == null)

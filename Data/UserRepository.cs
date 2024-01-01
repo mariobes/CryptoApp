@@ -31,12 +31,26 @@ public class UserRepository : IUserRepository
         _users[user.Id.ToString()] = user;
     }
 
+    public User GetUser(string userEmail)
+    {
+        var allUsers = GetAllUsers();
+        foreach (var user in allUsers.Values)
+        {
+            if (user.Email.Equals(userEmail, StringComparison.OrdinalIgnoreCase))
+            {
+                return user;
+            }
+        }
+
+        return null;
+    }
+
     public Dictionary<string, User> GetAllUsers()
     {
         return new Dictionary<string, User>(_users);
     }
 
-    public void DeleteUser(User user)
+    public void RemoveUser(User user)
     {
         _users.Remove(user.Id.ToString());
     }

@@ -1,4 +1,5 @@
 ﻿using CryptoApp.Business;
+using CryptoApp.Models;
 
 namespace CryptoApp.Presentation;
 
@@ -73,7 +74,7 @@ public class MainMenu
         else{
             _userService.RegisterUser(name, birthday, email, password, phone, dni, nationality);
             Console.WriteLine("¡Registro completado!");
-            RegistrationMenu();
+            GoToPublicUserMenu(email);
         }
     }
 
@@ -85,8 +86,7 @@ public class MainMenu
 
         if (_userService.CheckLogin(email, password))
         {
-            PublicUserMenu publicUserMenu = new(_userService, _cryptoService);
-            publicUserMenu.MainPublicUserMenu(email);
+            GoToPublicUserMenu(email);
         } 
         else if (email == "admin" && password == "admin")
         {
@@ -99,6 +99,12 @@ public class MainMenu
             Console.WriteLine("El correo o la contraseña introducida es incorrecta.");
             RegistrationMenu();
         }
+    }
+
+    private void GoToPublicUserMenu(string email)
+    {
+        PublicUserMenu publicUserMenu = new(_userService, _cryptoService);
+        publicUserMenu.MainPublicUserMenu(email);
     }
 
     private DateTime CheckDate()

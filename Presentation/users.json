@@ -21,9 +21,28 @@
     "Phone": "456",
     "DNI": "456D",
     "Nationality": "Espa\u00F1a",
-    "Cash": 0,
+    "Cash": 79,
     "Wallet": 0,
-    "Transactions": []
+    "Transactions": [
+      {
+        "Id": 1,
+        "Crypto": null,
+        "Concept": "Ingreso",
+        "Date": "2024-01-01T18:52:33.5195809+01:00",
+        "Charge": 1,
+        "Amount": 100,
+        "Payment_Method": "Tarjeta de cr\u00E9dito"
+      },
+      {
+        "Id": 2,
+        "Crypto": null,
+        "Concept": "Retiro",
+        "Date": "2024-01-01T18:53:17.6932339+01:00",
+        "Charge": 1,
+        "Amount": 20,
+        "Payment_Method": "Cuenta bancaria"
+      }
+    ]
   },
   {
     "Id": 3,

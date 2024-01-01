@@ -31,12 +31,26 @@ public class CryptoRepository : ICryptoRepository
         _cryptos[crypto.Id.ToString()] = crypto;
     }
 
+    public Crypto GetCrypto(string name)
+    {
+            var allCryptos = GetAllCryptos();
+            foreach (var crypto in allCryptos.Values)
+            {
+                if (crypto.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return crypto;
+                }
+            }
+
+            return null;
+    }
+
     public Dictionary<string, Crypto> GetAllCryptos()
     {
         return new Dictionary<string, Crypto>(_cryptos);
     }
 
-    public void DeleteCrypto(Crypto crypto)
+    public void RemoveCrypto(Crypto crypto)
     {
         _cryptos.Remove(crypto.Id.ToString());
     }

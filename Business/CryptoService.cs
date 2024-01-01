@@ -27,19 +27,6 @@ public class CryptoService : ICryptoService
 
     }
 
-    private Dictionary<string, Crypto> GetAllCryptos()
-    {
-        try
-        {
-            Dictionary<string, Crypto> allCryptos = _repository.GetAllCryptos();
-            return allCryptos;
-        }
-        catch (Exception e)
-        {
-            throw new Exception("Ha ocurrido un error al obtener las criptomonedas", e);
-        }
-    }
-
     public void PrintAllCryptos()
     {
         try
@@ -61,7 +48,7 @@ public class CryptoService : ICryptoService
     {
         try
         {
-            var allCryptos = GetAllCryptos();
+            var allCryptos = _repository.GetAllCryptos();
             foreach (var crypto in allCryptos.Values)
             {
                 if (crypto.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
@@ -82,16 +69,7 @@ public class CryptoService : ICryptoService
     {
         try
         {
-            var allCryptos = _repository.GetAllCryptos();
-            foreach (var crypto in allCryptos.Values)
-            {
-                if (crypto.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
-                {
-                    return crypto;
-                }
-            }
-
-            return null;
+            return _repository.GetCrypto(name);
         }
         catch (Exception e)
         {
@@ -104,7 +82,7 @@ public class CryptoService : ICryptoService
         try
         {
             Crypto cryptoToDelete = GetCrypto(cryptoName);
-            _repository.DeleteCrypto(cryptoToDelete);
+            _repository.RemoveCrypto(cryptoToDelete);
             _repository.SaveChanges();
         }
         catch (Exception e)
