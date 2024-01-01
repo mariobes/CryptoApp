@@ -17,6 +17,7 @@ public class Transaction
     public Transaction (string concept, double amount, string paymentMethod)
     {
         Id = IdTransactionSeed++;
+        Crypto = null;
         Concept = concept;
         Date = DateTime.Now;
         Charge = 1;
@@ -24,5 +25,15 @@ public class Transaction
         Payment_Method = paymentMethod;
     }
 
+    public Transaction (Crypto crypto, string concept, double amount)
+    {
+        Id = IdTransactionSeed++;
+        Crypto = crypto;
+        Concept = concept;
+        Date = DateTime.Now;
+        Charge = 1;
+        Amount = amount;
+        Payment_Method = null;
+    }
 
 }

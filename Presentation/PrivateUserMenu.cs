@@ -33,8 +33,9 @@ public class PrivateUserMenu
         Console.WriteLine("4. Ingresar dinero | 5. Retirar dinero");
         Console.WriteLine("6. Comprar criptomoneda | 7. Vender criptomoneda");
         Console.WriteLine("8. Ver mis transacciones");
-        Console.WriteLine("9. Eliminar cuenta");
-        Console.WriteLine("10. Volver");
+        Console.WriteLine("9. Ver mis criptomonedas");
+        Console.WriteLine("10. Eliminar cuenta");
+        Console.WriteLine("11. Volver");
         SelectPrivateUserMenuOption(Console.ReadLine());
     }
 
@@ -77,11 +78,15 @@ public class PrivateUserMenu
             MainPrivateUserMenu(currentUser.Email);
         break;
         case "9":
+            _userService.PrintAllCryptosPurchase(currentUser);
+            MainPrivateUserMenu(currentUser.Email);
+        break;
+        case "10":
             _userService.DeleteUser(currentUser.Email);
             Console.WriteLine("Has eliminado tu cuenta");
             mainMenu.RegistrationMenu();
         break;
-        case "10":
+        case "11":
             publicUserMenu.MainPublicUserMenu(currentUser.Email);
         break;
         default:
@@ -172,12 +177,51 @@ public class PrivateUserMenu
 
     private void BuyCrypto()
     {
+        _cryptoService.PrintAllCryptos();
+        Console.Write("Nombre de la criptomoneda que quieres comprar: ");
+        string cryptoName = _cryptoService.InputEmpty();
 
+        if (_cryptoService.CheckCryptoExist(cryptoName))
+        {
+            Crypto crypto = _cryptoService.GetCrypto(cryptoName);
+            Console.Write("Invertir dinero: ");
+            string amountInput = _cryptoService.InputEmpty();
+            _userService.BuyCrypto(currentUser, crypto, $"Comprar {crypto.Name}", amountInput); 
+        }
+        else
+        {
+            Console.WriteLine("No se ha encontrado ninguna criptomoneda por ese nombre");
+        }
+
+        MainPrivateUserMenu(currentUser.Email);
     }
 
     private void SellCrypto()
     {
+        if (currentUser.AllCryptosPurchased.Count == 0)
+        {
+            Console.WriteLine("No tienes criptomonedas para vender.");
+            MainPrivateUserMenu(currentUser.Email);
+            return;
+        }
 
+        _userService.PrintAllCryptosPurchase(currentUser);
+        Console.Write("Nombre de la criptomoneda que quieres vender: ");
+        string cryptoName = _cryptoService.InputEmpty();
+
+        if (_cryptoService.CheckCryptoExist(cryptoName))
+        {
+            Crypto crypto = _cryptoService.GetCrypto(cryptoName);
+            Console.Write("Cantidad a vender: ");
+            string amountInput = _cryptoService.InputEmpty();
+            _userService.SellCrypto(currentUser, crypto, $"Vender {crypto.Name}", amountInput); 
+        }
+        else
+        {
+            Console.WriteLine("No se ha encontrado ninguna criptomoneda por ese nombre");
+        }
+
+        MainPrivateUserMenu(currentUser.Email);
     }
 
 }

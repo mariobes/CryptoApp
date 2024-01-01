@@ -12,8 +12,11 @@ public interface IUserService
     User GetUser(string email);
     void DeleteUser(string email);
     void UpdateUser(string email, string newPhone = null, string newEmail = null, string NewPassword = null);
-    void MakeDeposit(User user, string kind, string amount, string paymentMethod);
-    void MakeWithdrawal(User user, string kind, string amount, string paymentMethod);
+    void MakeDeposit(User user, string concept, string amount, string paymentMethod);
+    void MakeWithdrawal(User user, string concept, string amount, string paymentMethod);
+    void BuyCrypto(User user, Crypto crpto, string concept, string amount);
+    void SellCrypto(User user, Crypto crpto, string concept, string amount);
     void PrintAllTransactions(User user);
+    void PrintAllCryptosPurchase(User user);
     string InputEmpty();
 }

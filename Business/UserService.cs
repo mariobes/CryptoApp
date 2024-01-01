@@ -190,14 +190,7 @@ public class UserService : IUserService
                     return;
                 }
 
-                if (user.Transactions.Count == 0)
-                {
-                    Transaction.IdTransactionSeed = 1;
-                }
-                else
-                {
-                    Transaction.IdTransactionSeed = user.Transactions.Count + 1;
-                }
+                AssignId(user);
 
                 user.Cash += amount;
                 Transaction transaction = new(concept, amount, paymentMethod);
@@ -224,20 +217,13 @@ public class UserService : IUserService
         {
             if (double.TryParse(amountInput, out double amount))
             {
-                if (user.Cash < amount)
+                if (user.Cash < amount + 1) //El 1 es transaction.Charge
                 {
                     Console.WriteLine("No tienes suficiente saldo para realizar el retiro");
                     return;
                 }
 
-                if (user.Transactions.Count == 0)
-                {
-                    Transaction.IdTransactionSeed = 1;
-                }
-                else
-                {
-                    Transaction.IdTransactionSeed = user.Transactions.Count + 1;
-                }
+                AssignId(user);
 
                 Transaction transaction = new(concept, amount, paymentMethod);
                 user.Transactions.Add(transaction);
@@ -258,6 +244,94 @@ public class UserService : IUserService
         }
     }
 
+    public void BuyCrypto(User user, Crypto crypto, string concept, string amountInput)
+    {
+        try
+        {
+            if (double.TryParse(amountInput, out double amount))
+            {
+                if (user.Cash < amount + 1) //El 1 es transaction.Charge
+                {
+                    Console.WriteLine("No tienes suficiente saldo para realizar la compra");
+                    return;
+                }
+
+                AssignId(user);
+
+                if (user.AllCryptosPurchased.ContainsKey(crypto.Name))
+                {
+                    user.AllCryptosPurchased[crypto.Name] += amount;
+                }
+                else
+                {
+                    user.AllCryptosPurchased.Add(crypto.Name, amount);
+                }
+
+                Transaction transaction = new(crypto, concept, amount);
+                user.Transactions.Add(transaction);
+                user.Cash -= transaction.Amount + transaction.Charge;
+                user.Wallet += transaction.Amount;
+                _repository.UpdateUser(user);
+                _repository.SaveChanges();
+
+                Console.WriteLine($"Has comprado {crypto.Name} por un total de {transaction.Amount}€.");
+            }
+            else
+            {
+                Console.WriteLine("Introduce un valor numérico válido.");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al comprar la criptomoneda", e);
+        }
+
+    }
+
+    public void SellCrypto(User user, Crypto crypto, string concept, string amountInput)
+    {
+        try
+        {
+            if (double.TryParse(amountInput, out double amount))
+            {
+                if (!user.AllCryptosPurchased.ContainsKey(crypto.Name) ||
+                    user.AllCryptosPurchased[crypto.Name] < amount + 1 ||
+                    amount == 0) //El 1 es transaction.Charge
+                {
+                    Console.WriteLine("No tienes suficiente cantidad de criptomoneda para vender.");
+                    return;
+                }
+
+                AssignId(user);
+
+                Transaction transaction = new(crypto, concept, amount);
+                user.Transactions.Add(transaction);
+
+                user.AllCryptosPurchased[crypto.Name] -= amount + transaction.Charge;
+
+                user.Cash += transaction.Amount;
+                user.Wallet -= transaction.Amount + transaction.Charge;
+                _repository.UpdateUser(user);
+                _repository.SaveChanges();
+
+                Console.WriteLine($"Has vendido {crypto.Name} por un total de {transaction.Amount}€.");
+
+                if (user.AllCryptosPurchased[crypto.Name] == 0) //Se queda a 0 pero no se borra
+                {
+                    user.AllCryptosPurchased.Remove(crypto.Name);
+                }
+            }
+            else
+            {
+                Console.WriteLine("Introduce un valor numérico válido.");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al vender la criptomoneda", e);
+        }
+    }
+
     public void PrintAllTransactions(User user)
     {
         try
@@ -272,6 +346,42 @@ public class UserService : IUserService
         catch (Exception e)
         {
             throw new Exception("Ha ocurrido un error al obtener las transacciones", e);
+        }
+    }
+
+    public void PrintAllCryptosPurchase(User user)
+    {
+        try
+        {  
+            Console.WriteLine("Lista de criptomonedas compradas:\n");
+
+            foreach (var purchase in user.AllCryptosPurchased)
+            {
+                Console.WriteLine($"{purchase.Key}: {purchase.Value}\n");
+            }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al obtener las criptomonedas compradas por el usuario", e);
+        }
+    }
+
+    private void AssignId(User user)
+    {
+        try
+        {
+                if (user.Transactions.Count == 0)
+                {
+                    Transaction.IdTransactionSeed = 1;
+                }
+                else
+                {
+                    Transaction.IdTransactionSeed = user.Transactions.Count + 1;
+                }
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al asignar el ID", e);
         }
     }
 

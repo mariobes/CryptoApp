@@ -13,6 +13,7 @@ public class User
     public double Cash { get; set; }
     public double Wallet { get; set; }
     public List<Transaction> Transactions { get; set; }
+    public Dictionary<string, double> AllCryptosPurchased { get; set; }
 
     public static int UserIdSeed { get; set; }
 
@@ -31,5 +32,6 @@ public class User
         Cash = 0.0;
         Wallet = 0.0;
         Transactions = new List<Transaction>();
+        AllCryptosPurchased = new Dictionary<string, double>();
     }
 }

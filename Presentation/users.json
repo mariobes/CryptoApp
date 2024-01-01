@@ -8,66 +8,315 @@
     "Phone": "123",
     "DNI": "123D",
     "Nationality": "Espa\u00F1a",
-    "Cash": 0,
-    "Wallet": 0,
-    "Transactions": []
-  },
-  {
-    "Id": 2,
-    "Name": "Carlos",
-    "Birthdate": "2001-05-05T00:00:00",
-    "Email": "carlos@gmail.com",
-    "Password": "456",
-    "Phone": "456",
-    "DNI": "456D",
-    "Nationality": "Espa\u00F1a",
-    "Cash": 79,
+    "Cash": 286,
     "Wallet": 0,
     "Transactions": [
       {
         "Id": 1,
         "Crypto": null,
         "Concept": "Ingreso",
-        "Date": "2024-01-01T18:52:33.5195809+01:00",
+        "Date": "2024-01-01T22:22:05.5901463+01:00",
         "Charge": 1,
-        "Amount": 100,
-        "Payment_Method": "Tarjeta de cr\u00E9dito"
+        "Amount": 300,
+        "Payment_Method": "Google Pay"
       },
       {
         "Id": 2,
-        "Crypto": null,
-        "Concept": "Retiro",
-        "Date": "2024-01-01T18:53:17.6932339+01:00",
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Comprar Solana",
+        "Date": "2024-01-01T22:34:53.7403422+01:00",
         "Charge": 1,
-        "Amount": 20,
-        "Payment_Method": "Cuenta bancaria"
+        "Amount": 50,
+        "Payment_Method": null
+      },
+      {
+        "Id": 3,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Vender Solana",
+        "Date": "2024-01-01T22:35:03.5177348+01:00",
+        "Charge": 1,
+        "Amount": 40,
+        "Payment_Method": null
+      },
+      {
+        "Id": 4,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Vender Solana",
+        "Date": "2024-01-01T22:35:49.891252+01:00",
+        "Charge": 1,
+        "Amount": 8,
+        "Payment_Method": null
+      },
+      {
+        "Id": 5,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Comprar Solana",
+        "Date": "2024-01-01T22:36:16.671639+01:00",
+        "Charge": 1,
+        "Amount": 50,
+        "Payment_Method": null
+      },
+      {
+        "Id": 6,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Vender Solana",
+        "Date": "2024-01-01T22:36:51.3240654+01:00",
+        "Charge": 1,
+        "Amount": 49,
+        "Payment_Method": null
+      },
+      {
+        "Id": 7,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Comprar Solana",
+        "Date": "2024-01-01T22:37:50.0260304+01:00",
+        "Charge": 1,
+        "Amount": 50,
+        "Payment_Method": null
+      },
+      {
+        "Id": 8,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Vender Solana",
+        "Date": "2024-01-01T22:37:57.8824889+01:00",
+        "Charge": 1,
+        "Amount": 49,
+        "Payment_Method": null
+      },
+      {
+        "Id": 9,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Comprar Solana",
+        "Date": "2024-01-01T22:38:48.241716+01:00",
+        "Charge": 1,
+        "Amount": 50,
+        "Payment_Method": null
+      },
+      {
+        "Id": 10,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Vender Solana",
+        "Date": "2024-01-01T22:39:03.5691202+01:00",
+        "Charge": 1,
+        "Amount": 48,
+        "Payment_Method": null
+      },
+      {
+        "Id": 11,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Vender Solana",
+        "Date": "2024-01-01T22:39:39.7982706+01:00",
+        "Charge": 1,
+        "Amount": 0,
+        "Payment_Method": null
+      },
+      {
+        "Id": 12,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Comprar Solana",
+        "Date": "2024-01-01T22:42:10.8568561+01:00",
+        "Charge": 1,
+        "Amount": 50,
+        "Payment_Method": null
+      },
+      {
+        "Id": 13,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Vender Solana",
+        "Date": "2024-01-01T22:42:32.5567634+01:00",
+        "Charge": 1,
+        "Amount": 48,
+        "Payment_Method": null
+      },
+      {
+        "Id": 14,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Comprar Solana",
+        "Date": "2024-01-01T22:43:10.4816977+01:00",
+        "Charge": 1,
+        "Amount": 50,
+        "Payment_Method": null
+      },
+      {
+        "Id": 15,
+        "Crypto": {
+          "Id": 2,
+          "Name": "Solana",
+          "Symbol": "SOL",
+          "Description": "Solana",
+          "RegisterDate": "2023-12-30T19:20:10.6659926+01:00",
+          "Value": 90,
+          "Developer": "Solana",
+          "Descentralized": true
+        },
+        "Concept": "Vender Solana",
+        "Date": "2024-01-01T22:43:15.876898+01:00",
+        "Charge": 1,
+        "Amount": 50,
+        "Payment_Method": null
       }
-    ]
+    ],
+    "AllCryptosPurchased": {
+      "Solana": 0
+    }
+  },
+  {
+    "Id": 2,
+    "Name": "Carlos",
+    "Birthdate": "2002-02-02T00:00:00",
+    "Email": "carlos@gmail.com",
+    "Password": "456",
+    "Phone": "456",
+    "DNI": "456D",
+    "Nationality": "Espa\u00F1a",
+    "Cash": 0,
+    "Wallet": 0,
+    "Transactions": [],
+    "AllCryptosPurchased": {}
   },
   {
     "Id": 3,
     "Name": "Fernando",
-    "Birthdate": "2001-07-07T00:00:00",
+    "Birthdate": "2003-03-03T00:00:00",
     "Email": "fernando@gmail.com",
     "Password": "789",
     "Phone": "789",
     "DNI": "789D",
-    "Nationality": "Espa\u00F1a",
+    "Nationality": "Espa\u00F1aa",
     "Cash": 0,
     "Wallet": 0,
-    "Transactions": []
+    "Transactions": [],
+    "AllCryptosPurchased": {}
   },
   {
     "Id": 4,
     "Name": "Eduardo",
-    "Birthdate": "2001-11-21T00:00:00",
+    "Birthdate": "2004-04-04T00:00:00",
     "Email": "eduardo@gmail.com",
     "Password": "123456789",
     "Phone": "123456789",
     "DNI": "123456789D",
-    "Nationality": "Espa\u00F1a",
+    "Nationality": "Espa\u00F1aa",
     "Cash": 0,
     "Wallet": 0,
-    "Transactions": []
+    "Transactions": [],
+    "AllCryptosPurchased": {}
   }
 ]
