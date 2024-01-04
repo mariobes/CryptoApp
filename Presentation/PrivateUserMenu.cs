@@ -20,7 +20,7 @@ public class PrivateUserMenu
         currentUser = _userService.GetUser(userEmail);
 
         Console.WriteLine("\n~~~~~~~~~~~~ CRYPTOAPP ~~~~~~~~~~~~\n");
-        Console.WriteLine($"Cartera: {currentUser.Wallet} | Efectivo: {currentUser.Cash}\n");
+        Console.WriteLine($"Cartera: {currentUser.Wallet:F2} € | Efectivo: {currentUser.Cash:F2} €\n");
         Console.WriteLine($"Teléfono: {currentUser.Phone}\n");
         Console.WriteLine($"Correo: {currentUser.Email}\n");
         Console.WriteLine($"Contraseña: {currentUser.Password}\n");
@@ -184,6 +184,7 @@ public class PrivateUserMenu
         if (_cryptoService.CheckCryptoExist(cryptoName))
         {
             Crypto crypto = _cryptoService.GetCrypto(cryptoName);
+            Console.WriteLine("Se le cobrará una comisión de 1€.");
             Console.Write("Invertir dinero: ");
             string amountInput = _cryptoService.InputEmpty();
             _userService.BuyCrypto(currentUser, crypto, $"Comprar {crypto.Name}", amountInput); 
@@ -212,6 +213,7 @@ public class PrivateUserMenu
         if (_cryptoService.CheckCryptoExist(cryptoName))
         {
             Crypto crypto = _cryptoService.GetCrypto(cryptoName);
+            Console.WriteLine("Se le cobrará una comisión de 1€.");
             Console.Write("Cantidad a vender: ");
             string amountInput = _cryptoService.InputEmpty();
             _userService.SellCrypto(currentUser, crypto, $"Vender {crypto.Name}", amountInput); 

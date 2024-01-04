@@ -35,7 +35,7 @@ public class CryptoService : ICryptoService
             Console.WriteLine("Lista de criptomonedas:\n");
             foreach (var crypto in allCryptos.Values)
             {
-                Console.WriteLine($"ID: {crypto.Id}, Nombre: {crypto.Name}, Abreviatura: {crypto.Symbol}, Descripción: {crypto.Description}, Fecha de Registro: {crypto.RegisterDate}, Valor: {crypto.Value}, Desarrollador: {crypto.Developer}, Descentralizada: {crypto.Descentralized}\n");
+                Console.WriteLine($"ID: {crypto.Id}, Nombre: {crypto.Name}, Abreviatura: {crypto.Symbol}, Descripción: {crypto.Description}, Fecha de Registro: {crypto.RegisterDate}, Valor: {crypto.Value} €, Desarrollador: {crypto.Developer}, Descentralizada: {crypto.Descentralized}\n");
             }
         }
         catch (Exception e)
@@ -91,13 +91,10 @@ public class CryptoService : ICryptoService
         }
     }
 
-    public void UpdateCrypto(string cryptoName, string newName, string newSymbol, string newDescription, double newValue, string newDeveloper, bool newDescentralized)
+    public void UpdateCrypto(Crypto cryptoToUpdate, string newSymbol, string newDescription, double newValue, string newDeveloper, bool newDescentralized)
     {
         try 
         {
-            Crypto cryptoToUpdate = GetCrypto(cryptoName);
-
-            cryptoToUpdate.Name = newName;
             cryptoToUpdate.Symbol = newSymbol;
             cryptoToUpdate.Description = newDescription;
             cryptoToUpdate.Value = newValue;
@@ -106,13 +103,11 @@ public class CryptoService : ICryptoService
 
             _repository.UpdateCrypto(cryptoToUpdate);
             _repository.SaveChanges();
-            
         }
         catch (Exception e)
         {
             throw new Exception("Ha ocurrido un error al actualizar el usuario", e);
         }
-
     }
 
     public void SearchCrypto()

@@ -21,7 +21,7 @@ public class PublicUserMenu
 
         Console.WriteLine("\n~~~~~~~~~~~~ CRYPTOAPP ~~~~~~~~~~~~\n");
         Console.WriteLine($"¡Hola, {currentUser.Name}!\n");
-        Console.WriteLine($"Cartera: {currentUser.Wallet} | Efectivo: {currentUser.Cash}\n");
+        Console.WriteLine($"Cartera: {currentUser.Wallet:F2} € | Efectivo: {currentUser.Cash:F2} €\n");
         Console.WriteLine("1. Mi cuenta");
         Console.WriteLine("2. Lista de criptomonedas");
         Console.WriteLine("3. Cerrar sesión");

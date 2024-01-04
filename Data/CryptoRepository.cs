@@ -41,7 +41,7 @@ public class CryptoRepository : ICryptoRepository
                     return crypto;
                 }
             }
-
+            
             return null;
     }
 

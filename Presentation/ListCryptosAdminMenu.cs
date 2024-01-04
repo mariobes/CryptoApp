@@ -12,7 +12,6 @@ public class ListCryptosAdminMenu
     {
         _userService = userService;
         _cryptoService = cryptoService;
-
     }
 
     public void MainListCryptosAdminMenu()
@@ -62,6 +61,10 @@ public class ListCryptosAdminMenu
         {
             Console.WriteLine("No se ha encontrado ninguna criptomoneda por ese nombre");
         }
+        else if (_userService.CheckCryptoPurchased(crypto))
+        {
+            Console.WriteLine("Mo se ha podido eliminar la criptomoneda ya que ha sido comprada por al menos un usuario.");
+        }
         else
         {
             _cryptoService.DeleteCrypto(CryptoName);
@@ -83,11 +86,9 @@ public class ListCryptosAdminMenu
         }
         else
         {
-            Console.Write("No escribas nada si no quieres modificar el parámetro.\n");
+            double oldCryptoValue = crypto.Value;
 
-            Console.Write($"Nombre ({crypto.Name}): ");
-            string name = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(name)) name = crypto.Name;
+            Console.Write("No escribas nada si no quieres modificar el parámetro.\n");
 
             Console.Write($"Abreviatura ({crypto.Symbol}): ");
             string symbol = Console.ReadLine();
@@ -134,9 +135,12 @@ public class ListCryptosAdminMenu
                 descentralized = crypto.Descentralized;
                 Console.WriteLine($"Valor inválido, se mantendrá el valor existente ({crypto.Descentralized})\n");
             }
-     
 
-            _cryptoService.UpdateCrypto(cryptoName, name, symbol, description, value, developer, descentralized);
+            double NewCryptoValue = value;
+            Crypto cryptoToUpdate = _cryptoService.GetCrypto(cryptoName);
+
+            _cryptoService.UpdateCrypto(cryptoToUpdate, symbol, description, value, developer, descentralized);
+            _userService.UpdateUserWallet(cryptoToUpdate, oldCryptoValue, NewCryptoValue);
             Console.WriteLine("Has actualizado la criptomoneda correctamente"); 
         }
 

@@ -71,10 +71,19 @@ public class MainMenu
             Console.WriteLine("Error, ya existe una cuenta asociada al teléfono, correo o DNI introducido.");
             RegistrationMenu();
         }
-        else{
-            _userService.RegisterUser(name, birthday, email, password, phone, dni, nationality);
-            Console.WriteLine("¡Registro completado!");
-            GoToPublicUserMenu(email);
+        else
+        {
+            if (email.Contains("@"))
+            {
+                _userService.RegisterUser(name, birthday, email, password, phone, dni, nationality);
+                Console.WriteLine("¡Registro completado!");
+                GoToPublicUserMenu(email);
+            }
+            else
+            {
+                Console.WriteLine("Error, el correo debe de contener @.");
+                RegistrationMenu();
+            }
         }
     }
 

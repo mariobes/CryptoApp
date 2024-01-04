@@ -18,5 +18,7 @@ public interface IUserService
     void SellCrypto(User user, Crypto crpto, string concept, string amount);
     void PrintAllTransactions(User user);
     void PrintAllCryptosPurchase(User user);
+    void UpdateUserWallet(Crypto crypto, double oldCryptoValue, double NewCryptoValue);
+    bool CheckCryptoPurchased(Crypto crypto);
     string InputEmpty();
 }
