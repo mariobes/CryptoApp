@@ -10,4 +10,5 @@ public interface ICryptoRepository
     void RemoveCrypto(Crypto crypto);
     void UpdateCrypto(Crypto crypto);
     void SaveChanges();
+    void LogError(string message, Exception exception);
 }

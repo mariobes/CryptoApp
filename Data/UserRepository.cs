@@ -7,15 +7,24 @@ public class UserRepository : IUserRepository
 {
     private Dictionary<string, User> _users = new Dictionary<string, User>();
     private readonly string _filePath = "users.json";
+    private readonly string _logsFilePath = "logs.json";
 
     public UserRepository()
     {
         if (File.Exists(_filePath))
         {
-            string jsonString = File.ReadAllText(_filePath);
-            var users = JsonSerializer.Deserialize<IEnumerable<User>>(jsonString);
-            _users = users.ToDictionary(acc => acc.Id.ToString());
+            try
+            {
+                string jsonString = File.ReadAllText(_filePath);
+                var users = JsonSerializer.Deserialize<IEnumerable<User>>(jsonString);
+                _users = users.ToDictionary(acc => acc.Id.ToString());
+            }
+            catch (Exception e)
+            {
+                LogError("Error al leer el archivo de usuarios", e);
+            }
         }
+
         if (_users.Count == 0)
         {
             User.UserIdSeed = 1;
@@ -62,9 +71,30 @@ public class UserRepository : IUserRepository
 
     public void SaveChanges()
     {
-        var options = new JsonSerializerOptions { WriteIndented = true };
-        string jsonString = JsonSerializer.Serialize(_users.Values, options);
-        File.WriteAllText(_filePath, jsonString);
+        try
+        {
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            string jsonString = JsonSerializer.Serialize(_users.Values, options);
+            File.WriteAllText(_filePath, jsonString);
+        }
+        catch (Exception e)
+        {
+            LogError("Error al guardar cambios en el archivo de usuarios", e);
+            throw new Exception("Ha ocurrido un error al guardar cambios en el archivo de usuarios", e);
+        }
+    }
+
+    public void LogError(string message, Exception exception)
+    {
+        try
+        {
+            string log = $"{DateTime.Now} ERROR {message}\n{exception}\n";
+            File.AppendAllText(_logsFilePath, log);
+        }
+        catch (Exception e)
+        {
+            throw new Exception("Ha ocurrido un error al escribir en logs", e);
+        }
     }
 
 }

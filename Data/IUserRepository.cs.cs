@@ -10,4 +10,5 @@ public interface IUserRepository
     void RemoveUser(User user);
     void UpdateUser(User user);
     void SaveChanges();
+    void LogError(string message, Exception exception);
 }

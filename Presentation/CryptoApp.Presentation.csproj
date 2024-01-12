@@ -2,6 +2,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Business\CryptoApp.Business.csproj" />
+    <None Include="users.json" CopyToPublishDirectory="Always" />
+    <None Include="cryptos.json" CopyToPublishDirectory="Always" />
   </ItemGroup>
 
   <PropertyGroup>
