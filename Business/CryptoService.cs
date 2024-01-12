@@ -22,6 +22,7 @@ public class CryptoService : ICryptoService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al registrar la criptomoneda", e);
             throw new Exception("Ha ocurrido un error al registrar la criptomoneda", e);
         }
 
@@ -40,6 +41,7 @@ public class CryptoService : ICryptoService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al obtener las criptomonedas", e);
             throw new Exception("Ha ocurrido un error al obtener las criptomonedas", e);
         }
     }
@@ -61,6 +63,7 @@ public class CryptoService : ICryptoService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al comprobar la criptomoneda", e);
             throw new Exception("Ha ocurrido un error al comprobar la criptomoneda", e);
         }
     }
@@ -73,6 +76,7 @@ public class CryptoService : ICryptoService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al obtener la criptomoneda", e);
             throw new Exception("Ha ocurrido un error al obtener la criptomoneda", e);
         }
     }
@@ -87,6 +91,7 @@ public class CryptoService : ICryptoService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al borrar la criptomoneda", e);
             throw new Exception("Ha ocurrido un error al borrar la criptomoneda", e);
         }
     }
@@ -106,7 +111,8 @@ public class CryptoService : ICryptoService
         }
         catch (Exception e)
         {
-            throw new Exception("Ha ocurrido un error al actualizar el usuario", e);
+            _repository.LogError("Error al actualizar la criptomoneda", e);
+            throw new Exception("Ha ocurrido un error al actualizar la criptomoneda", e);
         }
     }
 
@@ -154,6 +160,7 @@ public class CryptoService : ICryptoService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al comprobar el campo", e);
             throw new Exception("Ha ocurrido un error al comprobar el campo", e);
         }
     }

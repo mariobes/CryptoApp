@@ -24,6 +24,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al registrar el usuario", e);
             throw new Exception("Ha ocurrido un error al registrar el usuario", e);
         }
     }
@@ -40,6 +41,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al obtener los usuarios", e);
             throw new Exception("Ha ocurrido un error al obtener los usuarios", e);
         }
     }
@@ -62,6 +64,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al comprobar el usuario", e);
             throw new Exception("Ha ocurrido un error al comprobar el usuario", e);
         }
     }
@@ -93,6 +96,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al comprobar el usuario", e);
             throw new Exception("Ha ocurrido un error al comprobar el usuario", e);
         }
     }
@@ -114,6 +118,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al comprobar el usuario", e);
             throw new Exception("Ha ocurrido un error al comprobar el usuario", e);
         }
     }
@@ -126,6 +131,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al obtener el usuario", e);
             throw new Exception("Ha ocurrido un error al obtener el usuario", e);
         }
     }
@@ -140,6 +146,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al borrar el usuario", e);
             throw new Exception("Ha ocurrido un error al borrar el usuario", e);
         }
     }
@@ -170,6 +177,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al actualizar el usuario", e);
             throw new Exception("Ha ocurrido un error al actualizar el usuario", e);
         }
 
@@ -204,6 +212,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al realizar el depósito", e);
             throw new Exception("Ha ocurrido un error al realizar el depósito", e);
         }
     }
@@ -237,6 +246,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al realizar el retiro", e);
             throw new Exception("Ha ocurrido un error al realizar el retiro", e);
         }
     }
@@ -282,6 +292,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al comprar la criptomoneda", e);
             throw new Exception("Ha ocurrido un error al comprar la criptomoneda", e);
         }
 
@@ -330,6 +341,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al vender la criptomoneda", e);
             throw new Exception("Ha ocurrido un error al vender la criptomoneda", e);
         }
     }
@@ -343,6 +355,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al calcular el valor de la criptomoneda", e);
             throw new Exception("Ha ocurrido un error al calcular el valor de la criptomoneda", e);
         }
     }
@@ -368,6 +381,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al obtener las transacciones", e);
             throw new Exception("Ha ocurrido un error al obtener las transacciones", e);
         }
     }
@@ -385,6 +399,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al obtener las criptomonedas compradas por el usuario", e);
             throw new Exception("Ha ocurrido un error al obtener las criptomonedas compradas por el usuario", e);
         }
     }
@@ -404,6 +419,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al asignar el ID", e);
             throw new Exception("Ha ocurrido un error al asignar el ID", e);
         }
     }
@@ -436,6 +452,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al actualizar la cartera del usuario", e);
             throw new Exception("Ha ocurrido un error al actualizar la cartera del usuario", e);
         }
     }
@@ -455,6 +472,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al comprobar la criptomoneda", e);
             throw new Exception("Ha ocurrido un error al comprobar la criptomoneda", e);
         }
 
@@ -478,6 +496,7 @@ public class UserService : IUserService
         }
         catch (Exception e)
         {
+            _repository.LogError("Error al comprobar el campo", e);
             throw new Exception("Ha ocurrido un error al comprobar el campo", e);
         }
     }
