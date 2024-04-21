@@ -11,158 +11,58 @@ public class CryptoService : ICryptoService
     {
         _repository = repository;
     }
-
-    public void RegisterCrypto(string name, string symbol, string description, double value, string developer, bool descentralized)
+//string name, string symbol, string description, double value, string developer, bool descentralized
+    public Crypto RegisterCrypto(CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
     {
-        try 
-        {
-            Crypto crypto = new(name, symbol, description, value, developer, descentralized);
-            _repository.AddCrypto(crypto);
-            _repository.SaveChanges();
-        }
-        catch (Exception e)
-        {
-            _repository.LogError("Error al registrar la criptomoneda", e);
-            throw new Exception("Ha ocurrido un error al registrar la criptomoneda", e);
-        }
-
+        Crypto crypto = new(cryptoCreateUpdateDTO.Name, cryptoCreateUpdateDTO.Symbol, cryptoCreateUpdateDTO.Description, cryptoCreateUpdateDTO.Value, cryptoCreateUpdateDTO.Developer, cryptoCreateUpdateDTO.Descentralized);
+        _repository.AddCrypto(crypto);
+        _repository.SaveChanges();
+        return crypto;
     }
 
-    public void PrintAllCryptos()
+    public IEnumerable<Crypto> GetAllCryptos()
     {
-        try
-        {
-            Dictionary<string, Crypto> allCryptos = _repository.GetAllCryptos();
-            Console.WriteLine("Lista de criptomonedas:\n");
-            foreach (var crypto in allCryptos.Values)
-            {
-                Console.WriteLine($"ID: {crypto.Id}, Nombre: {crypto.Name}, Abreviatura: {crypto.Symbol}, Descripción: {crypto.Description}, Fecha de Registro: {crypto.RegisterDate}, Valor: {crypto.Value} €, Desarrollador: {crypto.Developer}, Descentralizada: {crypto.Descentralized}\n");
-            }
-        }
-        catch (Exception e)
-        {
-            _repository.LogError("Error al obtener las criptomonedas", e);
-            throw new Exception("Ha ocurrido un error al obtener las criptomonedas", e);
-        }
+        return _repository.GetAllCryptos();
     }
 
-    public bool CheckCryptoExist(string name)
+    public Crypto GetCryptoById(string cryptoId)
     {
-        try
+        var crypto = _repository.GetCrypto(cryptoId);
+        if (crypto == null)
         {
-            var allCryptos = _repository.GetAllCryptos();
-            foreach (var crypto in allCryptos.Values)
-            {
-                if (crypto.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
-            }
-
-            return false;
+            throw new KeyNotFoundException($"La criptomoneda con ID {cryptoId} no existe.");
         }
-        catch (Exception e)
-        {
-            _repository.LogError("Error al comprobar la criptomoneda", e);
-            throw new Exception("Ha ocurrido un error al comprobar la criptomoneda", e);
-        }
+        return crypto;
     }
 
-    public Crypto GetCrypto(string name)
+    public void DeleteCrypto(string cryptoId)
     {
-        try
+        var crypto = _repository.GetCrypto(cryptoId);
+        if (crypto == null)
         {
-            return _repository.GetCrypto(name);
+            throw new KeyNotFoundException($"La criptomoneda con ID {cryptoId} no existe.");
         }
-        catch (Exception e)
-        {
-            _repository.LogError("Error al obtener la criptomoneda", e);
-            throw new Exception("Ha ocurrido un error al obtener la criptomoneda", e);
-        }
+
+        _repository.DeleteCrypto(cryptoId);
+        _repository.SaveChanges();
     }
 
-    public void DeleteCrypto(string cryptoName)
+    public void UpdateCrypto(string cryptoId, CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
     {
-        try
+        var crypto = _repository.GetCrypto(cryptoId);
+        if (crypto == null)
         {
-            Crypto cryptoToDelete = GetCrypto(cryptoName);
-            _repository.RemoveCrypto(cryptoToDelete);
-            _repository.SaveChanges();
+            throw new KeyNotFoundException($"La criptomoneda con ID {cryptoId} no existe.");
         }
-        catch (Exception e)
-        {
-            _repository.LogError("Error al borrar la criptomoneda", e);
-            throw new Exception("Ha ocurrido un error al borrar la criptomoneda", e);
-        }
-    }
 
-    public void UpdateCrypto(Crypto cryptoToUpdate, string newSymbol, string newDescription, double newValue, string newDeveloper, bool newDescentralized)
-    {
-        try 
-        {
-            cryptoToUpdate.Symbol = newSymbol;
-            cryptoToUpdate.Description = newDescription;
-            cryptoToUpdate.Value = newValue;
-            cryptoToUpdate.Developer = newDeveloper;
-            cryptoToUpdate.Descentralized = newDescentralized;
-
-            _repository.UpdateCrypto(cryptoToUpdate);
-            _repository.SaveChanges();
-        }
-        catch (Exception e)
-        {
-            _repository.LogError("Error al actualizar la criptomoneda", e);
-            throw new Exception("Ha ocurrido un error al actualizar la criptomoneda", e);
-        }
-    }
-
-    public void SearchCrypto()
-    {
-        string cryptoName;
-        do
-        {
-            Console.WriteLine("Escribe S para salir.");
-            Console.WriteLine("Buscar criptomoneda por su nombre: ");
-            cryptoName = InputEmpty();
-            Crypto crypto = GetCrypto(cryptoName);
-
-            if (cryptoName.ToLower() == "s")
-            {
-                break;
-            }
-
-            if (crypto == null)
-            {
-                Console.WriteLine("No se ha encontrado ninguna criptomoneda por ese nombre\n");
-            }
-            else
-            {
-                Console.WriteLine($"ID: {crypto.Id}, Nombre: {crypto.Name}, Abreviatura: {crypto.Symbol}, Descripción: {crypto.Description}, Fecha de Registro: {crypto.RegisterDate}, Valor: {crypto.Value}, Desarrollador: {crypto.Developer}, Descentralizada: {crypto.Descentralized}\n");
-            }
-        } while (cryptoName.ToLower() != "s");
-    }
-
-    public string InputEmpty()
-    {
-        try
-        {
-            string input;
-            do
-            {
-                input = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine("El campo está vacío.");
-                }
-            } while (string.IsNullOrWhiteSpace(input));
-
-            return input;
-        }
-        catch (Exception e)
-        {
-            _repository.LogError("Error al comprobar el campo", e);
-            throw new Exception("Ha ocurrido un error al comprobar el campo", e);
-        }
+        crypto.Name = cryptoCreateUpdateDTO.Name;
+        crypto.Symbol = cryptoCreateUpdateDTO.Symbol;
+        crypto.Description = cryptoCreateUpdateDTO.Description;
+        crypto.Value = cryptoCreateUpdateDTO.Value;
+        crypto.Developer = cryptoCreateUpdateDTO.Developer;
+        crypto.Descentralized = cryptoCreateUpdateDTO.Descentralized;
+        _repository.UpdateCrypto(crypto);
+        _repository.SaveChanges();
     }
     
 }

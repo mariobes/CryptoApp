@@ -6,8 +6,7 @@ namespace CryptoApp.Data;
 public class CryptoRepository : ICryptoRepository
 {
     private Dictionary<string, Crypto> _cryptos = new Dictionary<string, Crypto>();
-    private readonly string _filePath = "cryptos.json";
-    private readonly string _logsFilePath = "logs.json";
+    private readonly string _filePath = Path.Combine("..", "Data", "cryptos.json");
 
     public CryptoRepository()
     {
@@ -21,7 +20,7 @@ public class CryptoRepository : ICryptoRepository
             }
             catch (Exception e)
             {
-                LogError("Error al leer el archivo de criptomonedas", e);
+                throw new Exception("Error al leer el archivo de criptomonedas", e);
             }
         }
 
@@ -40,28 +39,19 @@ public class CryptoRepository : ICryptoRepository
         _cryptos[crypto.Id.ToString()] = crypto;
     }
 
-    public Crypto GetCrypto(string name)
+    public Crypto GetCrypto(string cryptoId)
     {
-            var allCryptos = GetAllCryptos();
-            foreach (var crypto in allCryptos.Values)
-            {
-                if (crypto.Name.Equals(name, StringComparison.OrdinalIgnoreCase))
-                {
-                    return crypto;
-                }
-            }
-            
-            return null;
+        return _cryptos.TryGetValue(cryptoId, out var crypto) ? crypto : null;
     }
 
-    public Dictionary<string, Crypto> GetAllCryptos()
+    public IEnumerable<Crypto> GetAllCryptos()
     {
-        return new Dictionary<string, Crypto>(_cryptos);
+        return _cryptos.Values;
     }
 
-    public void RemoveCrypto(Crypto crypto)
+    public void DeleteCrypto(string cryptoId)
     {
-        _cryptos.Remove(crypto.Id.ToString());
+        _cryptos.Remove(cryptoId);
     }
 
     public void UpdateCrypto(Crypto crypto)
@@ -79,21 +69,7 @@ public class CryptoRepository : ICryptoRepository
         }
         catch (Exception e)
         {
-            LogError("Error al guardar cambios en el archivo de criptomonedas", e);
             throw new Exception("Ha ocurrido un error al guardar cambios en el archivo de criptomonedas", e);
-        }
-    }
-
-    public void LogError(string message, Exception exception)
-    {
-        try
-        {
-            string log = $"{DateTime.Now} ERROR {message}\n{exception}\n";
-            File.AppendAllText(_logsFilePath, log);
-        }
-        catch (Exception e)
-        {
-            throw new Exception("Ha ocurrido un error al escribir en logs", e);
         }
     }
 

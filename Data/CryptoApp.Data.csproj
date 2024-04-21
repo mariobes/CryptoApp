@@ -2,13 +2,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\CryptoApp.Models.csproj" />
+    <None Include="users.json" CopyToPublishDirectory="Always" />
+    <None Include="cryptos.json" CopyToPublishDirectory="Always" />
   </ItemGroup>
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
   </PropertyGroup>
 
 </Project>

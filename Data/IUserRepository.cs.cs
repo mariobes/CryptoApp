@@ -4,11 +4,10 @@ namespace CryptoApp.Data;
 
 public interface IUserRepository
 {
-    void AddUser(User user);
-    User GetUser(string email);
-    Dictionary<string, User> GetAllUsers();
-    void RemoveUser(User user);
-    void UpdateUser(User user);
+    public void AddUser(User user);
+    public User GetUser(string userId);
+    public IEnumerable<User> GetAllUsers();
+    public void DeleteUser(string userId);
+    public void UpdateUser(User user);
     void SaveChanges();
-    void LogError(string message, Exception exception);
 }

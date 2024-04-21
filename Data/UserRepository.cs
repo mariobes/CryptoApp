@@ -6,8 +6,8 @@ namespace CryptoApp.Data;
 public class UserRepository : IUserRepository
 {
     private Dictionary<string, User> _users = new Dictionary<string, User>();
-    private readonly string _filePath = "users.json";
-    private readonly string _logsFilePath = "logs.json";
+    private readonly string _filePath = Path.Combine("..", "Data", "users.json");
+
 
     public UserRepository()
     {
@@ -21,7 +21,7 @@ public class UserRepository : IUserRepository
             }
             catch (Exception e)
             {
-                LogError("Error al leer el archivo de usuarios", e);
+               throw new Exception("Error al leer el archivo de usuarios", e);
             }
         }
 
@@ -33,6 +33,9 @@ public class UserRepository : IUserRepository
         {
             User.UserIdSeed = _users.Count + 1;
         }
+
+        Console.WriteLine(_filePath);
+
     }
 
     public void AddUser(User user)
@@ -40,32 +43,24 @@ public class UserRepository : IUserRepository
         _users[user.Id.ToString()] = user;
     }
 
-    public User GetUser(string userEmail)
+    public User GetUser(string userId)
     {
-        var allUsers = GetAllUsers();
-        foreach (var user in allUsers.Values)
-        {
-            if (user.Email.Equals(userEmail, StringComparison.OrdinalIgnoreCase))
-            {
-                return user;
-            }
-        }
-
-        return null;
+        return _users.TryGetValue(userId, out var user) ? user : null;
     }
 
-    public Dictionary<string, User> GetAllUsers()
+    public IEnumerable<User> GetAllUsers()
     {
-        return new Dictionary<string, User>(_users);
+        return _users.Values;
     }
 
-    public void RemoveUser(User user)
+    public void DeleteUser(string userId)
     {
-        _users.Remove(user.Id.ToString());
+        _users.Remove(userId);
     }
 
     public void UpdateUser(User user)
-    {
+    {   
+
         _users[user.Id.ToString()] = user;
     }
 
@@ -79,21 +74,7 @@ public class UserRepository : IUserRepository
         }
         catch (Exception e)
         {
-            LogError("Error al guardar cambios en el archivo de usuarios", e);
             throw new Exception("Ha ocurrido un error al guardar cambios en el archivo de usuarios", e);
-        }
-    }
-
-    public void LogError(string message, Exception exception)
-    {
-        try
-        {
-            string log = $"{DateTime.Now} ERROR {message}\n{exception}\n";
-            File.AppendAllText(_logsFilePath, log);
-        }
-        catch (Exception e)
-        {
-            throw new Exception("Ha ocurrido un error al escribir en logs", e);
         }
     }
 
