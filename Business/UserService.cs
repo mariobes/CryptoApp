@@ -32,21 +32,9 @@ public class UserService : IUserService
         var user = _repository.GetUser(userId);
         if (user == null)
         {
-            throw new KeyNotFoundException($"El usuario con ID {userId} no existe.");
+            throw new KeyNotFoundException($"Usuario con ID: {userId} no encontrado");
         }
         return user;
-    }
-
-    public void DeleteUser(string userId)
-    {
-        var user = _repository.GetUser(userId);
-        if (user == null)
-        {
-            throw new KeyNotFoundException($"El usuario con ID {userId} no existe.");
-        }
-
-        _repository.DeleteUser(userId);
-        _repository.SaveChanges();
     }
     
     public void UpdateUser(string userId, UserUpdateDTO userUpdateDTO)
@@ -54,13 +42,23 @@ public class UserService : IUserService
         var user = _repository.GetUser(userId);
         if (user == null)
         {
-            throw new KeyNotFoundException($"El usuario con ID {userId} no existe.");
+            throw new KeyNotFoundException($"Usuario con ID: {userId} no encontrado");
         }
-
         user.Email = userUpdateDTO.Email;
         user.Password = userUpdateDTO.Password;
         user.Phone = userUpdateDTO.Phone;
         _repository.UpdateUser(user);
+        _repository.SaveChanges();
+    }
+
+    public void DeleteUser(string userId)
+    {
+        var user = _repository.GetUser(userId);
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"Usuario con ID: {userId} no encontrado");
+        }
+        _repository.DeleteUser(userId);
         _repository.SaveChanges();
     }
     

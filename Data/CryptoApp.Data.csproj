@@ -2,8 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\CryptoApp.Models.csproj" />
-    <None Include="users.json" CopyToPublishDirectory="Always" />
-    <None Include="cryptos.json" CopyToPublishDirectory="Always" />
   </ItemGroup>
 
   <PropertyGroup>
@@ -11,5 +9,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+   <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
 
 </Project>

@@ -10,16 +10,19 @@ namespace CryptoApp.API.Controllers;
 [Route("[controller]")]
 public class CryptosController : ControllerBase
 {
+    private readonly ILogger<UsersController> _logger;
     private readonly ICryptoService _cryptoService;
 
-    public CryptosController(ICryptoService cryptoService)
+    public CryptosController(ILogger<UsersController> logger, ICryptoService cryptoService)
     {
-   
+        _logger = logger;
         _cryptoService = cryptoService;
     }
 
-    [HttpGet(Name = "GetAllCryptos")]
-    public ActionResult<IEnumerable<Crypto>> GetCryptos()
+    [HttpGet]
+    public ActionResult<IEnumerable<Crypto>> GetAllCryptos() //ESTE METODO LO QUITAREMOS Y SOLO TENDREMOS EL SEARCH. NO VAMOS A TENER UNO CON FILTRO Y UNO SIN FILTRO. SERA DAME TODOS Y ADEMAS 
+                                                          //ACEPTO PARAMETROS DE ENTRADA. ES DECIR EN EL SEARCH PONEMOS PARAMETROS DE ENTRADA, PERO DE PRIMERAS YA NOS DA TODOS LOS RESULTADOS, 
+                                                          //SI QUEREMOS INTRODUCIMOS PARAMETROS DE ENTRADA PARA FILTRAR O NO
     {
         try {
             var cryptos = _cryptoService.GetAllCryptos();
@@ -27,12 +30,12 @@ public class CryptosController : ControllerBase
         }     
         catch (Exception ex)
         {
-            return BadRequest(ex);
+            _logger.LogError($"Error al obtener todas las criptomonedas. {ex.Message}");
+            return BadRequest($"Error al obtener todas las criptomonedas. {ex.Message}");
         }
-        
     }
 
-    [HttpGet("{cryptoId}", Name = "GetCrypto")]
+    [HttpGet("{cryptoId}")]
     public IActionResult GetCrypto(string cryptoId)
     {
         try
@@ -40,14 +43,20 @@ public class CryptosController : ControllerBase
             var crypto = _cryptoService.GetCryptoById(cryptoId);
             return Ok(crypto);
         }
-        catch (KeyNotFoundException)
+        catch (KeyNotFoundException knfex)
         {
-           return NotFound("No encontrado la criptomoneda " + cryptoId);
+            _logger.LogWarning($"No se ha encontrado la criptomoneda con ID: {cryptoId}. {knfex.Message}");
+           return NotFound($"No se ha encontrado la criptomoneda con ID: {cryptoId}. {knfex.Message}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al obtener la criptomoneda con ID: {cryptoId}. {ex.Message}");
+            return BadRequest($"Error al obtener la criptomoneda con ID: {cryptoId}. {ex.Message}");
         }
     }
 
     [HttpPost]
-    public IActionResult RegisterCrypto([FromBody] CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
+    public IActionResult CreateCrypto([FromBody] CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
 
@@ -57,7 +66,8 @@ public class CryptosController : ControllerBase
         }     
         catch (Exception ex)
         {
-            return BadRequest(ex.Message);
+            _logger.LogError($"Error al registrar la criptomoneda. {ex.Message}");
+            return BadRequest($"Error al registrar la criptomoneda. {ex.Message}");
         }
     }
 
@@ -70,9 +80,15 @@ public class CryptosController : ControllerBase
             _cryptoService.UpdateCrypto(cryptoId, cryptoCreateUpdateDTO);
             return NoContent();
         }     
-        catch (KeyNotFoundException)
+        catch (KeyNotFoundException knfex)
         {
-            return NotFound();
+            _logger.LogWarning($"No se ha encontrado la criptomoneda con ID: {cryptoId}. {knfex.Message}");
+            return NotFound($"No se ha encontrado la criptomoneda con ID: {cryptoId}. {knfex.Message}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al actualizar la criptomoneda con ID: {cryptoId}. {ex.Message}");
+            return BadRequest($"Error al actualizar la criptomoneda con ID: {cryptoId}. {ex.Message}");
         }
     }
 
@@ -84,9 +100,15 @@ public class CryptosController : ControllerBase
             _cryptoService.DeleteCrypto(cryptoId);
             return NoContent();
         }
-        catch (KeyNotFoundException)
+        catch (KeyNotFoundException knfex)
         {
-            return NotFound();
+            _logger.LogWarning($"No se ha encontrado la criptomoneda con ID: {cryptoId}. {knfex.Message}");
+            return NotFound($"No se ha encontrado la criptomoneda con ID: {cryptoId}. {knfex.Message}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al eliminar la criptomoneda con ID: {cryptoId}. {ex.Message}");
+            return BadRequest($"Error al eliminar la criptomoneda con ID: {cryptoId}. {ex.Message}");
         }
     }
 

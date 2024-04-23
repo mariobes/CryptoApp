@@ -30,21 +30,9 @@ public class CryptoService : ICryptoService
         var crypto = _repository.GetCrypto(cryptoId);
         if (crypto == null)
         {
-            throw new KeyNotFoundException($"La criptomoneda con ID {cryptoId} no existe.");
+            throw new KeyNotFoundException($"Criptomoneda con ID: {cryptoId} no encontrada");
         }
         return crypto;
-    }
-
-    public void DeleteCrypto(string cryptoId)
-    {
-        var crypto = _repository.GetCrypto(cryptoId);
-        if (crypto == null)
-        {
-            throw new KeyNotFoundException($"La criptomoneda con ID {cryptoId} no existe.");
-        }
-
-        _repository.DeleteCrypto(cryptoId);
-        _repository.SaveChanges();
     }
 
     public void UpdateCrypto(string cryptoId, CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
@@ -52,9 +40,8 @@ public class CryptoService : ICryptoService
         var crypto = _repository.GetCrypto(cryptoId);
         if (crypto == null)
         {
-            throw new KeyNotFoundException($"La criptomoneda con ID {cryptoId} no existe.");
+            throw new KeyNotFoundException($"Criptomoneda con ID: {cryptoId} no encontrada");
         }
-
         crypto.Name = cryptoCreateUpdateDTO.Name;
         crypto.Symbol = cryptoCreateUpdateDTO.Symbol;
         crypto.Description = cryptoCreateUpdateDTO.Description;
@@ -62,6 +49,17 @@ public class CryptoService : ICryptoService
         crypto.Developer = cryptoCreateUpdateDTO.Developer;
         crypto.Descentralized = cryptoCreateUpdateDTO.Descentralized;
         _repository.UpdateCrypto(crypto);
+        _repository.SaveChanges();
+    }
+
+    public void DeleteCrypto(string cryptoId)
+    {
+        var crypto = _repository.GetCrypto(cryptoId);
+        if (crypto == null)
+        {
+            throw new KeyNotFoundException($"Criptomoneda con ID: {cryptoId} no encontrada");
+        }
+        _repository.DeleteCrypto(cryptoId);
         _repository.SaveChanges();
     }
     

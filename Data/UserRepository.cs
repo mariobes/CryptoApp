@@ -8,7 +8,6 @@ public class UserRepository : IUserRepository
     private Dictionary<string, User> _users = new Dictionary<string, User>();
     private readonly string _filePath = Path.Combine("..", "Data", "users.json");
 
-
     public UserRepository()
     {
         if (File.Exists(_filePath))
@@ -21,7 +20,7 @@ public class UserRepository : IUserRepository
             }
             catch (Exception e)
             {
-               throw new Exception("Error al leer el archivo de usuarios", e);
+                throw new Exception("Error al leer el archivo de usuarios", e);
             }
         }
 
@@ -33,9 +32,6 @@ public class UserRepository : IUserRepository
         {
             User.UserIdSeed = _users.Count + 1;
         }
-
-        Console.WriteLine(_filePath);
-
     }
 
     public void AddUser(User user)
