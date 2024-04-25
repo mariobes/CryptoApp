@@ -36,7 +36,7 @@ public class CryptosController : ControllerBase
     }
 
     [HttpGet("{cryptoId}")]
-    public IActionResult GetCrypto(string cryptoId)
+    public IActionResult GetCrypto(int cryptoId)
     {
         try
         {
@@ -72,7 +72,7 @@ public class CryptosController : ControllerBase
     }
 
     [HttpPut("{cryptoId}")]
-    public IActionResult UpdateCrypto(string cryptoId, CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
+    public IActionResult UpdateCrypto(int cryptoId, CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
 
@@ -93,7 +93,7 @@ public class CryptosController : ControllerBase
     }
 
     [HttpDelete("{cryptoId}")]
-    public IActionResult DeleteCrypto(string cryptoId)
+    public IActionResult DeleteCrypto(int cryptoId)
     {
         try
         {

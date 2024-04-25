@@ -34,7 +34,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{userId}")]
-    public IActionResult GetUser(string userId)
+    public IActionResult GetUser(int userId)
     {
         try
         {
@@ -70,7 +70,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPut("{userId}")]
-    public IActionResult UpdateUser(string userId, UserUpdateDTO userUpdateDTO)
+    public IActionResult UpdateUser(int userId, UserUpdateDTO userUpdateDTO)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
 
@@ -91,7 +91,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpDelete("{userId}")]
-    public IActionResult DeleteUser(string userId)
+    public IActionResult DeleteUser(int userId)
     {
         try
         {

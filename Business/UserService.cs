@@ -18,7 +18,6 @@ public class UserService : IUserService
     {
         User user = new(userCreateDTO.Name, userCreateDTO.Birthdate, userCreateDTO.Email, userCreateDTO.Password, userCreateDTO.Phone, userCreateDTO.DNI, userCreateDTO.Nationality);
         _repository.AddUser(user);
-        _repository.SaveChanges();
         return user;
     }
 
@@ -27,39 +26,37 @@ public class UserService : IUserService
         return _repository.GetAllUsers();
     }
 
-    public User GetUserById(string userId)
+    public User GetUserById(int userId)
     {
         var user = _repository.GetUser(userId);
         if (user == null)
         {
-            throw new KeyNotFoundException($"Usuario con ID: {userId} no encontrado");
+            throw new KeyNotFoundException($"Usuario con ID {userId} no encontrado");
         }
         return user;
     }
     
-    public void UpdateUser(string userId, UserUpdateDTO userUpdateDTO)
+    public void UpdateUser(int userId, UserUpdateDTO userUpdateDTO)
     {
         var user = _repository.GetUser(userId);
         if (user == null)
         {
-            throw new KeyNotFoundException($"Usuario con ID: {userId} no encontrado");
+            throw new KeyNotFoundException($"Usuario con ID {userId} no encontrado");
         }
         user.Email = userUpdateDTO.Email;
         user.Password = userUpdateDTO.Password;
         user.Phone = userUpdateDTO.Phone;
         _repository.UpdateUser(user);
-        _repository.SaveChanges();
     }
 
-    public void DeleteUser(string userId)
+    public void DeleteUser(int userId)
     {
         var user = _repository.GetUser(userId);
         if (user == null)
         {
-            throw new KeyNotFoundException($"Usuario con ID: {userId} no encontrado");
+            throw new KeyNotFoundException($"Usuario con ID {userId} no encontrado");
         }
         _repository.DeleteUser(userId);
-        _repository.SaveChanges();
     }
     
 }

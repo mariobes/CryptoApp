@@ -6,7 +6,7 @@ public interface IUserService
 {
     public User RegisterUser(UserCreateDTO userCreateDTO);
     public IEnumerable<User> GetAllUsers();
-    public User GetUserById(string userId);
-    public void UpdateUser(string userId, UserUpdateDTO userUpdateDTO);
-    public void DeleteUser(string userId);
+    public User GetUserById(int userId);
+    public void UpdateUser(int userId, UserUpdateDTO userUpdateDTO);
+    public void DeleteUser(int userId);
 }
