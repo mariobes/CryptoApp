@@ -11,7 +11,8 @@ public interface IUserService
     public void DeleteUser(int userId);
 
     public void MakeDeposit(DepositWithdrawalDTO depositWithdrawalDTO);
-    public void Withdrawal(DepositWithdrawalDTO depositWithdrawalDTO);
-    //public void SellCrypto(User user, Crypto crpto, string concept, string amount);
-    //public void PrintAllTransactions(User user);
+    public void MakeWithdrawal(DepositWithdrawalDTO depositWithdrawalDTO);
+    public void BuyCrypto(BuySellCrypto buySellCrypto);
+    public void SellCrypto(BuySellCrypto buySellCrypto);
+    public IEnumerable<Transaction> GetAllTransactions(TransactionQueryParameters transactionQueryParameters);
 }

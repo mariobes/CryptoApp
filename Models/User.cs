@@ -31,7 +31,6 @@ public class User
     public double Cash { get; set; }
     public double Wallet { get; set; }
     public List<Transaction> Transactions { get; set; } = new List<Transaction>();
-    //public Dictionary<string, double> AllCryptosPurchased { get; set; }
 
     public User() {}
 
@@ -46,6 +45,5 @@ public class User
         Nationality = nationality;
         Cash = 0.0;
         Wallet = 0.0;
-        //AllCryptosPurchased = new Dictionary<string, double>();
     }
 }

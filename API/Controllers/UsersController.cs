@@ -110,7 +110,7 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPost("deposit/")]
+    [HttpPost("Deposit/")]
     public IActionResult MakeDeposit([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
         try {
@@ -129,11 +129,11 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPost("withdrawal/")]
-    public IActionResult WithdrawalDeposit([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
+    [HttpPost("Withdrawal/")]
+    public IActionResult MakeWithdrawal([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
         try {
-            _userService.Withdrawal(depositWithdrawalDTO);
+            _userService.MakeWithdrawal(depositWithdrawalDTO);
             return Ok("Retiro realizado correctamente.");
         }     
         catch (KeyNotFoundException knfex)
@@ -143,8 +143,60 @@ public class UsersController : ControllerBase
         }
         catch (Exception ex)
         {
-            _logger.LogError($"Error al hacer el depósito del usuario con ID: {depositWithdrawalDTO.UserId}. {ex.Message}");
-            return BadRequest($"Error al hacer el depósito del usuario con ID: {depositWithdrawalDTO.UserId}. {ex.Message}");
+            _logger.LogError($"Error al hacer el retiro del usuario con ID: {depositWithdrawalDTO.UserId}. {ex.Message}");
+            return BadRequest($"Error al hacer el retiro del usuario con ID: {depositWithdrawalDTO.UserId}. {ex.Message}");
+        }
+    }
+
+    [HttpPost("BuyCrypto/")]
+    public IActionResult BuyCrypto([FromBody] BuySellCrypto buySellCrypto)
+    {
+        try {
+            _userService.BuyCrypto(buySellCrypto);
+            return Ok("Compra realizada correctamente.");
+        }     
+        catch (KeyNotFoundException knfex)
+        {
+            _logger.LogWarning($"No se ha encontrado el usuario con ID: {buySellCrypto.UserId}. {knfex.Message}");
+            return NotFound($"No se ha encontrado el usuario con ID: {buySellCrypto.UserId}. {knfex.Message}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al hacer la compra del usuario con ID: {buySellCrypto.UserId}. {ex.Message}");
+            return BadRequest($"Error al hacer la compra del usuario con ID: {buySellCrypto.UserId}. {ex.Message}");
+        }
+    }
+
+    [HttpPost("SellCrypto/")]
+    public IActionResult SellCrypto([FromBody] BuySellCrypto buySellCrypto)
+    {
+        try {
+            _userService.SellCrypto(buySellCrypto);
+            return Ok("Venta realizada correctamente.");
+        }     
+        catch (KeyNotFoundException knfex)
+        {
+            _logger.LogWarning($"No se ha encontrado el usuario con ID: {buySellCrypto.UserId}. {knfex.Message}");
+            return NotFound($"No se ha encontrado el usuario con ID: {buySellCrypto.UserId}. {knfex.Message}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al hacer la venta del usuario con ID: {buySellCrypto.UserId}. {ex.Message}");
+            return BadRequest($"Error al hacer la venta del usuario con ID: {buySellCrypto.UserId}. {ex.Message}");
+        }
+    }
+
+    [HttpGet("Transactions/")]
+    public ActionResult<IEnumerable<Transaction>> GetTransactions([FromQuery] TransactionQueryParameters transactionQueryParameters)
+    {
+        try {
+            var transactions = _userService.GetAllTransactions(transactionQueryParameters);
+            return Ok(transactions);
+        }     
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al obtener todas las transacciones. {ex.Message}");
+            return BadRequest($"Error al obtener todas las transacciones. {ex.Message}");
         }
     }
 
