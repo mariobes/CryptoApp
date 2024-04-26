@@ -18,10 +18,29 @@ namespace CryptoApp.Data
             SaveChanges();
         }
 
-        public IEnumerable<Crypto> GetAllCryptos() 
+        public IEnumerable<Crypto> GetAllCryptos(CryptoQueryParameters cryptoQueryParameters) 
         {
-            var cryptos = _context.Cryptos;
-            return cryptos;
+            var query = _context.Cryptos.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Name))
+            {
+                query = query.Where(c => c.Name.StartsWith(cryptoQueryParameters.Name));
+            }
+
+            if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Symbol))
+            {
+                query = query.Where(c => c.Symbol.StartsWith(cryptoQueryParameters.Symbol));
+            }
+
+            if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Developer))
+            {
+                query = query.Where(c => c.Developer.StartsWith(cryptoQueryParameters.Developer));
+            }
+
+            query = query.OrderByDescending(c => c.Value);
+
+            var result = query.ToList();
+            return result;
         }
 
         public Crypto GetCrypto(int cryptoId)

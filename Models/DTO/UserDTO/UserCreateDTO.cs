@@ -29,5 +29,4 @@ public class UserCreateDTO
 
     [Required]
     public string? Nationality { get; set; }
-
 }

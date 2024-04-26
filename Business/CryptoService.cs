@@ -20,9 +20,9 @@ public class CryptoService : ICryptoService
         return crypto;
     }
 
-    public IEnumerable<Crypto> GetAllCryptos()
+    public IEnumerable<Crypto> GetAllCryptos(CryptoQueryParameters? cryptoQueryParameters)
     {
-        return _repository.GetAllCryptos();
+        return _repository.GetAllCryptos(cryptoQueryParameters);
     }
 
     public Crypto GetCryptoById(int cryptoId)

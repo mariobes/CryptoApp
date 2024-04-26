@@ -24,6 +24,6 @@ public class CryptoCreateUpdateDTO
     [StringLength(50, ErrorMessage = "El desarrollador debe tener menos de 50 caracteres")]
     public string? Developer { get; set; }
 
-    [Required]
+    [Required(ErrorMessage = "El valor debe ser 'true' o 'false'")]
     public bool Descentralized { get; set; }
 }
