@@ -58,5 +58,35 @@ public class UserService : IUserService
         }
         _repository.DeleteUser(userId);
     }
+
+    public void MakeDeposit(DepositWithdrawalDTO depositWithdrawalDTO)
+    {
+        var user = _repository.GetUser(depositWithdrawalDTO.UserId);
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"Usuario con ID {depositWithdrawalDTO.UserId} no encontrado");
+        }
+
+        Transaction transaction = new(depositWithdrawalDTO.UserId, "Ingresar dinero", depositWithdrawalDTO.Amount, depositWithdrawalDTO.PaymentMethod);
+        user.Cash += depositWithdrawalDTO.Amount;
+        //user.Transactions.Add(transaction);
+         _repository.UpdateUser(user);
+         _repository.AddTransaction(transaction);
+    }
+
+    public void Withdrawal(DepositWithdrawalDTO depositWithdrawalDTO)
+    {
+        var user = _repository.GetUser(depositWithdrawalDTO.UserId);
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"Usuario con ID {depositWithdrawalDTO.UserId} no encontrado");
+        }
+
+        Transaction transaction = new(depositWithdrawalDTO.UserId, "Retirar dinero", depositWithdrawalDTO.Amount, depositWithdrawalDTO.PaymentMethod);
+        user.Cash -= depositWithdrawalDTO.Amount + transaction.Charge;
+        //user.Transactions.Add(transaction);
+         _repository.UpdateUser(user);
+         _repository.AddTransaction(transaction);
+    }
     
 }

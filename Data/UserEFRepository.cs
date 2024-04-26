@@ -47,6 +47,12 @@ namespace CryptoApp.Data
         {
             _context.SaveChanges();
         }
- 
+
+        public void AddTransaction(Transaction transaction)
+        {
+            _context.Transactions.Add(transaction);
+            SaveChanges();
+        }
+
     }   
 }

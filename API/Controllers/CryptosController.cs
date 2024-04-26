@@ -35,22 +35,6 @@ public class CryptosController : ControllerBase
         }
     }
 
-    /*[HttpGet]
-    public ActionResult<IEnumerable<Crypto>> GetAllCryptos() //ESTE METODO LO QUITAREMOS Y SOLO TENDREMOS EL SEARCH. NO VAMOS A TENER UNO CON FILTRO Y UNO SIN FILTRO. SERA DAME TODOS Y ADEMAS 
-                                                          //ACEPTO PARAMETROS DE ENTRADA. ES DECIR EN EL SEARCH PONEMOS PARAMETROS DE ENTRADA, PERO DE PRIMERAS YA NOS DA TODOS LOS RESULTADOS, 
-                                                          //SI QUEREMOS INTRODUCIMOS PARAMETROS DE ENTRADA PARA FILTRAR O NO
-    {
-        try {
-            var cryptos = _cryptoService.GetAllCryptos();
-            return Ok(cryptos);
-        }     
-        catch (Exception ex)
-        {
-            _logger.LogError($"Error al obtener todas las criptomonedas. {ex.Message}");
-            return BadRequest($"Error al obtener todas las criptomonedas. {ex.Message}");
-        }
-    }*/
-
     [HttpGet("{cryptoId}")]
     public IActionResult GetCrypto(int cryptoId)
     {

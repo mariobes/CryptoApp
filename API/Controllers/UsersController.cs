@@ -110,4 +110,42 @@ public class UsersController : ControllerBase
         }
     }
 
+    [HttpPost("deposit/")]
+    public IActionResult MakeDeposit([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
+    {
+        try {
+            _userService.MakeDeposit(depositWithdrawalDTO);
+            return Ok("Depósito realizado correctamente.");
+        }     
+        catch (KeyNotFoundException knfex)
+        {
+            _logger.LogWarning($"No se ha encontrado el usuario con ID: {depositWithdrawalDTO.UserId}. {knfex.Message}");
+            return NotFound($"No se ha encontrado el usuario con ID: {depositWithdrawalDTO.UserId}. {knfex.Message}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al hacer el depósito del usuario con ID: {depositWithdrawalDTO.UserId}. {ex.Message}");
+            return BadRequest($"Error al hacer el depósito del usuario con ID: {depositWithdrawalDTO.UserId}. {ex.Message}");
+        }
+    }
+
+    [HttpPost("withdrawal/")]
+    public IActionResult WithdrawalDeposit([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
+    {
+        try {
+            _userService.Withdrawal(depositWithdrawalDTO);
+            return Ok("Retiro realizado correctamente.");
+        }     
+        catch (KeyNotFoundException knfex)
+        {
+            _logger.LogWarning($"No se ha encontrado el usuario con ID: {depositWithdrawalDTO.UserId}. {knfex.Message}");
+            return NotFound($"No se ha encontrado el usuario con ID: {depositWithdrawalDTO.UserId}. {knfex.Message}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al hacer el depósito del usuario con ID: {depositWithdrawalDTO.UserId}. {ex.Message}");
+            return BadRequest($"Error al hacer el depósito del usuario con ID: {depositWithdrawalDTO.UserId}. {ex.Message}");
+        }
+    }
+
 }
