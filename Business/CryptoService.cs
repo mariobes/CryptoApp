@@ -11,7 +11,7 @@ public class CryptoService : ICryptoService
     {
         _repository = repository;
     }
-//string name, string symbol, string description, double value, string developer, bool descentralized
+
     public Crypto RegisterCrypto(CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
     {
         Crypto crypto = new(cryptoCreateUpdateDTO.Name, cryptoCreateUpdateDTO.Symbol, cryptoCreateUpdateDTO.Description, cryptoCreateUpdateDTO.Value, cryptoCreateUpdateDTO.Developer, cryptoCreateUpdateDTO.Descentralized);

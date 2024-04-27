@@ -14,6 +14,6 @@ public class TransactionQueryParameters
     public DateTime? FromDate { get; set; }
     public DateTime? ToDate { get; set; }
 
-    [StringLength(20, ErrorMessage = "El mconcepto debe tener menos de 20 caracteres")]
+    [StringLength(20, ErrorMessage = "El concepto debe tener menos de 20 caracteres")]
     public string? Concept { get; set; }
 }

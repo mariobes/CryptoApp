@@ -58,29 +58,31 @@ namespace CryptoApp.Data
         {
             var query = _context.Transactions.AsQueryable();
 
-            var userTransactions = _context.Transactions.Where(t => t.UserId == transactionQueryParameters.UserId);
+            query = _context.Transactions.Where(t => t.UserId == transactionQueryParameters.UserId);
 
             if (transactionQueryParameters.CryptoId.HasValue)
             {
-                userTransactions = _context.Transactions.Where(t => t.CryptoId == transactionQueryParameters.CryptoId);
+                query = query.Where(t => t.CryptoId == transactionQueryParameters.CryptoId);
             }
 
             if (transactionQueryParameters.FromDate.HasValue)
             {
-                userTransactions = userTransactions.Where(t => t.Date >= transactionQueryParameters.FromDate);
+                query = query.Where(t => t.Date >= transactionQueryParameters.FromDate);
             }
 
             if (transactionQueryParameters.ToDate.HasValue)
             {
-                userTransactions = userTransactions.Where(t => t.Date <= transactionQueryParameters.ToDate);
+                query = query.Where(t => t.Date <= transactionQueryParameters.ToDate);
             }
 
             if (!string.IsNullOrWhiteSpace(transactionQueryParameters.Concept))
             {
-                userTransactions = userTransactions.Where(t => t.Concept.StartsWith(transactionQueryParameters.Concept));
+                query = query.Where(t => t.Concept.StartsWith(transactionQueryParameters.Concept));
             }
+            
+            query = query.OrderBy(t => t.Date);
 
-            var result = userTransactions.ToList();
+            var result = query.ToList();
             return result;
         }
 

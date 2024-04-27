@@ -200,4 +200,18 @@ public class UsersController : ControllerBase
         }
     }
 
+    [HttpGet("MyCryptos/{userId}")]
+    public ActionResult<IEnumerable<Transaction>> MyCryptos(int userId)
+    {
+        try {
+            var userCryptos = _userService.MyCryptos(userId);
+            return Ok(userCryptos);
+        }     
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al obtener las criptomonedas del usuario {userId}. {ex.Message}");
+            return BadRequest($"Error al obtener las criptomonedas del usuario {userId}. {ex.Message}");
+        }
+    }
+
 }

@@ -86,7 +86,7 @@ public class UserService : IUserService
 
         if (user.Cash < depositWithdrawalDTO.Amount + 1) //El 1 es transaction.Charge
         {
-            throw new KeyNotFoundException("No tienes suficiente saldo para realizar el retiro");
+            throw new Exception("No tienes suficiente saldo para realizar el retiro");
         }
 
         Transaction transaction = new(depositWithdrawalDTO.UserId, "Retirar dinero", depositWithdrawalDTO.Amount, depositWithdrawalDTO.PaymentMethod);
@@ -105,7 +105,7 @@ public class UserService : IUserService
         
         if (user.Cash < buySellCrypto.Amount + 1) //El 1 es transaction.Charge
         {
-            throw new KeyNotFoundException("No tienes suficiente saldo para realizar la compra");
+            throw new Exception("No tienes suficiente saldo para realizar la compra");
         }
 
         Transaction transaction = new(buySellCrypto.UserId, buySellCrypto.CryptoId, $"Comprar {crypto.Name}", buySellCrypto.Amount);
@@ -123,8 +123,19 @@ public class UserService : IUserService
         if (user == null) throw new KeyNotFoundException($"Usuario con ID {buySellCrypto.UserId} no encontrado");
         if (crypto == null) throw new KeyNotFoundException($"Criptomoneda con ID {buySellCrypto.CryptoId} no encontrada");
         
+        var userHasCrypto = HasCrypto(buySellCrypto.UserId, buySellCrypto.CryptoId);
+        var userCryptoBalance = GetCryptoBalance(buySellCrypto.UserId, buySellCrypto.CryptoId);
 
+        if (!userHasCrypto  || userCryptoBalance == 0)
+        {
+            throw new Exception($"El usuario {buySellCrypto.UserId} no tiene la criptomoneda {buySellCrypto.CryptoId}");
+        }
 
+        if (buySellCrypto.Amount >= userCryptoBalance) //El 1 es transaction.Charge
+        {
+            throw new Exception($"No tienes suficientes fondos para realizar la venta");
+        }
+        
         Transaction transaction = new(buySellCrypto.UserId, buySellCrypto.CryptoId, $"Vender {crypto.Name}", buySellCrypto.Amount);
         //user.Transactions.Add(transaction);
         user.Cash += transaction.Amount;
@@ -136,6 +147,72 @@ public class UserService : IUserService
     public IEnumerable<Transaction> GetAllTransactions(TransactionQueryParameters transactionQueryParameters)
     {
         return _userRepository.GetAllTransactions(transactionQueryParameters);
+    }
+
+    public Dictionary<string, double> MyCryptos(int userId)
+    {
+        var userTransactions = _userRepository.GetAllTransactions(new TransactionQueryParameters { UserId = userId });
+
+        var totalAmountByCrypto = new Dictionary<string, double>();
+
+        foreach (var transaction in userTransactions)
+        {
+            if (transaction.CryptoId.HasValue)
+            {
+                var cryptoName = _cryptoRepository.GetCrypto(transaction.CryptoId.Value).Name;
+
+                if (!totalAmountByCrypto.ContainsKey(cryptoName))
+                {
+                    totalAmountByCrypto[cryptoName] = 0;
+                }
+                if (transaction.Concept.StartsWith("Comprar"))
+                {
+                    totalAmountByCrypto[cryptoName] += transaction.Amount;
+                }
+                if (transaction.Concept.StartsWith("Vender"))
+                {
+                    totalAmountByCrypto[cryptoName] -= transaction.Amount + transaction.Charge;
+                }  
+            }
+        }
+        return totalAmountByCrypto;
+    }
+
+    public bool HasCrypto(int userId, int cryptoId)
+    {
+        var userTransactions = _userRepository.GetAllTransactions(new TransactionQueryParameters { UserId = userId });
+
+        foreach (var transaction in userTransactions)
+        {
+            if (transaction.CryptoId == cryptoId)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public double GetCryptoBalance(int userId, int cryptoId)
+    {
+        var userTransactions = _userRepository.GetAllTransactions(new TransactionQueryParameters { UserId = userId });
+
+        double balance = 0;
+
+        foreach (var transaction in userTransactions)
+        {
+            if (transaction.CryptoId == cryptoId)
+            {
+                if (transaction.Concept.StartsWith("Comprar"))
+                {
+                    balance += transaction.Amount;
+                }
+                else if (transaction.Concept.StartsWith("Vender"))
+                {
+                    balance -= transaction.Amount + transaction.Charge;
+                }
+            }
+        }
+        return balance;
     }
     
 }
