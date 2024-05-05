@@ -61,6 +61,20 @@ public class UserService : IUserService
         _userRepository.DeleteUser(userId);
     }
 
+    public User CheckLogin(string email, string pasword)
+    {
+        User user = null;
+        foreach (var userLogin in _userRepository.GetAllUsers())
+        {
+            if (userLogin.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
+                userLogin.Password.Equals(pasword))
+            {
+                user = userLogin;
+            }
+        }
+        return user;
+    }
+
     public void MakeDeposit(DepositWithdrawalDTO depositWithdrawalDTO)
     {
         var user = _userRepository.GetUser(depositWithdrawalDTO.UserId);

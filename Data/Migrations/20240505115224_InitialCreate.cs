@@ -42,7 +42,8 @@ namespace CryptoApp.Data.Migrations
                     DNI = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Nationality = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Cash = table.Column<double>(type: "float", nullable: false),
-                    Wallet = table.Column<double>(type: "float", nullable: false)
+                    Wallet = table.Column<double>(type: "float", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,13 +93,13 @@ namespace CryptoApp.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Birthdate", "Cash", "DNI", "Email", "Name", "Nationality", "Password", "Phone", "Wallet" },
+                columns: new[] { "Id", "Birthdate", "Cash", "DNI", "Email", "Name", "Nationality", "Password", "Phone", "Role", "Wallet" },
                 values: new object[,]
                 {
-                    { 1, new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 146.0, "123D", "mario@gmail.com", "Mario", "España", "123", "123", 350.0 },
-                    { 2, new DateTime(2003, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 0.0, "456D", "carlos@gmail.com", "Carlos", "España", "456", "456", 0.0 },
-                    { 3, new DateTime(2003, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 0.0, "789D", "fernando@gmail.com", "Fernando", "España", "789", "789", 0.0 },
-                    { 4, new DateTime(2004, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 0.0, "123456789D", "eduardo@gmail.com", "Eduardo", "España", "123456789", "123456789", 0.0 }
+                    { 1, new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0.0, "32452464D", "mario@gmail.com", "Mario", "España", "mario12345", "4574", "admin", 0.0 },
+                    { 2, new DateTime(2003, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 146.0, "23523562D", "carlos@gmail.com", "Carlos", "Argentina", "carlos12345", "4567477", "user", 350.0 },
+                    { 3, new DateTime(2003, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified), 0.0, "23526445X", "fernando@gmail.com", "Fernando", "España", "fernando12345", "4745", "user", 0.0 },
+                    { 4, new DateTime(2004, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified), 0.0, "52353425D", "eduardo@gmail.com", "Eduardo", "España", "eduardo12345", "4574548", "user", 0.0 }
                 });
 
             migrationBuilder.InsertData(
@@ -106,11 +107,11 @@ namespace CryptoApp.Data.Migrations
                 columns: new[] { "Id", "Amount", "Charge", "Concept", "CryptoId", "Date", "Payment_Method", "UserId" },
                 values: new object[,]
                 {
-                    { 1, 500.0, 1.0, "Ingreso", null, new DateTime(2024, 1, 3, 17, 52, 7, 0, DateTimeKind.Unspecified), "Google Pay", 1 },
-                    { 2, 100.0, 1.0, "Comprar Bitcoin", 1, new DateTime(2024, 1, 3, 17, 54, 21, 0, DateTimeKind.Unspecified), null, 1 },
-                    { 3, 100.0, 1.0, "Comprar Etherium", 2, new DateTime(2024, 1, 3, 17, 54, 28, 0, DateTimeKind.Unspecified), null, 1 },
-                    { 4, 50.0, 1.0, "Comprar Solana", 3, new DateTime(2024, 1, 3, 17, 54, 33, 0, DateTimeKind.Unspecified), null, 1 },
-                    { 5, 100.0, 1.0, "Comprar Bitcoin", 1, new DateTime(2024, 1, 3, 17, 54, 37, 0, DateTimeKind.Unspecified), null, 1 }
+                    { 1, 500.0, 1.0, "Ingreso", null, new DateTime(2024, 1, 3, 17, 52, 7, 0, DateTimeKind.Unspecified), "Google Pay", 2 },
+                    { 2, 100.0, 1.0, "Comprar Bitcoin", 1, new DateTime(2024, 1, 3, 17, 54, 21, 0, DateTimeKind.Unspecified), null, 2 },
+                    { 3, 100.0, 1.0, "Comprar Etherium", 2, new DateTime(2024, 1, 3, 17, 54, 28, 0, DateTimeKind.Unspecified), null, 2 },
+                    { 4, 50.0, 1.0, "Comprar Solana", 3, new DateTime(2024, 1, 3, 17, 54, 33, 0, DateTimeKind.Unspecified), null, 2 },
+                    { 5, 100.0, 1.0, "Comprar Bitcoin", 1, new DateTime(2024, 1, 3, 17, 54, 37, 0, DateTimeKind.Unspecified), null, 2 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace CryptoApp.Models;
 
@@ -8,16 +9,12 @@ public class Transaction
     [Key]
     public int Id { get; set; }
 
-    //[ForeignKey("User")]
     [Required]
+    [ForeignKey("User")]
     public int UserId { get; set; }
-
-    public User User { get; set; }
 
     //[ForeignKey("Crypto")]
     public int? CryptoId { get; set; }
-    
-    public Crypto Crypto { get; set; }
 
     [Required]
     public string? Concept { get; set; }
@@ -28,6 +25,11 @@ public class Transaction
     public DateTime Date { get; set; }
     public double Charge { get; set; }
     public string? Payment_Method { get; set; }
+
+    [JsonIgnore]
+    public User User { get; set; }
+    [JsonIgnore]
+    public Crypto Crypto { get; set; }
 
     public Transaction() {}
 

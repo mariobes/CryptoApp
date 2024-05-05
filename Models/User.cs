@@ -30,7 +30,10 @@ public class User
     
     public double Cash { get; set; }
     public double Wallet { get; set; }
-    public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+    public List<Transaction> Transactions { get; set; }  = new List<Transaction>();
+
+    [Required]
+    public string Role { get; set; } = Roles.User;
 
     public User() {}
 

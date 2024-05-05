@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CryptoApp.Data.Migrations
 {
     [DbContext(typeof(CryptoAppContext))]
-    [Migration("20240426120638_InitialCreate")]
+    [Migration("20240505115224_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -155,7 +155,7 @@ namespace CryptoApp.Data.Migrations
                             Concept = "Ingreso",
                             Date = new DateTime(2024, 1, 3, 17, 52, 7, 0, DateTimeKind.Unspecified),
                             Payment_Method = "Google Pay",
-                            UserId = 1
+                            UserId = 2
                         },
                         new
                         {
@@ -165,7 +165,7 @@ namespace CryptoApp.Data.Migrations
                             Concept = "Comprar Bitcoin",
                             CryptoId = 1,
                             Date = new DateTime(2024, 1, 3, 17, 54, 21, 0, DateTimeKind.Unspecified),
-                            UserId = 1
+                            UserId = 2
                         },
                         new
                         {
@@ -175,7 +175,7 @@ namespace CryptoApp.Data.Migrations
                             Concept = "Comprar Etherium",
                             CryptoId = 2,
                             Date = new DateTime(2024, 1, 3, 17, 54, 28, 0, DateTimeKind.Unspecified),
-                            UserId = 1
+                            UserId = 2
                         },
                         new
                         {
@@ -185,7 +185,7 @@ namespace CryptoApp.Data.Migrations
                             Concept = "Comprar Solana",
                             CryptoId = 3,
                             Date = new DateTime(2024, 1, 3, 17, 54, 33, 0, DateTimeKind.Unspecified),
-                            UserId = 1
+                            UserId = 2
                         },
                         new
                         {
@@ -195,7 +195,7 @@ namespace CryptoApp.Data.Migrations
                             Concept = "Comprar Bitcoin",
                             CryptoId = 1,
                             Date = new DateTime(2024, 1, 3, 17, 54, 37, 0, DateTimeKind.Unspecified),
-                            UserId = 1
+                            UserId = 2
                         });
                 });
 
@@ -237,6 +237,10 @@ namespace CryptoApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("Wallet")
                         .HasColumnType("float");
 
@@ -249,39 +253,42 @@ namespace CryptoApp.Data.Migrations
                         {
                             Id = 1,
                             Birthdate = new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Cash = 146.0,
-                            DNI = "123D",
+                            Cash = 0.0,
+                            DNI = "32452464D",
                             Email = "mario@gmail.com",
                             Name = "Mario",
                             Nationality = "España",
-                            Password = "123",
-                            Phone = "123",
-                            Wallet = 350.0
+                            Password = "mario12345",
+                            Phone = "4574",
+                            Role = "admin",
+                            Wallet = 0.0
                         },
                         new
                         {
                             Id = 2,
                             Birthdate = new DateTime(2003, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Cash = 0.0,
-                            DNI = "456D",
+                            Cash = 146.0,
+                            DNI = "23523562D",
                             Email = "carlos@gmail.com",
                             Name = "Carlos",
-                            Nationality = "España",
-                            Password = "456",
-                            Phone = "456",
-                            Wallet = 0.0
+                            Nationality = "Argentina",
+                            Password = "carlos12345",
+                            Phone = "4567477",
+                            Role = "user",
+                            Wallet = 350.0
                         },
                         new
                         {
                             Id = 3,
                             Birthdate = new DateTime(2003, 3, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Cash = 0.0,
-                            DNI = "789D",
+                            DNI = "23526445X",
                             Email = "fernando@gmail.com",
                             Name = "Fernando",
                             Nationality = "España",
-                            Password = "789",
-                            Phone = "789",
+                            Password = "fernando12345",
+                            Phone = "4745",
+                            Role = "user",
                             Wallet = 0.0
                         },
                         new
@@ -289,12 +296,13 @@ namespace CryptoApp.Data.Migrations
                             Id = 4,
                             Birthdate = new DateTime(2004, 4, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Cash = 0.0,
-                            DNI = "123456789D",
+                            DNI = "52353425D",
                             Email = "eduardo@gmail.com",
                             Name = "Eduardo",
                             Nationality = "España",
-                            Password = "123456789",
-                            Phone = "123456789",
+                            Password = "eduardo12345",
+                            Phone = "4574548",
+                            Role = "user",
                             Wallet = 0.0
                         });
                 });

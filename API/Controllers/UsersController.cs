@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-
-using CryptoApp.Data;
 using CryptoApp.Business;
 using CryptoApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace CryptoApp.API.Controllers;
 
@@ -19,10 +19,13 @@ public class UsersController : ControllerBase
         _userService = userService;
     }
 
+    //[Authorize(Roles = Roles.Admin)]
     [HttpGet]
     public ActionResult<IEnumerable<User>> GetAllUsers()
     {
-        try {
+        try 
+        {
+            _logger.LogInformation("Getting all users");
             var users = _userService.GetAllUsers();
             return Ok(users);
         }     
@@ -33,6 +36,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin)]
     [HttpGet("{userId}")]
     public IActionResult GetUser(int userId)
     {
@@ -69,6 +73,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpPut("{userId}")]
     public IActionResult UpdateUser(int userId, UserUpdateDTO userUpdateDTO)
     {
@@ -90,6 +95,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpDelete("{userId}")]
     public IActionResult DeleteUser(int userId)
     {
@@ -110,6 +116,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpPost("Deposit/")]
     public IActionResult MakeDeposit([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
@@ -129,6 +136,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpPost("Withdrawal/")]
     public IActionResult MakeWithdrawal([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
@@ -148,6 +156,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpPost("BuyCrypto/")]
     public IActionResult BuyCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
@@ -167,6 +176,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpPost("SellCrypto/")]
     public IActionResult SellCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
@@ -186,6 +196,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpGet("Transactions/")]
     public ActionResult<IEnumerable<Transaction>> GetTransactions([FromQuery] TransactionQueryParameters transactionQueryParameters)
     {
@@ -200,6 +211,7 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpGet("MyCryptos/{userId}")]
     public ActionResult<IEnumerable<Transaction>> MyCryptos(int userId)
     {

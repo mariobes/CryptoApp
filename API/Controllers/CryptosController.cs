@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 
-using CryptoApp.Data;
 using CryptoApp.Business;
 using CryptoApp.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace CryptoApp.API.Controllers;
 
@@ -10,10 +11,10 @@ namespace CryptoApp.API.Controllers;
 [Route("[controller]")]
 public class CryptosController : ControllerBase
 {
-    private readonly ILogger<UsersController> _logger;
+    private readonly ILogger<CryptosController> _logger;
     private readonly ICryptoService _cryptoService;
 
-    public CryptosController(ILogger<UsersController> logger, ICryptoService cryptoService)
+    public CryptosController(ILogger<CryptosController> logger, ICryptoService cryptoService)
     {
         _logger = logger;
         _cryptoService = cryptoService;
@@ -35,6 +36,7 @@ public class CryptosController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin)]
     [HttpGet("{cryptoId}")]
     public IActionResult GetCrypto(int cryptoId)
     {
@@ -55,6 +57,7 @@ public class CryptosController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin)]
     [HttpPost]
     public IActionResult CreateCrypto([FromBody] CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
     {
@@ -71,6 +74,7 @@ public class CryptosController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin)]
     [HttpPut("{cryptoId}")]
     public IActionResult UpdateCrypto(int cryptoId, CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
     {
@@ -92,6 +96,7 @@ public class CryptosController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin)]
     [HttpDelete("{cryptoId}")]
     public IActionResult DeleteCrypto(int cryptoId)
     {
