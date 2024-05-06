@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "a02dabc8-ed7c-48e6-a2c5-abbd8dc8197e",
+		"name": "CryptoApp API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34734192"
+	},
+	"item": [
+		{
+			"name": "GetUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+						"type": "text",
+						"uuid": "864a4475-47e6-4ff5-bfa6-e532762bdaef"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4746/Users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4746",
+					"path": [
+						"Users"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetUsers",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Users?Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 May 2024 14:51:16 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Mario\",\n        \"birthdate\": \"2001-01-01T00:00:00\",\n        \"email\": \"mario@gmail.com\",\n        \"password\": \"mario12345\",\n        \"phone\": \"235235\",\n        \"dni\": \"32452464D\",\n        \"nationality\": \"España\",\n        \"cash\": 0,\n        \"wallet\": 0,\n        \"transactions\": null,\n        \"role\": \"admin\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Carlos\",\n        \"birthdate\": \"2003-03-03T00:00:00\",\n        \"email\": \"carlos@gmail.com\",\n        \"password\": \"carlos12345\",\n        \"phone\": \"343763\",\n        \"dni\": \"23523562D\",\n        \"nationality\": \"Argentina\",\n        \"cash\": 146,\n        \"wallet\": 350,\n        \"transactions\": null,\n        \"role\": \"user\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Fernando\",\n        \"birthdate\": \"2003-03-03T00:00:00\",\n        \"email\": \"fernando@gmail.com\",\n        \"password\": \"fernando12345\",\n        \"phone\": \"4745\",\n        \"dni\": \"23526445X\",\n        \"nationality\": \"España\",\n        \"cash\": 0,\n        \"wallet\": 0,\n        \"transactions\": null,\n        \"role\": \"user\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Eduardo\",\n        \"birthdate\": \"2004-04-04T00:00:00\",\n        \"email\": \"eduardo@gmail.com\",\n        \"password\": \"eduardo12345\",\n        \"phone\": \"4574548\",\n        \"dni\": \"52353425D\",\n        \"nationality\": \"España\",\n        \"cash\": 0,\n        \"wallet\": 0,\n        \"transactions\": null,\n        \"role\": \"user\"\n    },\n    {\n        \"id\": 7,\n        \"name\": \"string\",\n        \"birthdate\": \"2024-05-06T14:35:38.426\",\n        \"email\": \"user@example.com\",\n        \"password\": \"stringst\",\n        \"phone\": \"123456789\",\n        \"dni\": \"string\",\n        \"nationality\": \"string\",\n        \"cash\": 0,\n        \"wallet\": 0,\n        \"transactions\": null,\n        \"role\": \"user\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "GetUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+						"type": "text",
+						"uuid": "7c06bb21-b393-47f9-8dbf-2e7b9ae6cf64"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4746/Users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4746",
+					"path": [
+						"Users",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "GetUser",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Users/1?Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users",
+								"1"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 May 2024 14:50:59 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"name\": \"Mario\",\n    \"birthdate\": \"2001-01-01T00:00:00\",\n    \"email\": \"mario@gmail.com\",\n    \"password\": \"mario12345\",\n    \"phone\": \"235235\",\n    \"dni\": \"32452464D\",\n    \"nationality\": \"España\",\n    \"cash\": 0,\n    \"wallet\": 0,\n    \"transactions\": null,\n    \"role\": \"admin\"\n}"
+				}
+			]
+		},
+		{
+			"name": "PostUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+						"type": "text",
+						"uuid": "70ec0a7d-4064-465e-863e-953a0c54aab6"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"string\",\r\n  \"birthdate\": \"2024-05-06T14:35:38.426Z\",\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"stringst\",\r\n  \"phone\": \"12345\",\r\n  \"dni\": \"string\",\r\n  \"nationality\": \"string\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4746/Auth/Register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4746",
+					"path": [
+						"Auth",
+						"Register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PostUser",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"string\",\r\n  \"birthdate\": \"2024-05-06T14:35:38.426Z\",\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"stringst\",\r\n  \"phone\": \"12345\",\r\n  \"dni\": \"string\",\r\n  \"nationality\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Auth/Register?Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Auth",
+								"Register"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+								}
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 06 May 2024 14:39:29 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						},
+						{
+							"key": "Location",
+							"value": "http://localhost:4746/Auth/Login?userId=8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 8,\n    \"name\": \"string\",\n    \"birthdate\": \"2024-05-06T14:35:38.426Z\",\n    \"email\": \"user@example.com\",\n    \"password\": \"stringst\",\n    \"phone\": \"12345\",\n    \"dni\": \"string\",\n    \"nationality\": \"string\",\n    \"cash\": 0,\n    \"wallet\": 0,\n    \"transactions\": [],\n    \"role\": \"user\"\n}"
+				}
+			]
+		},
+		{
+			"name": "PutUser",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+						"type": "text",
+						"uuid": "b897292a-5c29-43e5-9a1d-0768e107225b"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"stringst\",\r\n  \"phone\": \"123456789\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4746/Users/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4746",
+					"path": [
+						"Users",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "PutUser",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"user@example.com\",\r\n  \"password\": \"stringst\",\r\n  \"phone\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Users/7?Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users",
+								"7"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 06 May 2024 14:40:33 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4746/Users/8?Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4746",
+					"path": [
+						"Users",
+						"8"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "DeleteUser",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4746/Users/8?Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users",
+								"8"
+							],
+							"query": [
+								{
+									"key": "Authorization",
+									"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwibmJmIjoxNzE1MDA2ODY3LCJleHAiOjE3MTc1OTg4NjcsImlhdCI6MTcxNTAwNjg2N30.3ZJU6le8PRcSjyu5itYKZh3PX1xwsC6dYmzOLvBN-Is"
+								}
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 06 May 2024 14:40:46 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "Kestrel"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		}
+	]
+}

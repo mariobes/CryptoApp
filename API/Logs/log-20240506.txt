@@ -4,3 +4,32 @@
 2024-05-06 14:32:58.438 +02:00 [WRN] No se ha encontrado el usuario con ID: 7. Usuario con ID 7 no encontrado
 2024-05-06 14:33:01.534 +02:00 [WRN] No se ha encontrado el usuario con ID: 7. Usuario con ID 7 no encontrado
 2024-05-06 14:33:10.787 +02:00 [WRN] No se ha encontrado la criptomoneda con ID: 5. Criptomoneda con ID 5 no encontrada
+2024-05-06 14:04:01.523 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-06 14:04:01.600 +00:00 [WRN] No XML encryptor configured. Key {39866c39-c49e-469e-bf52-fa8479c9f69e} may be persisted to storage in unencrypted form.
+2024-05-06 14:04:48.180 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-06 14:04:48.789 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-06 14:14:03.917 +00:00 [WRN] No se ha encontrado el usuario con ID: 6. Usuario con ID 6 no encontrado
+2024-05-06 14:29:25.649 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-06 14:29:25.735 +00:00 [ERR] Connection id "0HN3DR3L4S5FI", Request id "0HN3DR3L4S5FI:00000004": An unhandled exception was thrown by the application.
+System.InvalidOperationException: No authenticationScheme was specified, and there was no DefaultChallengeScheme found. The default schemes can be set using either AddAuthentication(string defaultScheme) or AddAuthentication(Action<AuthenticationOptions> configureOptions).
+   at Microsoft.AspNetCore.Authentication.AuthenticationService.ChallengeAsync(HttpContext context, String scheme, AuthenticationProperties properties)
+   at Microsoft.AspNetCore.Authorization.Policy.AuthorizationMiddlewareResultHandler.HandleAsync(RequestDelegate next, HttpContext context, AuthorizationPolicy policy, PolicyAuthorizationResult authorizeResult)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2024-05-06 14:30:19.400 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-06 14:30:19.473 +00:00 [WRN] No XML encryptor configured. Key {72f53dd6-41fb-4f4c-a454-718022e5a011} may be persisted to storage in unencrypted form.
+2024-05-06 14:30:23.478 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-06 14:30:24.526 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-06 14:32:05.923 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-06 14:32:05.971 +00:00 [WRN] No XML encryptor configured. Key {25b66293-ada1-4230-b667-d7bddf80b007} may be persisted to storage in unencrypted form.
+2024-05-06 14:32:12.847 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-06 14:32:13.458 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-06 14:47:20.923 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-06 14:47:20.971 +00:00 [WRN] No XML encryptor configured. Key {84c4de9d-a332-4433-8198-d3a08c3bbcbb} may be persisted to storage in unencrypted form.
+2024-05-06 14:47:46.227 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-06 14:47:46.835 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-06 15:00:10.743 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-06 15:00:10.789 +00:00 [WRN] No XML encryptor configured. Key {7062ab6f-1b45-4528-a8d9-cb8afe415994} may be persisted to storage in unencrypted form.
