@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System.Security.Cryptography;
 using CryptoApp.Data;
 using CryptoApp.Models;
@@ -59,20 +60,6 @@ public class UserService : IUserService
             throw new KeyNotFoundException($"Usuario con ID {userId} no encontrado");
         }
         _userRepository.DeleteUser(userId);
-    }
-
-    public User CheckLogin(string email, string pasword)
-    {
-        User user = null;
-        foreach (var userLogin in _userRepository.GetAllUsers())
-        {
-            if (userLogin.Email.Equals(email, StringComparison.OrdinalIgnoreCase) &&
-                userLogin.Password.Equals(pasword))
-            {
-                user = userLogin;
-            }
-        }
-        return user;
     }
 
     public void MakeDeposit(DepositWithdrawalDTO depositWithdrawalDTO)

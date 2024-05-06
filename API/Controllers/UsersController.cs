@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using CryptoApp.Business;
 using CryptoApp.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 
 namespace CryptoApp.API.Controllers;
 
@@ -12,20 +11,21 @@ public class UsersController : ControllerBase
 {
     private readonly ILogger<UsersController> _logger;
     private readonly IUserService _userService;
+    private readonly IAuthService _authService;
 
-    public UsersController(ILogger<UsersController> logger, IUserService userService)
+    public UsersController(ILogger<UsersController> logger, IUserService userService, IAuthService authService)
     {
         _logger = logger;
         _userService = userService;
+        _authService = authService;
     }
 
-    //[Authorize(Roles = Roles.Admin)]
+    [Authorize(Roles = Roles.Admin)]
     [HttpGet]
     public ActionResult<IEnumerable<User>> GetAllUsers()
     {
         try 
         {
-            _logger.LogInformation("Getting all users");
             var users = _userService.GetAllUsers();
             return Ok(users);
         }     
@@ -36,10 +36,13 @@ public class UsersController : ControllerBase
         }
     }
 
-    [Authorize(Roles = Roles.Admin)]
+    [Authorize(Roles = Roles.Admin + "," +  Roles.User)]
     [HttpGet("{userId}")]
     public IActionResult GetUser(int userId)
     {
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+            {return Forbid(); }
+
         try
         {
             var user = _userService.GetUserById(userId);
@@ -57,27 +60,14 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPost]
-    public IActionResult CreateUser([FromBody] UserCreateDTO userCreateDTO)
-    {
-        if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
-
-        try {
-            var user = _userService.RegisterUser(userCreateDTO);
-            return CreatedAtAction(nameof(GetUser), new { userId = user.Id }, user);
-        }     
-        catch (Exception ex)
-        {
-            _logger.LogError($"Error al registrar el usuario. {ex.Message}");
-            return BadRequest($"Error al registrar el usuario. {ex.Message}");
-        }
-    }
-
     [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpPut("{userId}")]
     public IActionResult UpdateUser(int userId, UserUpdateDTO userUpdateDTO)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
+
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+            {return Forbid(); }
 
         try {
             _userService.UpdateUser(userId, userUpdateDTO);
@@ -99,6 +89,9 @@ public class UsersController : ControllerBase
     [HttpDelete("{userId}")]
     public IActionResult DeleteUser(int userId)
     {
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+            {return Forbid(); }
+
         try
         {
             _userService.DeleteUser(userId);
@@ -120,6 +113,9 @@ public class UsersController : ControllerBase
     [HttpPost("Deposit/")]
     public IActionResult MakeDeposit([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
+        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), HttpContext.User)) 
+            {return Forbid(); }
+
         try {
             _userService.MakeDeposit(depositWithdrawalDTO);
             return Ok("Depósito realizado correctamente.");
@@ -140,6 +136,9 @@ public class UsersController : ControllerBase
     [HttpPost("Withdrawal/")]
     public IActionResult MakeWithdrawal([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
+        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), HttpContext.User)) 
+            {return Forbid(); }
+
         try {
             _userService.MakeWithdrawal(depositWithdrawalDTO);
             return Ok("Retiro realizado correctamente.");
@@ -160,6 +159,9 @@ public class UsersController : ControllerBase
     [HttpPost("BuyCrypto/")]
     public IActionResult BuyCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
+        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), HttpContext.User)) 
+            {return Forbid(); }
+
         try {
             _userService.BuyCrypto(buySellCrypto);
             return Ok("Compra realizada correctamente.");
@@ -180,6 +182,9 @@ public class UsersController : ControllerBase
     [HttpPost("SellCrypto/")]
     public IActionResult SellCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
+        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), HttpContext.User)) 
+            {return Forbid(); }
+
         try {
             _userService.SellCrypto(buySellCrypto);
             return Ok("Venta realizada correctamente.");
@@ -200,6 +205,9 @@ public class UsersController : ControllerBase
     [HttpGet("Transactions/")]
     public ActionResult<IEnumerable<Transaction>> GetTransactions([FromQuery] TransactionQueryParameters transactionQueryParameters)
     {
+        if (!_authService.HasAccessToResource(Convert.ToInt32(transactionQueryParameters.UserId), HttpContext.User)) 
+            {return Forbid(); }
+
         try {
             var transactions = _userService.GetAllTransactions(transactionQueryParameters);
             return Ok(transactions);
@@ -215,6 +223,9 @@ public class UsersController : ControllerBase
     [HttpGet("MyCryptos/{userId}")]
     public ActionResult<IEnumerable<Transaction>> MyCryptos(int userId)
     {
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+            {return Forbid(); }
+
         try {
             var userCryptos = _userService.MyCryptos(userId);
             return Ok(userCryptos);

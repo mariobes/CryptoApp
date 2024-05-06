@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(opt =>
@@ -25,8 +26,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICryptoService, CryptoService>();
 builder.Services.AddScoped<IUserRepository, UserEFRepository>();
 builder.Services.AddScoped<ICryptoRepository, CryptoEFRepository>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
-var connectionString = builder.Configuration.GetConnectionString("ServerDB_dockernet");
+var connectionString = builder.Configuration.GetConnectionString("ServerDB_localhost");
 
 builder.Services.AddDbContext<CryptoAppContext>(options =>
     options.UseSqlServer(connectionString));

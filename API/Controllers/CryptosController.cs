@@ -36,7 +36,7 @@ public class CryptosController : ControllerBase
         }
     }
 
-    [Authorize(Roles = Roles.Admin)]
+    [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpGet("{cryptoId}")]
     public IActionResult GetCrypto(int cryptoId)
     {

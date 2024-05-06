@@ -15,12 +15,14 @@ public class AuthController : ControllerBase
 {
     private readonly ILogger<UsersController> _logger;
     private readonly IUserService _userService;
-      private readonly IConfiguration _configuration;
+    private readonly IAuthService _authService;
+    private readonly IConfiguration _configuration;
 
-    public AuthController(ILogger<UsersController> logger, IUserService userService, IConfiguration configuration)
+    public AuthController(ILogger<UsersController> logger, IUserService userService, IAuthService authService, IConfiguration configuration)
     {
         _logger = logger;
         _userService = userService;
+        _authService = authService;
         _configuration = configuration;
     }
 
@@ -29,10 +31,10 @@ public class AuthController : ControllerBase
     {
         try
         {
-            var user = _userService.CheckLogin(userLoginDTO.Email, userLoginDTO.Password);
+            var user = _authService.CheckLogin(userLoginDTO.Email, userLoginDTO.Password);
             if (user != null)
             {
-                var token = GenerateJwtToken(user);
+                var token = _authService.GenerateJwtToken(user);
                 return Ok(token);
             }
             else
@@ -52,7 +54,23 @@ public class AuthController : ControllerBase
         }
     }
 
-    private string GenerateJwtToken(User user)
+    [HttpPost("Register/")]
+    public IActionResult Register([FromBody] UserCreateDTO userCreateDTO)
+    {
+        if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
+
+        try {
+            var user = _userService.RegisterUser(userCreateDTO);
+            return CreatedAtAction(nameof(Login), new { userId = user.Id }, user);
+        }     
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al registrar el usuario. {ex.Message}");
+            return BadRequest($"Error al registrar el usuario. {ex.Message}");
+        }
+    }
+
+    /*private string GenerateJwtToken(User user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var secretKey = _configuration["JWT:SecretKey"]; 
@@ -72,7 +90,7 @@ public class AuthController : ControllerBase
         return tokenHandler.WriteToken(token);
     }
 
-    /*public bool HasAccessToResource(int requestedUserID, ClaimsPrincipal user) 
+    public bool HasAccessToResource(int requestedUserID, ClaimsPrincipal user) 
     {
         var userIdClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
         if (userIdClaim is null || !int.TryParse(userIdClaim.Value, out int userId)) 
