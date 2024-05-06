@@ -1,0 +1,42 @@
+[
+  {
+    "Id": 1,
+    "Name": "Bitcoin",
+    "Symbol": "BTC",
+    "Description": "Bitcoin",
+    "RegisterDate": "2024-01-03T13:54:18.9788806+01:00",
+    "Value": 40000,
+    "Developer": "Bitcoin",
+    "Descentralized": true
+  },
+  {
+    "Id": 2,
+    "Name": "Etherium",
+    "Symbol": "ETH",
+    "Description": "Etherium",
+    "RegisterDate": "2024-01-03T13:54:48.6658682+01:00",
+    "Value": 2000,
+    "Developer": "Etherium",
+    "Descentralized": true
+  },
+  {
+    "Id": 3,
+    "Name": "Solana",
+    "Symbol": "SOL",
+    "Description": "Solana",
+    "RegisterDate": "2024-01-03T13:55:06.5690166+01:00",
+    "Value": 90,
+    "Developer": "Solana",
+    "Descentralized": true
+  },
+  {
+    "Id": 4,
+    "Name": "Ripple",
+    "Symbol": "XRP",
+    "Description": "Ripple",
+    "RegisterDate": "2024-01-03T13:55:25.329443+01:00",
+    "Value": 0.5,
+    "Developer": "Ripple",
+    "Descentralized": false
+  }
+]

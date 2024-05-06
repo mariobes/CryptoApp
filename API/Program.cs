@@ -28,7 +28,7 @@ builder.Services.AddScoped<IUserRepository, UserEFRepository>();
 builder.Services.AddScoped<ICryptoRepository, CryptoEFRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-var connectionString = builder.Configuration.GetConnectionString("ServerDB_localhost");
+var connectionString = builder.Configuration.GetConnectionString("ServerDB_dockernet");
 
 builder.Services.AddDbContext<CryptoAppContext>(options =>
     options.UseSqlServer(connectionString));
