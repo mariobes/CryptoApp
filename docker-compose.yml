@@ -36,11 +36,5 @@ services:
             - db
         networks:
             - cryptoapp
-
-    #web:
-        #container_name: webContainer
-        #image: web:1.0
-        #ports:
-            #- 9000:8080 
-        #depends_on:
-            #- api
+        volumes:
+            - ./API/Logs:/app/Logs

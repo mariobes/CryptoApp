@@ -1,0 +1,6 @@
+2024-05-06 14:30:48.367 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-06 14:31:22.441 +02:00 [WRN] No se ha encontrado la criptomoneda con ID: 5. Criptomoneda con ID 5 no encontrada
+2024-05-06 14:31:40.897 +02:00 [WRN] No se ha encontrado la criptomoneda con ID: 5. Criptomoneda con ID 5 no encontrada
+2024-05-06 14:32:58.438 +02:00 [WRN] No se ha encontrado el usuario con ID: 7. Usuario con ID 7 no encontrado
+2024-05-06 14:33:01.534 +02:00 [WRN] No se ha encontrado el usuario con ID: 7. Usuario con ID 7 no encontrado
+2024-05-06 14:33:10.787 +02:00 [WRN] No se ha encontrado la criptomoneda con ID: 5. Criptomoneda con ID 5 no encontrada

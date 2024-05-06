@@ -2,10 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using CryptoApp.Business;
 using CryptoApp.Models;
-using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-using Microsoft.IdentityModel.Tokens;
-using System.Security.Claims;
+
 
 namespace CryptoApp.API.Controllers;
 
@@ -13,12 +10,12 @@ namespace CryptoApp.API.Controllers;
 [Route("[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly ILogger<UsersController> _logger;
+    private readonly ILogger<AuthController> _logger;
     private readonly IUserService _userService;
     private readonly IAuthService _authService;
     private readonly IConfiguration _configuration;
 
-    public AuthController(ILogger<UsersController> logger, IUserService userService, IAuthService authService, IConfiguration configuration)
+    public AuthController(ILogger<AuthController> logger, IUserService userService, IAuthService authService, IConfiguration configuration)
     {
         _logger = logger;
         _userService = userService;

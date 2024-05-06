@@ -1,5 +1,4 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
-using System.Runtime.Serialization;
 using System.Security.Claims;
 using System.Text;
 using CryptoApp.Data;
