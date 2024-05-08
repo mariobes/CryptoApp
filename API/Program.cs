@@ -37,7 +37,7 @@ builder.Services.AddScoped<IUserRepository, UserEFRepository>();
 builder.Services.AddScoped<ICryptoRepository, CryptoEFRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-var connectionString = builder.Configuration.GetConnectionString("ServerDB_dockernet");
+var connectionString = builder.Configuration.GetConnectionString("ServerDB_azure");
 
 builder.Services.AddDbContext<CryptoAppContext>(options =>
     options.UseSqlServer(connectionString));
@@ -80,7 +80,12 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+using (var scope = app.Services.CreateScope())
+{
+  var services = scope.ServiceProvider;
+  var context = services.GetRequiredService<CryptoAppContext>();
+  context.Database.Migrate();
+}
 
 // Configurar CORS
 app.UseCors();
