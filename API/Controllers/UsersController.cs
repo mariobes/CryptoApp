@@ -27,6 +27,7 @@ public class UsersController : ControllerBase
         try 
         {
             var users = _userService.GetAllUsers();
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok(users);
         }     
         catch (Exception ex)
@@ -40,7 +41,7 @@ public class UsersController : ControllerBase
     [HttpGet("{userId}")]
     public IActionResult GetUser(int userId)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try
@@ -60,13 +61,37 @@ public class UsersController : ControllerBase
         }
     }
 
+    [Authorize(Roles = Roles.Admin + "," +  Roles.User)]
+    [HttpGet("ByEmail")]
+    public IActionResult GetUserByEmail(string userEmail)
+    {
+        if (!_authService.HasAccessToResource(null, userEmail, HttpContext.User)) 
+            {return Forbid(); }
+
+        try
+        {
+            var user = _userService.GetUserByEmail(userEmail);
+            return Ok(user);
+        }
+        catch (KeyNotFoundException knfex)
+        {
+            _logger.LogWarning($"No se ha encontrado el usuario con email: {userEmail}. {knfex.Message}");
+           return NotFound($"No se ha encontrado el usuario con email: {userEmail}. {knfex.Message}");
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError($"Error al obtener el usuario con email: {userEmail}. {ex.Message}");
+            return BadRequest($"Error al obtener el usuario con email: {userEmail}. {ex.Message}");
+        }
+    }
+
     [Authorize(Roles = Roles.Admin + "," + Roles.User)]
     [HttpPut("{userId}")]
     public IActionResult UpdateUser(int userId, UserUpdateDTO userUpdateDTO)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
 
-        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
@@ -89,7 +114,7 @@ public class UsersController : ControllerBase
     [HttpDelete("{userId}")]
     public IActionResult DeleteUser(int userId)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try
@@ -113,11 +138,12 @@ public class UsersController : ControllerBase
     [HttpPost("Deposit/")]
     public IActionResult MakeDeposit([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
             _userService.MakeDeposit(depositWithdrawalDTO);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok("Depósito realizado correctamente.");
         }     
         catch (KeyNotFoundException knfex)
@@ -136,7 +162,7 @@ public class UsersController : ControllerBase
     [HttpPost("Withdrawal/")]
     public IActionResult MakeWithdrawal([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
@@ -159,11 +185,12 @@ public class UsersController : ControllerBase
     [HttpPost("BuyCrypto/")]
     public IActionResult BuyCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
             _userService.BuyCrypto(buySellCrypto);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok("Compra realizada correctamente.");
         }     
         catch (KeyNotFoundException knfex)
@@ -182,7 +209,7 @@ public class UsersController : ControllerBase
     [HttpPost("SellCrypto/")]
     public IActionResult SellCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
@@ -205,11 +232,12 @@ public class UsersController : ControllerBase
     [HttpGet("Transactions/")]
     public ActionResult<IEnumerable<Transaction>> GetTransactions([FromQuery] TransactionQueryParameters transactionQueryParameters)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(transactionQueryParameters.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(transactionQueryParameters.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
             var transactions = _userService.GetAllTransactions(transactionQueryParameters);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok(transactions);
         }     
         catch (Exception ex)
@@ -223,11 +251,12 @@ public class UsersController : ControllerBase
     [HttpGet("MyCryptos/{userId}")]
     public ActionResult<IEnumerable<Transaction>> MyCryptos(int userId)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
             var userCryptos = _userService.MyCryptos(userId);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok(userCryptos);
         }     
         catch (Exception ex)

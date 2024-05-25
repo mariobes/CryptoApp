@@ -37,13 +37,22 @@ builder.Services.AddScoped<IUserRepository, UserEFRepository>();
 builder.Services.AddScoped<ICryptoRepository, CryptoEFRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-var connectionString = builder.Configuration.GetConnectionString("ServerDB_azure");
+var connectionString = builder.Configuration.GetConnectionString("ServerDB_dockernet");
 
 builder.Services.AddDbContext<CryptoAppContext>(options =>
     options.UseSqlServer(connectionString));
 
 // Configurar CORS para permitir todas las solicitudes
-builder.Services.AddCors();
+builder.Services.AddCors(options =>
+{
+options.AddPolicy("MyAllowedOrigins",
+    policy =>
+    {
+        policy.WithOrigins("http://localhost:5173")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -80,15 +89,19 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
+if (connectionString == "ServerDB_azure")
 {
-  var services = scope.ServiceProvider;
-  var context = services.GetRequiredService<CryptoAppContext>();
-  context.Database.Migrate();
+    using (var scope = app.Services.CreateScope())
+    {
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<CryptoAppContext>();
+    context.Database.Migrate();
+    }
 }
 
+
 // Configurar CORS
-app.UseCors();
+app.UseCors("MyAllowedOrigins");
 
 // Configurar Swagger
 app.UseSwagger();

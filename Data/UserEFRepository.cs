@@ -31,6 +31,12 @@ namespace CryptoApp.Data
             //.Include(u => u.Transactions).ToList();     Habra que poner esto para que no de null, probablemente al debugear funcionara, y al devolverlo con la api dara eror de referencia circular, habra que utilizar DTOs
         }
 
+        public User GetUserByEmail(string userEmail)
+        {
+            var user = _context.Users.FirstOrDefault(user => user.Email == userEmail);
+            return user;
+        }
+
         public void UpdateUser(User user)
         {
             _context.Entry(user).State = EntityState.Modified;

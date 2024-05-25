@@ -28,6 +28,7 @@ public class CryptosController : ControllerBase
         try 
         {
             var cryptos = _cryptoService.GetAllCryptos(cryptoQueryParameters);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok(cryptos);
         }
         catch (Exception ex)
@@ -82,6 +83,7 @@ public class CryptosController : ControllerBase
 
         try {
             _cryptoService.UpdateCrypto(cryptoId, cryptoCreateUpdateDTO);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return NoContent();
         }     
         catch (KeyNotFoundException knfex)

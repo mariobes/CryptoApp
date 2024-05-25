@@ -35,6 +35,16 @@ public class UserService : IUserService
         }
         return user;
     }
+
+    public User GetUserByEmail(string userEmail)
+    {
+        var user = _userRepository.GetUserByEmail(userEmail);
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"Usuario con email {userEmail} no encontrado");
+        }
+        return user;
+    }
     
     public void UpdateUser(int userId, UserUpdateDTO userUpdateDTO)
     {
