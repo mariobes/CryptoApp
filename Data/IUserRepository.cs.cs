@@ -12,5 +12,5 @@ public interface IUserRepository
     public void UpdateUser(User user);
     void SaveChanges();
     public void AddTransaction(Transaction transaction);
-    public IEnumerable<Transaction> GetAllTransactions(TransactionQueryParameters transactionQueryParameters);
+    public IEnumerable<Transaction> GetAllTransactions(int userId, TransactionQueryParameters transactionQueryParameters);
 }

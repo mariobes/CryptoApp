@@ -24,7 +24,7 @@ public class TransactionsController : ControllerBase
     [HttpPost("deposit")]
     public IActionResult MakeDeposit([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
@@ -47,7 +47,7 @@ public class TransactionsController : ControllerBase
     [HttpPost("withdrawal")]
     public IActionResult MakeWithdrawal([FromBody] DepositWithdrawalDTO depositWithdrawalDTO)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(depositWithdrawalDTO.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
@@ -70,7 +70,7 @@ public class TransactionsController : ControllerBase
     [HttpPost("buycrypto")]
     public IActionResult BuyCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
@@ -93,7 +93,7 @@ public class TransactionsController : ControllerBase
     [HttpPost("sellcrypto")]
     public IActionResult SellCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
@@ -116,7 +116,7 @@ public class TransactionsController : ControllerBase
     [HttpGet("{userId}")]
     public ActionResult<IEnumerable<Transaction>> GetTransactions(int userId, [FromQuery] TransactionQueryParameters transactionQueryParameters)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
@@ -134,7 +134,7 @@ public class TransactionsController : ControllerBase
     [HttpGet("{userId}/mycryptos")]
     public ActionResult<IEnumerable<Transaction>> MyCryptos(int userId)
     {
-        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), HttpContext.User)) 
+        if (!_authService.HasAccessToResource(Convert.ToInt32(userId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {

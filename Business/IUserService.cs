@@ -15,6 +15,6 @@ public interface IUserService
     public void MakeWithdrawal(DepositWithdrawalDTO depositWithdrawalDTO);
     public void BuyCrypto(BuySellCrypto buySellCrypto);
     public void SellCrypto(BuySellCrypto buySellCrypto);
-    public IEnumerable<Transaction> GetAllTransactions(TransactionQueryParameters transactionQueryParameters);
+    public IEnumerable<Transaction> GetAllTransactions(int userId, TransactionQueryParameters transactionQueryParameters);
     public Dictionary<string, double> MyCryptos(int userId);
 }

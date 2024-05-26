@@ -60,11 +60,11 @@ namespace CryptoApp.Data
             SaveChanges();
         }
 
-        public IEnumerable<Transaction> GetAllTransactions(TransactionQueryParameters transactionQueryParameters) 
+        public IEnumerable<Transaction> GetAllTransactions(int userId, TransactionQueryParameters transactionQueryParameters) 
         {
             var query = _context.Transactions.AsQueryable();
 
-            query = _context.Transactions.Where(t => t.UserId == transactionQueryParameters.UserId);
+            query = _context.Transactions.Where(t => t.UserId == userId);
 
             if (transactionQueryParameters.CryptoId.HasValue)
             {

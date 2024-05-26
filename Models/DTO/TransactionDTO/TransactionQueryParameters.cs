@@ -4,10 +4,6 @@ namespace CryptoApp.Models;
 
 public class TransactionQueryParameters
 {
-    [Required]
-    [Range(1, int.MaxValue, ErrorMessage = "El ID del usuario no es válido")]
-    public int UserId { get; set; }
-
     [Range(1, int.MaxValue, ErrorMessage = "El ID de la criptomoneda no es válido")]
     public int? CryptoId { get; set; }
 

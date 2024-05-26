@@ -152,14 +152,14 @@ public class UserService : IUserService
         _userRepository.AddTransaction(transaction);
     }
 
-    public IEnumerable<Transaction> GetAllTransactions(TransactionQueryParameters transactionQueryParameters)
+    public IEnumerable<Transaction> GetAllTransactions(int userId, TransactionQueryParameters transactionQueryParameters)
     {
-        return _userRepository.GetAllTransactions(transactionQueryParameters);
+        return _userRepository.GetAllTransactions(userId, transactionQueryParameters);
     }
 
     public Dictionary<string, double> MyCryptos(int userId)
     {
-        var userTransactions = _userRepository.GetAllTransactions(new TransactionQueryParameters { UserId = userId });
+        var userTransactions = _userRepository.GetAllTransactions(userId, new TransactionQueryParameters());
 
         var totalAmountByCrypto = new Dictionary<string, double>();
 
@@ -188,7 +188,7 @@ public class UserService : IUserService
 
     public bool HasCrypto(int userId, int cryptoId)
     {
-        var userTransactions = _userRepository.GetAllTransactions(new TransactionQueryParameters { UserId = userId });
+        var userTransactions = _userRepository.GetAllTransactions(userId, new TransactionQueryParameters());
 
         foreach (var transaction in userTransactions)
         {
@@ -202,7 +202,7 @@ public class UserService : IUserService
 
     public double GetCryptoBalance(int userId, int cryptoId)
     {
-        var userTransactions = _userRepository.GetAllTransactions(new TransactionQueryParameters { UserId = userId });
+        var userTransactions = _userRepository.GetAllTransactions(userId, new TransactionQueryParameters());
 
         double balance = 0;
 
