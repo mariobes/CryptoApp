@@ -1,0 +1,8 @@
+2024-05-26 10:48:07.879 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 10:49:16.686 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 10:52:59.997 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 11:04:02.921 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 11:12:10.912 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 11:14:56.519 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 11:17:23.840 +02:00 [ERR] Error al hacer la compra del usuario con ID: 1. No tienes suficiente saldo para realizar la compra
+2024-05-26 11:17:42.403 +02:00 [ERR] Error al hacer la venta del usuario con ID: 1. El usuario 1 no tiene la criptomoneda 4
