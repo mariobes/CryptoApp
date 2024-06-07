@@ -1,0 +1,7 @@
+2024-06-07 14:15:43.193 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:16:22.339 +02:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 14:16:40.313 +02:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 14:17:16.175 +02:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 14:17:33.975 +02:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:19:53.672 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 12:19:53.720 +00:00 [WRN] No XML encryptor configured. Key {23aaf343-552e-402b-9ba5-6762d2392d1e} may be persisted to storage in unencrypted form.

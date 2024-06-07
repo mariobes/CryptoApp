@@ -1,0 +1,29 @@
+2024-05-28 13:29:21.950 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:29:22.789 +02:00 [ERR] Failed executing DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Cryptos] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Symbol] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [RegisterDate] datetime2 NOT NULL,
+    [Value] float NOT NULL,
+    [Developer] nvarchar(max) NOT NULL,
+    [Descentralized] bit NOT NULL,
+    CONSTRAINT [PK_Cryptos] PRIMARY KEY ([Id])
+);
+2024-05-28 13:29:31.661 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:29:40.767 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:29:41.366 +02:00 [ERR] Failed executing DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Cryptos] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Symbol] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [RegisterDate] datetime2 NOT NULL,
+    [Value] float NOT NULL,
+    [Developer] nvarchar(max) NOT NULL,
+    [Descentralized] bit NOT NULL,
+    CONSTRAINT [PK_Cryptos] PRIMARY KEY ([Id])
+);
+2024-05-28 11:30:13.812 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-28 11:30:13.860 +00:00 [WRN] No XML encryptor configured. Key {f1a8796f-f1ea-4325-acb1-72da4aa282dd} may be persisted to storage in unencrypted form.

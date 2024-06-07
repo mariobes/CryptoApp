@@ -21,17 +21,6 @@
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
-        },
-        {
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Presentation/bin/Debug/net6.0/CryptoApp.Presentation.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}/Presentation",
-            "console": "internalConsole",
-            "stopAtEntry": false
         }
     ]
 }

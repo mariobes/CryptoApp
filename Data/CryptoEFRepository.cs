@@ -22,22 +22,34 @@ namespace CryptoApp.Data
         {
             var query = _context.Cryptos.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Name))
+            if (cryptoQueryParameters != null)
             {
-                query = query.Where(c => c.Name.StartsWith(cryptoQueryParameters.Name));
-            }
+                if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Name))
+                {
+                    query = query.Where(c => c.Name.StartsWith(cryptoQueryParameters.Name));
+                }
 
-            if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Symbol))
-            {
-                query = query.Where(c => c.Symbol.StartsWith(cryptoQueryParameters.Symbol));
-            }
+                if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Symbol))
+                {
+                    query = query.Where(c => c.Symbol.StartsWith(cryptoQueryParameters.Symbol));
+                }
 
-            if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Developer))
-            {
-                query = query.Where(c => c.Developer.StartsWith(cryptoQueryParameters.Developer));
-            }
+                if (!string.IsNullOrWhiteSpace(cryptoQueryParameters.Developer))
+                {
+                    query = query.Where(c => c.Developer.StartsWith(cryptoQueryParameters.Developer));
+                }
 
-            query = query.OrderByDescending(c => c.Value);
+                switch (cryptoQueryParameters.SortBy)
+                {
+                    case "name":
+                        query = cryptoQueryParameters.Order == "asc" ? query.OrderBy(c => c.Name) : query.OrderByDescending(c => c.Name);
+                        break;
+                    case "value":
+                    default:
+                        query = cryptoQueryParameters.Order == "asc" ? query.OrderByDescending(c => c.Value) : query.OrderBy(c => c.Value);
+                        break;
+                }
+            }
 
             var result = query.ToList();
             return result;

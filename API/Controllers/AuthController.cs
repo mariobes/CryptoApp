@@ -23,7 +23,7 @@ public class AuthController : ControllerBase
         _configuration = configuration;
     }
 
-    [HttpPost("Login/")]
+    [HttpPost("login")]
     public IActionResult Login([FromBody] UserLoginDTO userLoginDTO)
     {
         try
@@ -51,7 +51,7 @@ public class AuthController : ControllerBase
         }
     }
 
-    [HttpPost("Register/")]
+    [HttpPost("register")]
     public IActionResult Register([FromBody] UserCreateDTO userCreateDTO)
     {
         if (!ModelState.IsValid)  {return BadRequest(ModelState); } 
@@ -66,42 +66,5 @@ public class AuthController : ControllerBase
             return BadRequest($"Error al registrar el usuario. {ex.Message}");
         }
     }
-
-    /*private string GenerateJwtToken(User user)
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        var secretKey = _configuration["JWT:SecretKey"]; 
-        var key = Encoding.ASCII.GetBytes(secretKey); 
-
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-           Subject = new ClaimsIdentity(new Claim[]
-           {
-                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Role, user.Role)
-           }),
-            Expires = DateTime.UtcNow.AddDays(30),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) 
-        };
-        var token = tokenHandler.CreateToken(tokenDescriptor);
-        return tokenHandler.WriteToken(token);
-    }
-
-    public bool HasAccessToResource(int requestedUserID, ClaimsPrincipal user) 
-    {
-        var userIdClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-        if (userIdClaim is null || !int.TryParse(userIdClaim.Value, out int userId)) 
-        { 
-            return false; 
-        }
-        var isOwnResource = userId == requestedUserID;
-
-        var roleClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
-        if (roleClaim != null) return false;
-        var isAdmin = roleClaim!.Value == Roles.Admin;
-        
-        var hasAccess = isOwnResource || isAdmin;
-        return hasAccess;
-    }*/
 
 }

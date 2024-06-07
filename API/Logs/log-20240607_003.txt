@@ -1,0 +1,21 @@
+2024-06-07 14:20:54.609 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:21:07.727 +02:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-06-07 14:22:35.577 +02:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 14:24:03.443 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:28:16.132 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:29:06.967 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:30:24.368 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:30:57.201 +02:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 14:40:45.652 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:41:03.709 +02:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 14:41:19.835 +02:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 14:43:07.882 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:43:37.200 +02:00 [ERR] Error al registrar la criptomoneda. El nombre de la criptomoneda ya existe.
+2024-06-07 14:43:59.522 +02:00 [ERR] Error al registrar la criptomoneda. El nombre de la criptomoneda ya existe.
+2024-06-07 14:27:58.504 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 14:27:58.586 +00:00 [WRN] No XML encryptor configured. Key {d2bb662f-ee52-42a1-8bb3-ef4565be12e8} may be persisted to storage in unencrypted form.
+2024-06-07 14:28:48.812 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 14:28:48.914 +00:00 [WRN] No XML encryptor configured. Key {b03f6f88-43d1-4022-8946-29aa523a1951} may be persisted to storage in unencrypted form.
+2024-06-07 14:28:58.137 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-06-07 14:28:59.220 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 14:29:46.988 +00:00 [ERR] Error al registrar la criptomoneda. El nombre de la criptomoneda ya existe.

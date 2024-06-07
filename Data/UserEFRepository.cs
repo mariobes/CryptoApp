@@ -54,43 +54,5 @@ namespace CryptoApp.Data
             _context.SaveChanges();
         }
 
-        public void AddTransaction(Transaction transaction)
-        {
-            _context.Transactions.Add(transaction);
-            SaveChanges();
-        }
-
-        public IEnumerable<Transaction> GetAllTransactions(int userId, TransactionQueryParameters transactionQueryParameters) 
-        {
-            var query = _context.Transactions.AsQueryable();
-
-            query = _context.Transactions.Where(t => t.UserId == userId);
-
-            if (transactionQueryParameters.CryptoId.HasValue)
-            {
-                query = query.Where(t => t.CryptoId == transactionQueryParameters.CryptoId);
-            }
-
-            if (transactionQueryParameters.FromDate.HasValue)
-            {
-                query = query.Where(t => t.Date >= transactionQueryParameters.FromDate);
-            }
-
-            if (transactionQueryParameters.ToDate.HasValue)
-            {
-                query = query.Where(t => t.Date <= transactionQueryParameters.ToDate);
-            }
-
-            if (!string.IsNullOrWhiteSpace(transactionQueryParameters.Concept))
-            {
-                query = query.Where(t => t.Concept.StartsWith(transactionQueryParameters.Concept));
-            }
-            
-            query = query.OrderBy(t => t.Date);
-
-            var result = query.ToList();
-            return result;
-        }
-
     }   
 }

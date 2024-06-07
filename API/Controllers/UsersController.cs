@@ -62,7 +62,7 @@ public class UsersController : ControllerBase
     }
 
     [Authorize(Roles = Roles.Admin + "," +  Roles.User)]
-    [HttpGet("ByEmail")]
+    [HttpGet("by-email")]
     public IActionResult GetUserByEmail(string userEmail)
     {
         if (!_authService.HasAccessToResource(null, userEmail, HttpContext.User)) 

@@ -1,0 +1,45 @@
+2024-05-28 13:32:46.463 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:32:54.210 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:32:54.900 +02:00 [ERR] Failed executing DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Cryptos] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Symbol] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [RegisterDate] datetime2 NOT NULL,
+    [Value] float NOT NULL,
+    [Developer] nvarchar(max) NOT NULL,
+    [Descentralized] bit NOT NULL,
+    CONSTRAINT [PK_Cryptos] PRIMARY KEY ([Id])
+);
+2024-05-28 13:33:08.464 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:33:31.163 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:33:39.565 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:33:46.356 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 11:34:14.086 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-28 11:34:14.137 +00:00 [WRN] No XML encryptor configured. Key {ee0f7d48-8838-43fa-9f09-60a599027f3a} may be persisted to storage in unencrypted form.
+2024-05-28 11:34:21.383 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-28 11:34:22.100 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 11:41:29.920 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-28 11:41:29.983 +00:00 [WRN] No XML encryptor configured. Key {6c5c9248-836f-46d4-b820-d6de52dd1793} may be persisted to storage in unencrypted form.
+2024-05-28 11:41:36.198 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-28 11:41:36.928 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 11:41:52.428 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 11:42:31.697 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 11:42:36.609 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 11:43:09.028 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 11:52:18.063 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 12:39:34.156 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 12:39:35.763 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 12:39:36.046 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 12:39:36.179 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:24:14.628 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:24:19.815 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:24:37.179 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:25:25.634 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:25:48.296 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:26:13.445 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:27:16.690 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:27:41.753 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 13:28:24.094 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.
+2024-05-28 16:22:06.152 +00:00 [ERR] Error al registrar el usuario. El correo electrónico ya está registrado.

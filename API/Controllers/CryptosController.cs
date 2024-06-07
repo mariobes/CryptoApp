@@ -66,6 +66,7 @@ public class CryptosController : ControllerBase
 
         try {
             var crypto = _cryptoService.RegisterCrypto(cryptoCreateUpdateDTO);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return CreatedAtAction(nameof(GetCrypto), new { cryptoId = crypto.Id }, crypto);
         }     
         catch (Exception ex)

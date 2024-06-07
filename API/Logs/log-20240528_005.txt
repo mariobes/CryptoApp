@@ -1,0 +1,1 @@
+2024-05-28 14:00:24.119 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.

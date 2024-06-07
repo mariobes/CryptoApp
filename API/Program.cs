@@ -33,11 +33,13 @@ builder.Services.AddLogging(loggingBuilder =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICryptoService, CryptoService>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<IUserRepository, UserEFRepository>();
 builder.Services.AddScoped<ICryptoRepository, CryptoEFRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionEFRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
-var connectionString = builder.Configuration.GetConnectionString("ServerDB_azure");
+var connectionString = builder.Configuration.GetConnectionString("ServerDB_dockernet");
 
 builder.Services.AddDbContext<CryptoAppContext>(options =>
     options.UseSqlServer(connectionString));

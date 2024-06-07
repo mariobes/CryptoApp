@@ -10,13 +10,13 @@ namespace CryptoApp.API.Controllers;
 public class TransactionsController : ControllerBase
 {
     private readonly ILogger<TransactionsController> _logger;
-    private readonly IUserService _userService;
+    private readonly ITransactionService _transactionService;
     private readonly IAuthService _authService;
 
-    public TransactionsController(ILogger<TransactionsController> logger, IUserService userService, IAuthService authService)
+    public TransactionsController(ILogger<TransactionsController> logger, ITransactionService transactionService, IAuthService authService)
     {
         _logger = logger;
-        _userService = userService;
+        _transactionService = transactionService;
         _authService = authService;
     }
 
@@ -28,7 +28,8 @@ public class TransactionsController : ControllerBase
             {return Forbid(); }
 
         try {
-            _userService.MakeDeposit(depositWithdrawalDTO);
+            _transactionService.MakeDeposit(depositWithdrawalDTO);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok("Depósito realizado correctamente.");
         }     
         catch (KeyNotFoundException knfex)
@@ -51,7 +52,7 @@ public class TransactionsController : ControllerBase
             {return Forbid(); }
 
         try {
-            _userService.MakeWithdrawal(depositWithdrawalDTO);
+            _transactionService.MakeWithdrawal(depositWithdrawalDTO);
             return Ok("Retiro realizado correctamente.");
         }     
         catch (KeyNotFoundException knfex)
@@ -67,14 +68,15 @@ public class TransactionsController : ControllerBase
     }
 
     [Authorize(Roles = Roles.Admin + "," + Roles.User)]
-    [HttpPost("buycrypto")]
+    [HttpPost("buy-crypto")]
     public IActionResult BuyCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
         if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
-            _userService.BuyCrypto(buySellCrypto);
+            _transactionService.BuyCrypto(buySellCrypto);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok("Compra realizada correctamente.");
         }     
         catch (KeyNotFoundException knfex)
@@ -90,14 +92,14 @@ public class TransactionsController : ControllerBase
     }
 
     [Authorize(Roles = Roles.Admin + "," + Roles.User)]
-    [HttpPost("sellcrypto")]
+    [HttpPost("sell-crypto")]
     public IActionResult SellCrypto([FromBody] BuySellCrypto buySellCrypto)
     {
         if (!_authService.HasAccessToResource(Convert.ToInt32(buySellCrypto.UserId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
-            _userService.SellCrypto(buySellCrypto);
+            _transactionService.SellCrypto(buySellCrypto);
             return Ok("Venta realizada correctamente.");
         }     
         catch (KeyNotFoundException knfex)
@@ -120,7 +122,8 @@ public class TransactionsController : ControllerBase
             {return Forbid(); }
 
         try {
-            var transactions = _userService.GetAllTransactions(userId, transactionQueryParameters);
+            var transactions = _transactionService.GetAllTransactions(userId, transactionQueryParameters);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok(transactions);
         }     
         catch (Exception ex)
@@ -131,14 +134,15 @@ public class TransactionsController : ControllerBase
     }
 
     [Authorize(Roles = Roles.Admin + "," + Roles.User)]
-    [HttpGet("{userId}/mycryptos")]
-    public ActionResult<IEnumerable<Transaction>> MyCryptos(int userId)
+    [HttpGet("{userId}/cryptos")]
+    public ActionResult<IEnumerable<Transaction>> GetCryptos(int userId)
     {
         if (!_authService.HasAccessToResource(Convert.ToInt32(userId), null, HttpContext.User)) 
             {return Forbid(); }
 
         try {
-            var userCryptos = _userService.MyCryptos(userId);
+            var userCryptos = _transactionService.MyCryptos(userId);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok(userCryptos);
         }     
         catch (Exception ex)

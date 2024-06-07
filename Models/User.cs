@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace CryptoApp.Models;
 
@@ -30,6 +31,8 @@ public class User
     
     public double Cash { get; set; }
     public double Wallet { get; set; }
+
+    [JsonIgnore]
     public List<Transaction> Transactions { get; set; }
 
     [Required]

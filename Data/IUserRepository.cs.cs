@@ -11,6 +11,4 @@ public interface IUserRepository
     public void DeleteUser(int userId);
     public void UpdateUser(User user);
     void SaveChanges();
-    public void AddTransaction(Transaction transaction);
-    public IEnumerable<Transaction> GetAllTransactions(int userId, TransactionQueryParameters transactionQueryParameters);
 }
