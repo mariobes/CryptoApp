@@ -13,11 +13,13 @@ public class CryptosController : ControllerBase
 {
     private readonly ILogger<CryptosController> _logger;
     private readonly ICryptoService _cryptoService;
+    private readonly ITransactionService _transactionService;
 
-    public CryptosController(ILogger<CryptosController> logger, ICryptoService cryptoService)
+    public CryptosController(ILogger<CryptosController> logger, ICryptoService cryptoService, ITransactionService transactionService)
     {
         _logger = logger;
         _cryptoService = cryptoService;
+        _transactionService = transactionService;
     }
 
     [HttpGet(Name = "GetAllCryptos")] 
@@ -105,7 +107,12 @@ public class CryptosController : ControllerBase
     {
         try
         {
-            _cryptoService.DeleteCrypto(cryptoId);
+            
+            if (!_transactionService.IsCryptoPurchased(cryptoId))
+            {
+                _cryptoService.DeleteCrypto(cryptoId);
+            }
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return NoContent();
         }
         catch (KeyNotFoundException knfex)

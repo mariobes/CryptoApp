@@ -10,4 +10,5 @@ public interface ITransactionService
     public void SellCrypto(BuySellCrypto buySellCrypto);
     public IEnumerable<Transaction> GetAllTransactions(int userId, TransactionQueryParameters transactionQueryParameters);
     public Dictionary<string, double> MyCryptos(int userId);
+    public bool IsCryptoPurchased(int cryptoId);
 }

@@ -46,6 +46,13 @@ public class CryptoService : ICryptoService
         {
             throw new KeyNotFoundException($"Criptomoneda con ID {cryptoId} no encontrada");
         }
+
+        var registeredCrypto = _repository.GetAllCryptos().FirstOrDefault(c => c.Name.Equals(cryptoCreateUpdateDTO.Name, StringComparison.OrdinalIgnoreCase));
+        if ((registeredCrypto != null) && (cryptoId != registeredCrypto.Id))
+        {
+            throw new Exception("El nombre de la criptomoneda ya existe.");
+        }
+
         crypto.Name = cryptoCreateUpdateDTO.Name;
         crypto.Symbol = cryptoCreateUpdateDTO.Symbol;
         crypto.Description = cryptoCreateUpdateDTO.Description;

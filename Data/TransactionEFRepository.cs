@@ -18,6 +18,14 @@ namespace CryptoApp.Data
             SaveChanges();
         }
 
+        public IEnumerable<Transaction> GetAllTransactionsAllUsers() 
+        {
+            var query = _context.Transactions.AsQueryable();
+
+            var result = query.ToList();
+            return result;
+        }
+
         public IEnumerable<Transaction> GetAllTransactions(int userId, TransactionQueryParameters transactionQueryParameters) 
         {
             var query = _context.Transactions.AsQueryable();

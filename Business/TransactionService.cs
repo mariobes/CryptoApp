@@ -129,6 +129,18 @@ public class TransactionService : ITransactionService
         return totalAmountByCrypto;
     }
 
+    public bool IsCryptoPurchased(int cryptoId)
+    {
+        var cryptoPurchased = _transactionRepository.GetAllTransactionsAllUsers().FirstOrDefault(t => t.CryptoId == cryptoId);
+
+        if (cryptoPurchased != null)
+        {
+            throw new Exception("No se puede eliminar la criptomoneda porque ha sido comprada por algún usuario.");
+        }
+
+        return cryptoPurchased != null;
+    }
+   
     public bool HasCrypto(int userId, int cryptoId)
     {
         var userTransactions = _transactionRepository.GetAllTransactions(userId, new TransactionQueryParameters());

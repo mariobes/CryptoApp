@@ -6,12 +6,10 @@ namespace CryptoApp.Business;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
-    private readonly ICryptoRepository _cryptoRepository;
 
-    public UserService(IUserRepository userRepository, ICryptoRepository cryptoRepository)
+    public UserService(IUserRepository userRepository)
     {
         _userRepository = userRepository;
-        _cryptoRepository = cryptoRepository;
     }
 
     public User RegisterUser(UserCreateDTO userCreateDTO)
@@ -58,6 +56,13 @@ public class UserService : IUserService
         {
             throw new KeyNotFoundException($"Usuario con ID {userId} no encontrado");
         }
+
+        var registeredUser = _userRepository.GetAllUsers().FirstOrDefault(u => u.Email.Equals(userUpdateDTO.Email, StringComparison.OrdinalIgnoreCase));
+        if (registeredUser != null)
+        {
+            throw new Exception("El correo electrónico ya está registrado.");
+        }
+
         user.Email = userUpdateDTO.Email;
         user.Password = userUpdateDTO.Password;
         user.Phone = userUpdateDTO.Phone;

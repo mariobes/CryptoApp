@@ -4,9 +4,8 @@ namespace CryptoApp.Models;
 
 public class TransactionQueryParameters
 {
-    [Required]
     [RegularExpression("date|amount|concept", ErrorMessage = "El valor debe ser 'date', 'amount' o 'concept'")]
-    public string SortBy { get; set; }
+    public string SortBy { get; set; } = "date";
 
     [RegularExpression("asc|desc", ErrorMessage = "El valor debe ser 'asc' o 'desc'")]
     public string Order { get; set; } = "asc";
