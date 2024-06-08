@@ -1,0 +1,1829 @@
+{
+	"info": {
+		"_postman_id": "f9ce102d-e56d-4d2f-bbc6-8e5eb38c0d9e",
+		"name": "CryptoApp API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34734192"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"mario@gmail.com\",\r\n  \"password\": \"mario12345\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"mario@gmail.com\",\r\n  \"password\": \"mario12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:07:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQwNDQsImV4cCI6MTcyMDQyNjA0NCwiaWF0IjoxNzE3ODM0MDQ0fQ.9E2UIqfUJMYW1_WCWcGJM3RqaXmSnQYB1uW0_BpXbiA"
+						}
+					]
+				},
+				{
+					"name": "Login Error",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"mario@gmail.com\",\r\n  \"password\": \"mario123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-Login Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"mario@gmail.com\",\r\n  \"password\": \"mario123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Auth",
+										"login"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:08:40 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "No se ha encontrado ningún usuario con esas credenciales"
+						}
+					]
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"PruebaPostman\",\r\n  \"birthdate\": \"2024-01-05\",\r\n  \"email\": \"pruebapostman@gmail.com\",\r\n  \"password\": \"pruebapostman\",\r\n  \"phone\": \"12345\",\r\n  \"dni\": \"pruebapostman\",\r\n  \"nationality\": \"pruebapostman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-Register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"PruebaPostman\",\r\n  \"birthdate\": \"2024-01-05\",\r\n  \"email\": \"pruebapostman@gmail.com\",\r\n  \"password\": \"pruebapostman\",\r\n  \"phone\": \"12345\",\r\n  \"dni\": \"pruebapostman\",\r\n  \"nationality\": \"pruebapostman\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:10:29 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:4746/Auth/login?userId=6"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"name\": \"PruebaPostman\",\n    \"birthdate\": \"2024-01-05T00:00:00\",\n    \"email\": \"pruebapostman@gmail.com\",\n    \"password\": \"pruebapostman\",\n    \"phone\": \"12345\",\n    \"dni\": \"pruebapostman\",\n    \"nationality\": \"pruebapostman\",\n    \"cash\": 0,\n    \"wallet\": 0,\n    \"role\": \"user\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Register Error",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"PruebaPostman\",\r\n  \"birthdate\": \"2024-01-05\",\r\n  \"email\": \"mario@gmail.com\",\r\n  \"password\": \"pruebapostman\",\r\n  \"phone\": \"12345\",\r\n  \"dni\": \"pruebapostman\",\r\n  \"nationality\": \"pruebapostman\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Auth",
+								"register"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-Register Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"PruebaPostman\",\r\n  \"birthdate\": \"2024-01-05\",\r\n  \"email\": \"mario@gmail.com\",\r\n  \"password\": \"pruebapostman\",\r\n  \"phone\": \"12345\",\r\n  \"dni\": \"pruebapostman\",\r\n  \"nationality\": \"pruebapostman\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Auth",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:21:24 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Error al registrar el usuario. El correo electrónico ya está registrado."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "GetAllUsers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-GetAllUsers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Users"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:15:38 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Mario\",\n        \"birthdate\": \"2001-01-01T00:00:00\",\n        \"email\": \"mario@gmail.com\",\n        \"password\": \"mario12345\",\n        \"phone\": \"4574\",\n        \"dni\": \"32452464D\",\n        \"nationality\": \"España\",\n        \"cash\": 0,\n        \"wallet\": 0,\n        \"role\": \"admin\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Carlos\",\n        \"birthdate\": \"2003-03-03T00:00:00\",\n        \"email\": \"carlos@gmail.com\",\n        \"password\": \"carlos12345\",\n        \"phone\": \"4567477\",\n        \"dni\": \"23523562D\",\n        \"nationality\": \"Argentina\",\n        \"cash\": 135,\n        \"wallet\": 360,\n        \"role\": \"user\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Fernando\",\n        \"birthdate\": \"2003-03-03T00:00:00\",\n        \"email\": \"fernando@gmail.com\",\n        \"password\": \"fernando12345\",\n        \"phone\": \"4745\",\n        \"dni\": \"23526445X\",\n        \"nationality\": \"España\",\n        \"cash\": 0,\n        \"wallet\": 0,\n        \"role\": \"user\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"Eduardo\",\n        \"birthdate\": \"2004-04-04T00:00:00\",\n        \"email\": \"eduardo@gmail.com\",\n        \"password\": \"eduardo12345\",\n        \"phone\": \"4574548\",\n        \"dni\": \"52353425D\",\n        \"nationality\": \"España\",\n        \"cash\": 0,\n        \"wallet\": 0,\n        \"role\": \"user\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"PruebaPostman\",\n        \"birthdate\": \"2024-01-05T00:00:00\",\n        \"email\": \"pruebapostman@gmail.com\",\n        \"password\": \"pruebapostman\",\n        \"phone\": \"12345\",\n        \"dni\": \"pruebapostman\",\n        \"nationality\": \"pruebapostman\",\n        \"cash\": 0,\n        \"wallet\": 0,\n        \"role\": \"user\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GetUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Users/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-GetUser",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Users/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Users",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:16:54 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"name\": \"PruebaPostman\",\n    \"birthdate\": \"2024-01-05T00:00:00\",\n    \"email\": \"pruebapostman@gmail.com\",\n    \"password\": \"pruebapostman\",\n    \"phone\": \"12345\",\n    \"dni\": \"pruebapostman\",\n    \"nationality\": \"pruebapostman\",\n    \"cash\": 0,\n    \"wallet\": 0,\n    \"role\": \"user\"\n}"
+						}
+					]
+				},
+				{
+					"name": "GetUserByEmail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Users/by-email?userEmail=mario@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users",
+								"by-email"
+							],
+							"query": [
+								{
+									"key": "userEmail",
+									"value": "mario@gmail.com"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-GetUserByEmail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Users/by-email?userEmail=mario@gmail.com",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Users",
+										"by-email"
+									],
+									"query": [
+										{
+											"key": "userEmail",
+											"value": "mario@gmail.com"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:51:56 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Mario\",\n    \"birthdate\": \"2001-01-01T00:00:00\",\n    \"email\": \"mario@gmail.com\",\n    \"password\": \"mario12345\",\n    \"phone\": \"4574\",\n    \"dni\": \"32452464D\",\n    \"nationality\": \"España\",\n    \"cash\": 0,\n    \"wallet\": 0,\n    \"role\": \"admin\"\n}"
+						}
+					]
+				},
+				{
+					"name": "UpdateUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"pruebapostman@postman.com\",\r\n  \"password\": \"pruebapostman\",\r\n  \"phone\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Users/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-UpdateUser",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"pruebapostman@postman.com\",\r\n  \"password\": \"pruebapostman\",\r\n  \"phone\": \"1234521446789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Users/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Users",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:48:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Usuario actualizado correctamente."
+						}
+					]
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Users/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Users",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-DeleteUser",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Users/6",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Users",
+										"6"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:48:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Usuario eliminado correctamente."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Crypto",
+			"item": [
+				{
+					"name": "GetAllCryptos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Cryptos?SortBy=value&Order=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Cryptos"
+							],
+							"query": [
+								{
+									"key": "SortBy",
+									"value": "value"
+								},
+								{
+									"key": "Order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-GetAllCryptos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Cryptos?SortBy=value&Order=desc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Cryptos"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "value"
+										},
+										{
+											"key": "Order",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:23:19 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"name\": \"Ripple\",\n        \"symbol\": \"XRP\",\n        \"description\": \"Ripple\",\n        \"registerDate\": \"2024-01-03T13:55:25\",\n        \"value\": 0.5,\n        \"developer\": \"Ripple\",\n        \"descentralized\": false\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Solana\",\n        \"symbol\": \"SOL\",\n        \"description\": \"Solana\",\n        \"registerDate\": \"2024-01-03T13:55:06\",\n        \"value\": 90,\n        \"developer\": \"Solana\",\n        \"descentralized\": true\n    },\n    {\n        \"id\": 22,\n        \"name\": \"prueba1\",\n        \"symbol\": \"prueba1\",\n        \"description\": \"prueba1\",\n        \"registerDate\": \"2024-06-07T18:23:34.8667978\",\n        \"value\": 111,\n        \"developer\": \"prueba1\",\n        \"descentralized\": true\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Etherium\",\n        \"symbol\": \"ETH\",\n        \"description\": \"Etherium\",\n        \"registerDate\": \"2024-01-03T13:54:48\",\n        \"value\": 2000,\n        \"developer\": \"Etherium\",\n        \"descentralized\": true\n    },\n    {\n        \"id\": 1,\n        \"name\": \"Bitcoin\",\n        \"symbol\": \"BTC\",\n        \"description\": \"Bitcoin\",\n        \"registerDate\": \"2024-01-03T13:54:18\",\n        \"value\": 40000,\n        \"developer\": \"Bitcoin\",\n        \"descentralized\": true\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GetCrypto",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Cryptos/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Cryptos",
+								"26"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-GetUser",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Cryptos/26",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Cryptos",
+										"26"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:28:46 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 26,\n    \"name\": \"ActualizarPostman\",\n    \"symbol\": \"APO\",\n    \"description\": \"ActualizarPostman\",\n    \"registerDate\": \"2024-06-08T08:26:02.3673031\",\n    \"value\": 10,\n    \"developer\": \"ActualizarPostman\",\n    \"descentralized\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "AddCrypto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"PruebaPostman\",\r\n  \"symbol\": \"POS\",\r\n  \"description\": \"PruebaPostman\",\r\n  \"value\": 200,\r\n  \"developer\": \"PruebaPostman\",\r\n  \"descentralized\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Cryptos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Cryptos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-AddCrypto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"PruebaPostman\",\r\n  \"symbol\": \"POS\",\r\n  \"description\": \"PruebaPostman\",\r\n  \"value\": 200,\r\n  \"developer\": \"PruebaPostman\",\r\n  \"descentralized\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Cryptos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Cryptos"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:26:02 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Location",
+									"value": "http://localhost:4746/Cryptos/26"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 26,\n    \"name\": \"PruebaPostman\",\n    \"symbol\": \"POS\",\n    \"description\": \"PruebaPostman\",\n    \"registerDate\": \"2024-06-08T08:26:02.3673031+00:00\",\n    \"value\": 200,\n    \"developer\": \"PruebaPostman\",\n    \"descentralized\": true\n}"
+						}
+					]
+				},
+				{
+					"name": "AddCrypto Error",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Bitcoin\",\r\n  \"symbol\": \"POS\",\r\n  \"description\": \"PruebaPostman\",\r\n  \"value\": 200,\r\n  \"developer\": \"PruebaPostman\",\r\n  \"descentralized\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Cryptos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Cryptos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-AddCrypto Error",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Bitcoin\",\r\n  \"symbol\": \"POS\",\r\n  \"description\": \"PruebaPostman\",\r\n  \"value\": 200,\r\n  \"developer\": \"PruebaPostman\",\r\n  \"descentralized\": true\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Cryptos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Cryptos"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:30:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Error al registrar la criptomoneda. El nombre de la criptomoneda ya existe."
+						}
+					]
+				},
+				{
+					"name": "UpdateCrypto",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"ActualizarPostman\",\r\n  \"symbol\": \"APO\",\r\n  \"description\": \"ActualizarPostman\",\r\n  \"value\": 10,\r\n  \"developer\": \"ActualizarPostman\",\r\n  \"descentralized\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Cryptos/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Cryptos",
+								"26"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-UpdateCrypto",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"ActualizaaaarPostman\",\r\n  \"symbol\": \"APO\",\r\n  \"description\": \"ActualizarPostman\",\r\n  \"value\": 10,\r\n  \"developer\": \"ActualizarPostman\",\r\n  \"descentralized\": false\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Cryptos/27",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Cryptos",
+										"27"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:49:17 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Criptomoneda actualizada correctamente."
+						}
+					]
+				},
+				{
+					"name": "DeleteCrypto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Cryptos/26",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Cryptos",
+								"26"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-DeleteCrypto",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Cryptos/26",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Cryptos",
+										"26"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:49:43 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Criptomoneda eliminada correctamente."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Deposit",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 3,\r\n  \"amount\": 400,\r\n  \"paymentMethod\": \"Tarjeta Crédito\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Transactions/deposit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Transactions",
+								"deposit"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-Deposit",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userId\": 3,\r\n  \"amount\": 400,\r\n  \"paymentMethod\": \"Tarjeta Crédito\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Transactions/deposit",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Transactions",
+										"deposit"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:38:49 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Depósito realizado correctamente."
+						}
+					]
+				},
+				{
+					"name": "Withdrawal",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 3,\r\n  \"amount\": 100,\r\n  \"paymentMethod\": \"Cuenta Bancaria\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Transactions/withdrawal",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Transactions",
+								"withdrawal"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-Withdrawal",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userId\": 3,\r\n  \"amount\": 100,\r\n  \"paymentMethod\": \"Cuenta Bancaria\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Transactions/withdrawal",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Transactions",
+										"withdrawal"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:40:55 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Retiro realizado correctamente."
+						}
+					]
+				},
+				{
+					"name": "BuyCrypto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 3,\r\n  \"cryptoId\": 3,\r\n  \"amount\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Transactions/buy-crypto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Transactions",
+								"buy-crypto"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-BuyCrypto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userId\": 3,\r\n  \"cryptoId\": 3,\r\n  \"amount\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Transactions/buy-crypto",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Transactions",
+										"buy-crypto"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:42:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Compra realizada correctamente."
+						}
+					]
+				},
+				{
+					"name": "SellCrypto",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"userId\": 3,\r\n  \"cryptoId\": 3,\r\n  \"amount\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4746/Transactions/sell-crypto",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Transactions",
+								"sell-crypto"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-SellCrypto",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"userId\": 3,\r\n  \"cryptoId\": 3,\r\n  \"amount\": 20\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:4746/Transactions/sell-crypto",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Transactions",
+										"sell-crypto"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:44:01 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "Venta realizada correctamente."
+						}
+					]
+				},
+				{
+					"name": "GetTransactions",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Transactions/3?SortBy=date&Order=desc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Transactions",
+								"3"
+							],
+							"query": [
+								{
+									"key": "SortBy",
+									"value": "date"
+								},
+								{
+									"key": "Order",
+									"value": "desc"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-GetTransactions",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Transactions/3?SortBy=date&Order=desc",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Transactions",
+										"3"
+									],
+									"query": [
+										{
+											"key": "SortBy",
+											"value": "date"
+										},
+										{
+											"key": "Order",
+											"value": "desc"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:55:20 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 10,\n        \"userId\": 3,\n        \"cryptoId\": 3,\n        \"concept\": \"Vender Solana\",\n        \"amount\": 20,\n        \"date\": \"2024-06-08T08:44:02.060258\",\n        \"charge\": 1,\n        \"payment_Method\": null\n    },\n    {\n        \"id\": 9,\n        \"userId\": 3,\n        \"cryptoId\": 3,\n        \"concept\": \"Comprar Solana\",\n        \"amount\": 50,\n        \"date\": \"2024-06-08T08:42:02.484193\",\n        \"charge\": 1,\n        \"payment_Method\": null\n    },\n    {\n        \"id\": 8,\n        \"userId\": 3,\n        \"cryptoId\": null,\n        \"concept\": \"Retirar dinero\",\n        \"amount\": 100,\n        \"date\": \"2024-06-08T08:40:56.4619458\",\n        \"charge\": 1,\n        \"payment_Method\": \"Cuenta Bancaria\"\n    },\n    {\n        \"id\": 7,\n        \"userId\": 3,\n        \"cryptoId\": null,\n        \"concept\": \"Ingresar dinero\",\n        \"amount\": 400,\n        \"date\": \"2024-06-08T08:38:49.9423071\",\n        \"charge\": 1,\n        \"payment_Method\": \"Tarjeta Crédito\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "GetCryptos",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:4746/Transactions/3/cryptos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4746",
+							"path": [
+								"Transactions",
+								"3",
+								"cryptos"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Response-GetCryptos",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIxIiwicm9sZSI6ImFkbWluIiwiZW1haWwiOiJtYXJpb0BnbWFpbC5jb20iLCJuYmYiOjE3MTc4MzQ0OTQsImV4cCI6MTcyMDQyNjQ5NCwiaWF0IjoxNzE3ODM0NDk0fQ.kwASF7bLMzTTUWhLu_P-IATF3ysI4FV7Y8NKHeWHDk4"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:4746/Transactions/3/cryptos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "4746",
+									"path": [
+										"Transactions",
+										"3",
+										"cryptos"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Sat, 08 Jun 2024 08:55:37 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Kestrel"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "http://localhost:5173"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"Solana\": 29\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}

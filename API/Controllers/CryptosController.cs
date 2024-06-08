@@ -87,7 +87,7 @@ public class CryptosController : ControllerBase
         try {
             _cryptoService.UpdateCrypto(cryptoId, cryptoCreateUpdateDTO);
             HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
-            return NoContent();
+            return Ok("Criptomoneda actualizada correctamente.");
         }     
         catch (KeyNotFoundException knfex)
         {
@@ -113,7 +113,7 @@ public class CryptosController : ControllerBase
                 _cryptoService.DeleteCrypto(cryptoId);
             }
             HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
-            return NoContent();
+            return Ok("Criptomoneda eliminada correctamente.");
         }
         catch (KeyNotFoundException knfex)
         {

@@ -96,7 +96,7 @@ public class UsersController : ControllerBase
 
         try {
             _userService.UpdateUser(userId, userUpdateDTO);
-            return NoContent();
+            return Ok("Usuario actualizado correctamente.");
         }     
         catch (KeyNotFoundException knfex)
         {
@@ -120,7 +120,7 @@ public class UsersController : ControllerBase
         try
         {
             _userService.DeleteUser(userId);
-            return NoContent();
+            return Ok("Usuario eliminado correctamente.");
         }
         catch (KeyNotFoundException knfex)
         {
