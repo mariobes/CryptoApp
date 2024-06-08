@@ -1,0 +1,12 @@
+2024-05-26 10:48:07.879 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 10:49:16.686 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 10:52:59.997 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 11:04:02.921 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 11:12:10.912 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 11:14:56.519 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-26 11:17:23.840 +02:00 [ERR] Error al hacer la compra del usuario con ID: 1. No tienes suficiente saldo para realizar la compra
+2024-05-26 11:17:42.403 +02:00 [ERR] Error al hacer la venta del usuario con ID: 1. El usuario 1 no tiene la criptomoneda 4
+2024-05-26 09:32:52.620 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-26 09:32:52.657 +00:00 [WRN] No XML encryptor configured. Key {08f4537e-8ce8-4813-b3ac-577cdb953950} may be persisted to storage in unencrypted form.
+2024-05-26 09:33:42.861 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-26 09:33:43.273 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.

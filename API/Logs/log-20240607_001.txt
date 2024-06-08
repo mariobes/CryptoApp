@@ -1,0 +1,41 @@
+2024-06-07 13:42:59.447 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 13:43:23.656 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 13:43:38.332 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 13:43:49.294 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 11:44:20.427 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 11:44:20.542 +00:00 [WRN] No XML encryptor configured. Key {a56b7d9f-60db-4947-aba0-9df76f8df4ee} may be persisted to storage in unencrypted form.
+2024-06-07 11:45:59.573 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-06-07 11:46:00.257 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 11:47:45.559 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 11:47:45.629 +00:00 [WRN] No XML encryptor configured. Key {fc6ff090-3ddc-4fa2-9648-880ddc9ad8de} may be persisted to storage in unencrypted form.
+2024-06-07 11:47:51.406 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-06-07 11:47:52.579 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 11:50:17.255 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 11:50:17.304 +00:00 [WRN] No XML encryptor configured. Key {7686213d-196e-44e6-8142-14775f17693e} may be persisted to storage in unencrypted form.
+2024-06-07 11:50:30.071 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-06-07 11:50:30.778 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 11:53:07.417 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 11:53:07.469 +00:00 [WRN] No XML encryptor configured. Key {9e7ee826-9a59-405f-9568-e6a21ccb4741} may be persisted to storage in unencrypted form.
+2024-06-07 11:53:24.583 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-06-07 11:53:25.411 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 11:55:57.591 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 11:55:57.641 +00:00 [WRN] No XML encryptor configured. Key {44260fe3-294e-4f50-9a3f-4663be289f87} may be persisted to storage in unencrypted form.
+2024-06-07 11:56:18.505 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-06-07 11:56:19.167 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 12:10:52.126 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 12:10:52.174 +00:00 [WRN] No XML encryptor configured. Key {6017a200-9fad-46bb-aa67-edb52f765e3e} may be persisted to storage in unencrypted form.
+2024-06-07 12:11:08.285 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-06-07 12:11:08.973 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-06-07 12:12:07.778 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:12:20.428 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:12:44.354 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:13:08.188 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:13:18.178 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:13:33.903 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:13:35.299 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:14:17.180 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:14:17.918 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:14:18.086 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:14:18.238 +00:00 [ERR] Error al registrar la criptomoneda. Object reference not set to an instance of an object.
+2024-06-07 12:15:02.238 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-06-07 12:15:02.291 +00:00 [WRN] No XML encryptor configured. Key {157c90db-5da7-4961-b6b0-ef4f425114f5} may be persisted to storage in unencrypted form.

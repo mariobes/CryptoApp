@@ -1,0 +1,4 @@
+2024-05-23 10:09:33.456 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-23 10:09:33.625 +00:00 [WRN] No XML encryptor configured. Key {19f8e5c5-b507-464f-8f5e-92d471f3784d} may be persisted to storage in unencrypted form.
+2024-05-23 10:09:38.220 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-23 10:09:38.980 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.

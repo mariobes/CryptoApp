@@ -1,0 +1,15 @@
+2024-05-28 13:30:18.429 +02:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-28 13:30:20.006 +02:00 [ERR] Failed executing DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [Cryptos] (
+    [Id] int NOT NULL IDENTITY,
+    [Name] nvarchar(max) NOT NULL,
+    [Symbol] nvarchar(max) NOT NULL,
+    [Description] nvarchar(max) NOT NULL,
+    [RegisterDate] datetime2 NOT NULL,
+    [Value] float NOT NULL,
+    [Developer] nvarchar(max) NOT NULL,
+    [Descentralized] bit NOT NULL,
+    CONSTRAINT [PK_Cryptos] PRIMARY KEY ([Id])
+);
+2024-05-28 11:32:35.893 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-28 11:32:35.972 +00:00 [WRN] No XML encryptor configured. Key {67e31420-1cc2-4b8c-ad03-bd58a1108f14} may be persisted to storage in unencrypted form.

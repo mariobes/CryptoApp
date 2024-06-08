@@ -4,6 +4,13 @@ namespace CryptoApp.Models;
 
 public class CryptoQueryParameters
 {
+    [Required]
+    [RegularExpression("value|name", ErrorMessage = "El valor debe ser 'value' o 'name'")]
+    public string SortBy { get; set; }
+
+    [RegularExpression("asc|desc", ErrorMessage = "El valor debe ser 'asc' o 'desc'")]
+     public string Order { get; set; } = "asc";
+
     [StringLength(50, ErrorMessage = "El nombre debe tener menos de 50 caracteres")]
     public string? Name { get; set; }
 

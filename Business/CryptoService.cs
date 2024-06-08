@@ -14,9 +14,13 @@ public class CryptoService : ICryptoService
 
     public Crypto RegisterCrypto(CryptoCreateUpdateDTO cryptoCreateUpdateDTO)
     {
+        var registeredCrypto = _repository.GetAllCryptos().FirstOrDefault(c => c.Name.Equals(cryptoCreateUpdateDTO.Name, StringComparison.OrdinalIgnoreCase));
+        if (registeredCrypto != null)
+        {
+            throw new Exception("El nombre de la criptomoneda ya existe.");
+        }
         Crypto crypto = new(cryptoCreateUpdateDTO.Name, cryptoCreateUpdateDTO.Symbol, cryptoCreateUpdateDTO.Description, cryptoCreateUpdateDTO.Value, cryptoCreateUpdateDTO.Developer, cryptoCreateUpdateDTO.Descentralized);
         _repository.AddCrypto(crypto);
-        _repository.SaveChanges();
         return crypto;
     }
 
@@ -42,6 +46,13 @@ public class CryptoService : ICryptoService
         {
             throw new KeyNotFoundException($"Criptomoneda con ID {cryptoId} no encontrada");
         }
+
+        var registeredCrypto = _repository.GetAllCryptos().FirstOrDefault(c => c.Name.Equals(cryptoCreateUpdateDTO.Name, StringComparison.OrdinalIgnoreCase));
+        if ((registeredCrypto != null) && (cryptoId != registeredCrypto.Id))
+        {
+            throw new Exception("El nombre de la criptomoneda ya existe.");
+        }
+
         crypto.Name = cryptoCreateUpdateDTO.Name;
         crypto.Symbol = cryptoCreateUpdateDTO.Symbol;
         crypto.Description = cryptoCreateUpdateDTO.Description;
@@ -49,7 +60,6 @@ public class CryptoService : ICryptoService
         crypto.Developer = cryptoCreateUpdateDTO.Developer;
         crypto.Descentralized = cryptoCreateUpdateDTO.Descentralized;
         _repository.UpdateCrypto(crypto);
-        _repository.SaveChanges();
     }
 
     public void DeleteCrypto(int cryptoId)
@@ -60,7 +70,6 @@ public class CryptoService : ICryptoService
             throw new KeyNotFoundException($"Criptomoneda con ID {cryptoId} no encontrada");
         }
         _repository.DeleteCrypto(cryptoId);
-        _repository.SaveChanges();
     }
     
 }

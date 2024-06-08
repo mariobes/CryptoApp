@@ -4,9 +4,11 @@ namespace CryptoApp.Models;
 
 public class TransactionQueryParameters
 {
-    [Required]
-    [Range(1, int.MaxValue, ErrorMessage = "El ID del usuario no es válido")]
-    public int UserId { get; set; }
+    [RegularExpression("date|amount|concept", ErrorMessage = "El valor debe ser 'date', 'amount' o 'concept'")]
+    public string SortBy { get; set; } = "date";
+
+    [RegularExpression("asc|desc", ErrorMessage = "El valor debe ser 'asc' o 'desc'")]
+    public string Order { get; set; } = "asc";
 
     [Range(1, int.MaxValue, ErrorMessage = "El ID de la criptomoneda no es válido")]
     public int? CryptoId { get; set; }

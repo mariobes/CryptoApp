@@ -7,6 +7,6 @@ namespace CryptoApp.Business
     {
         User CheckLogin(string email, string password);
         public string GenerateJwtToken(User user);
-        public bool HasAccessToResource(int requestedUserID, ClaimsPrincipal user);
+        public bool HasAccessToResource(int? requestedUserID, string requestedUserEmail, ClaimsPrincipal user);
     }
 }

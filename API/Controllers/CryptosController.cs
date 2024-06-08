@@ -13,11 +13,13 @@ public class CryptosController : ControllerBase
 {
     private readonly ILogger<CryptosController> _logger;
     private readonly ICryptoService _cryptoService;
+    private readonly ITransactionService _transactionService;
 
-    public CryptosController(ILogger<CryptosController> logger, ICryptoService cryptoService)
+    public CryptosController(ILogger<CryptosController> logger, ICryptoService cryptoService, ITransactionService transactionService)
     {
         _logger = logger;
         _cryptoService = cryptoService;
+        _transactionService = transactionService;
     }
 
     [HttpGet(Name = "GetAllCryptos")] 
@@ -28,6 +30,7 @@ public class CryptosController : ControllerBase
         try 
         {
             var cryptos = _cryptoService.GetAllCryptos(cryptoQueryParameters);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return Ok(cryptos);
         }
         catch (Exception ex)
@@ -65,6 +68,7 @@ public class CryptosController : ControllerBase
 
         try {
             var crypto = _cryptoService.RegisterCrypto(cryptoCreateUpdateDTO);
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
             return CreatedAtAction(nameof(GetCrypto), new { cryptoId = crypto.Id }, crypto);
         }     
         catch (Exception ex)
@@ -82,7 +86,8 @@ public class CryptosController : ControllerBase
 
         try {
             _cryptoService.UpdateCrypto(cryptoId, cryptoCreateUpdateDTO);
-            return NoContent();
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
+            return Ok("Criptomoneda actualizada correctamente.");
         }     
         catch (KeyNotFoundException knfex)
         {
@@ -102,8 +107,13 @@ public class CryptosController : ControllerBase
     {
         try
         {
-            _cryptoService.DeleteCrypto(cryptoId);
-            return NoContent();
+            
+            if (!_transactionService.IsCryptoPurchased(cryptoId))
+            {
+                _cryptoService.DeleteCrypto(cryptoId);
+            }
+            HttpContext.Response.Headers.Add("Access-Control-Allow-Origin", "http://localhost:5173");
+            return Ok("Criptomoneda eliminada correctamente.");
         }
         catch (KeyNotFoundException knfex)
         {

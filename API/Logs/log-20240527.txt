@@ -1,0 +1,21 @@
+2024-05-27 09:57:14.413 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-27 09:57:42.530 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-27 09:57:43.230 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-27 10:22:10.585 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-27 10:22:10.638 +00:00 [WRN] No XML encryptor configured. Key {95c8cf6c-a287-4f7e-874e-f007a046b109} may be persisted to storage in unencrypted form.
+2024-05-27 10:22:34.346 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-27 10:22:34.969 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-27 10:34:15.626 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-27 10:34:15.680 +00:00 [WRN] No XML encryptor configured. Key {999ba490-826f-41bc-b853-84c3d648f114} may be persisted to storage in unencrypted form.
+2024-05-27 10:34:17.610 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-27 10:34:18.649 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-27 11:07:25.266 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-27 11:07:25.338 +00:00 [WRN] No XML encryptor configured. Key {a8b65d6c-6808-495a-b6ab-8fce64a0c0ba} may be persisted to storage in unencrypted form.
+2024-05-27 11:08:25.312 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-27 11:08:25.376 +00:00 [WRN] No XML encryptor configured. Key {0437c2ea-7170-470e-a7e5-3f34a8d9b8a8} may be persisted to storage in unencrypted form.
+2024-05-27 11:08:34.659 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-27 11:08:35.739 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.
+2024-05-27 11:22:02.309 +00:00 [WRN] Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.
+2024-05-27 11:22:02.370 +00:00 [WRN] No XML encryptor configured. Key {7bd9a38f-a32b-4b1a-9f6f-f36589fd2d0f} may be persisted to storage in unencrypted form.
+2024-05-27 11:22:03.078 +00:00 [WRN] Failed to determine the https port for redirect.
+2024-05-27 11:22:03.758 +00:00 [WRN] Sensitive data logging is enabled. Log entries and exception messages may include sensitive application data; this mode should only be enabled during development.

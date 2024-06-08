@@ -44,7 +44,8 @@ namespace CryptoApp.Business
             Subject = new ClaimsIdentity(new Claim[]
             {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role)
+                    new Claim(ClaimTypes.Role, user.Role),
+                    new Claim(ClaimTypes.Email, user.Email)
             }),
                 Expires = DateTime.UtcNow.AddDays(30),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) 
@@ -53,21 +54,41 @@ namespace CryptoApp.Business
             return tokenHandler.WriteToken(token);
         }
 
-        public bool HasAccessToResource(int requestedUserID, ClaimsPrincipal user) 
+        public bool HasAccessToResource(int? requestedUserID, string requestedUserEmail, ClaimsPrincipal user) 
         {
-            var userIdClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
-            if (userIdClaim is null || !int.TryParse(userIdClaim.Value, out int userId)) 
-            { 
-                return false; 
-            }
-            var isOwnResource = userId == requestedUserID;
+            if (requestedUserID.HasValue)
+            {
+                var userIdClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier);
+                if (userIdClaim is null || !int.TryParse(userIdClaim.Value, out int userId)) 
+                { 
+                    return false; 
+                }
+                var isOwnResource = userId == requestedUserID;
 
-            var roleClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
-            var isAdmin = roleClaim != null && roleClaim.Value == Roles.Admin;
-            
-            var hasAccess = isOwnResource || isAdmin;
-            return hasAccess;
+                var roleClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                var isAdmin = roleClaim != null && roleClaim.Value == Roles.Admin;
+                
+                var hasAccess = isOwnResource || isAdmin;
+                return hasAccess;
+            }
+            else if (!string.IsNullOrEmpty(requestedUserEmail))
+            {
+                var emailClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email);
+                if (emailClaim is null) 
+                { 
+                    return false; 
+                }
+                var isOwnResource = emailClaim.Value.Equals(requestedUserEmail, StringComparison.OrdinalIgnoreCase);
+
+                var roleClaim = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Role);
+                var isAdmin = roleClaim != null && roleClaim.Value == Roles.Admin;
+
+                var hasAccess = isOwnResource || isAdmin;
+                return hasAccess;
+            }
+            return false;
         }
+        
      
     }
 }

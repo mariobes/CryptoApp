@@ -20,11 +20,6 @@ services:
             - cryptoapp
         volumes:
             - db-data:/var/opt/mssql
-        #healthcheck:
-            #test: ["CMD", "sqlcmd", "-U", "sa", "-P", "a24746@svalero.com", "-Q", "SELECT 1"]
-            #interval: 30s
-            #timeout: 10s
-            #retries: 3
     api:
         restart: unless-stopped 
         ports:
@@ -38,3 +33,10 @@ services:
             - cryptoapp
         volumes:
             - ./API/Logs:/app/Logs
+    web:
+        container_name: cryptoapp-vue
+        image: mariozgz/cryptoapp-vue:1.0
+        ports:
+            - 5173:80
+        depends_on:
+            - api
