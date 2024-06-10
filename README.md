@@ -8,5 +8,5 @@ CryptoApp es una API que funciona a través de una web en Vue y que gestiona usu
 </ul>
 <hr>
 <h1>Imágenes de Docker Hub</h1>
-<li><b>Imagen de la API</b>docker pull mariozgz/cryptoapp:1.0</li>
-<li><b>Imagen de la Web</b>docker pull mariozgz/cryptoapp-vue:1.0</li>
+<li><b>Imagen de la API: </b>docker pull mariozgz/cryptoapp:1.0</li>
+<li><b>Imagen de la Web: </b>docker pull mariozgz/cryptoapp-vue:1.0</li>
