@@ -91,15 +91,15 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-if (connectionString == "ServerDB_azure")
-{
+//if (connectionString == "ServerDB_azure")
+//{
     using (var scope = app.Services.CreateScope())
     {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<CryptoAppContext>();
     context.Database.Migrate();
     }
-}
+//}
 
 // Configurar CORS
 app.UseCors("MyAllowedOrigins");
