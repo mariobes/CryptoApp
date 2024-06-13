@@ -40,3 +40,5 @@ services:
             - 5173:80
         depends_on:
             - api
+        networks:
+            - cryptoapp
